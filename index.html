@@ -260,7 +260,8 @@ ul{list-style:none}
 /* ═══ SERVICES ═══ */
 .services-section{background:var(--white)}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
-@media(max-width:768px){.services-grid{grid-template-columns:1fr;gap:16px}.service-img{height:140px}.service-body{padding:20px 16px}.service-card h3{font-size:16px;margin-bottom:8px}.service-card p{font-size:13px;line-height:1.6}}
+@media(max-width:768px){.services-grid{grid-template-columns:1fr;gap:16px}.service-img{height:140px}.service-body{padding:20px 16px}.service-card h3{font-size:16px;margin-bottom:8px}.service-card p{font-size:13px;line-height:1.6}
+.svc-row{flex-direction:column !important}.svc-img{flex:none !important;min-height:160px !important}.svc-body{padding:24px 20px !important}}
 .service-card{background:var(--white);border-radius:var(--radius);overflow:hidden;transition:var(--transition);border:1px solid var(--border); box-shadow: var(--shadow-sm); display: flex; flex-direction: column;}
 .service-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-hover);}
 .service-img{height:220px;background-size:cover;background-position:center;position:relative; overflow: hidden; background-color: #e2e8f0;}
@@ -700,39 +701,38 @@ ul{list-style:none}
      PAGE: SERVICES
      ══════════════════════════════ -->
 <div class="page" id="page-services">
-  <section class="section" style="background:var(--white); padding-top: 60px;">
+  <section class="section" style="background:var(--cream); padding-top: 60px;">
     <div class="section-inner center">
       <div class="section-label">SERVICES</div>
       <h2 class="section-title"><span class="lang active" data-lang="ja">事業案内</span><span class="lang" data-lang="pt">Nossos Serviços</span><span class="lang" data-lang="en">Our Services</span></h2>
-      <div class="section-desc center"><span class="lang active" data-lang="ja">生産・介護・環境の3事業部体制で、企業の人材課題解決と求職者のキャリア形成をトータルサポートします。</span><span class="lang" data-lang="pt">Com 3 divisões (produção, cuidados e meio ambiente), oferecemos suporte total.</span><span class="lang" data-lang="en">With 3 divisions (production, care, environment), we provide total support.</span></div>
+      <div class="section-desc center"><span class="lang active" data-lang="ja">3つのコア事業を軸に、企業の人材課題解決と求職者のキャリア形成をトータルサポートします。</span><span class="lang" data-lang="pt">Com 3 serviços centrais, oferecemos suporte total a empresas e candidatos.</span><span class="lang" data-lang="en">With 3 core services, we provide total support to companies and job seekers.</span></div>
 
-      <div class="services-grid" style="grid-template-columns:repeat(2,1fr);">
-        <div class="service-card" style="box-shadow: var(--shadow-md);">
-          <div class="service-img" style="background-image:url('image (5).png')"></div>
-          <div class="service-body">
-            <h3 style="font-size: 24px;"><span class="lang active" data-lang="ja">01. 人材派遣</span><span class="lang" data-lang="pt">01. Despacho</span><span class="lang" data-lang="en">01. Staffing</span></h3>
-            <p><span class="lang active" data-lang="ja">生産事業部・介護事業部・環境事業部の3部門体制で、必要なスキルを持った人材を必要な期間だけ派遣します。突発的な欠員補充や繁忙期の増員など、企業のニーズに柔軟に対応し、業務の効率化と生産性向上に貢献します。</span><span class="lang" data-lang="pt">Com 3 divisões, despachamos profissionais qualificados. Contribuímos para a eficiência e produtividade.</span><span class="lang" data-lang="en">With 3 divisions, we dispatch skilled talent flexibly. Contributing to efficiency and productivity.</span></p>
+      <div style="display:flex;flex-direction:column;gap:32px;margin-top:48px;">
+        <!-- 01 人材派遣 -->
+        <div style="display:flex;gap:32px;background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-md);min-height:240px;" class="svc-row">
+          <div style="flex:0 0 40%;background:url('image (5).png') center/cover;min-height:200px;" class="svc-img"></div>
+          <div style="flex:1;padding:36px 36px 36px 0;display:flex;flex-direction:column;justify-content:center;" class="svc-body">
+            <div style="font-size:12px;font-weight:700;color:var(--gold);letter-spacing:0.1em;margin-bottom:8px;">01</div>
+            <h3 style="font-size:22px;font-weight:800;color:var(--navy);margin-bottom:12px;"><span class="lang active" data-lang="ja">人材派遣</span><span class="lang" data-lang="pt">Despacho de Pessoal</span><span class="lang" data-lang="en">Staffing</span></h3>
+            <p style="font-size:14px;line-height:1.8;color:var(--text-light);"><span class="lang active" data-lang="ja">生産事業部・介護事業部・環境事業部の3部門体制で、必要なスキルを持った人材を必要な期間だけ派遣。突発的な欠員補充や繁忙期の増員など、企業のニーズに柔軟に対応します。</span><span class="lang" data-lang="pt">Com 3 divisões, despachamos profissionais qualificados de forma flexível conforme as necessidades da empresa.</span><span class="lang" data-lang="en">With 3 divisions, we dispatch skilled talent flexibly to meet your company's needs.</span></p>
           </div>
         </div>
-        <div class="service-card" style="box-shadow: var(--shadow-md);">
-          <div class="service-img" style="background-image:url('image (1).png')"></div>
-          <div class="service-body">
-            <h3 style="font-size: 24px;"><span class="lang active" data-lang="ja">02. 職業紹介</span><span class="lang" data-lang="pt">02. Colocação</span><span class="lang" data-lang="en">02. Recruitment</span></h3>
-            <p><span class="lang active" data-lang="ja">正社員・契約社員としての直接雇用を希望する企業と求職者をマッチングします。採用にかかる時間とコストを大幅に削減し、企業文化にフィットする優秀な人材を責任を持ってご紹介します。</span><span class="lang" data-lang="pt">Apoiamos contratação direta. Apresentamos os melhores candidatos com responsabilidade.</span><span class="lang" data-lang="en">Supporting direct hiring. We responsibly introduce the best candidates that fit your company.</span></p>
+        <!-- 02 職業紹介 -->
+        <div style="display:flex;gap:32px;background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-md);min-height:240px;flex-direction:row-reverse;" class="svc-row">
+          <div style="flex:0 0 40%;background:url('image (1).png') center/cover;min-height:200px;" class="svc-img"></div>
+          <div style="flex:1;padding:36px 0 36px 36px;display:flex;flex-direction:column;justify-content:center;" class="svc-body">
+            <div style="font-size:12px;font-weight:700;color:var(--gold);letter-spacing:0.1em;margin-bottom:8px;">02</div>
+            <h3 style="font-size:22px;font-weight:800;color:var(--navy);margin-bottom:12px;"><span class="lang active" data-lang="ja">職業紹介</span><span class="lang" data-lang="pt">Colocação Profissional</span><span class="lang" data-lang="en">Recruitment</span></h3>
+            <p style="font-size:14px;line-height:1.8;color:var(--text-light);"><span class="lang active" data-lang="ja">正社員・契約社員としての直接雇用を希望する企業と求職者をマッチング。採用にかかる時間とコストを大幅に削減し、企業文化にフィットする優秀な人材をご紹介します。</span><span class="lang" data-lang="pt">Apoiamos contratação direta, reduzindo tempo e custo. Apresentamos os melhores candidatos.</span><span class="lang" data-lang="en">Supporting direct hiring, reducing time and cost. We introduce the best-fit candidates.</span></p>
           </div>
         </div>
-        <div class="service-card" style="box-shadow: var(--shadow-md);">
-          <div class="service-img" style="background-image:url('image (3).png')"></div>
-          <div class="service-body">
-            <h3 style="font-size: 24px;"><span class="lang active" data-lang="ja">03. 通訳・翻訳</span><span class="lang" data-lang="pt">03. Interpretação</span><span class="lang" data-lang="en">03. Translation</span></h3>
-            <p><span class="lang active" data-lang="ja">ビジネスシーンに特化したポルトガル語の通訳・翻訳サービスを提供します。作業現場での指示伝達、会議の通訳、マニュアルの翻訳などを通じ、多文化職場の円滑なコミュニケーションを支援します。</span><span class="lang" data-lang="pt">Interpretação e tradução em português para negócios. Facilitamos a comunicação multicultural.</span><span class="lang" data-lang="en">Business-focused Portuguese interpretation and translation for smooth multicultural communication.</span></p>
-          </div>
-        </div>
-        <div class="service-card" style="box-shadow: var(--shadow-md);">
-          <div class="service-img" style="background-image:url('image (4).png')"></div>
-          <div class="service-body">
-            <h3 style="font-size: 24px;"><span class="lang active" data-lang="ja">04. 環境事業</span><span class="lang" data-lang="pt">04. Meio Ambiente</span><span class="lang" data-lang="en">04. Environment</span></h3>
-            <p><span class="lang active" data-lang="ja">環境関連業務に特化した人材を提供します。清掃・廃棄物処理・リサイクルなどの環境事業分野で、企業の持続可能な取り組みと地域の環境保全をサポートします。</span><span class="lang" data-lang="pt">Profissionais especializados em meio ambiente. Apoiamos iniciativas sustentáveis e preservação ambiental.</span><span class="lang" data-lang="en">Specialized environmental talent. Supporting sustainable initiatives and environmental conservation.</span></p>
+        <!-- 03 通訳・翻訳 -->
+        <div style="display:flex;gap:32px;background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-md);min-height:240px;" class="svc-row">
+          <div style="flex:0 0 40%;background:url('image (3).png') center/cover;min-height:200px;" class="svc-img"></div>
+          <div style="flex:1;padding:36px 36px 36px 0;display:flex;flex-direction:column;justify-content:center;" class="svc-body">
+            <div style="font-size:12px;font-weight:700;color:var(--gold);letter-spacing:0.1em;margin-bottom:8px;">03</div>
+            <h3 style="font-size:22px;font-weight:800;color:var(--navy);margin-bottom:12px;"><span class="lang active" data-lang="ja">通訳・翻訳</span><span class="lang" data-lang="pt">Interpretação e Tradução</span><span class="lang" data-lang="en">Interpretation & Translation</span></h3>
+            <p style="font-size:14px;line-height:1.8;color:var(--text-light);"><span class="lang active" data-lang="ja">ビジネスシーンに特化したポルトガル語の通訳・翻訳サービス。作業現場での指示伝達、会議の通訳、マニュアルの翻訳など、多文化職場の円滑なコミュニケーションを支援します。</span><span class="lang" data-lang="pt">Interpretação e tradução em português para negócios. Facilitamos a comunicação multicultural.</span><span class="lang" data-lang="en">Business-focused Portuguese interpretation and translation for smooth multicultural communication.</span></p>
           </div>
         </div>
       </div>
