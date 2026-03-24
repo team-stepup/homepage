@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="有限会社ステップ・アップ - 静岡県西部の総合人材サービス。人材派遣・職業紹介・ポルトガル語通訳翻訳。磐田市・浜松市・袋井市・掛川市・湖西市・菊川市">
+<title>有限会社ステップ・アップ | 総合人材サービス・通訳翻訳 | 静岡県西部</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700;800&family=Noto+Sans:wght@300;400;500;600;700&family=DM+Serif+Display&family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0B1D30; 
+  --navy-mid: #1A365D; 
+  --blue: #2B6CB0; 
+  --blue-light: #4299E1;
+  --gold: #D69E2E; 
+  --gold-light: #ECC94B; 
+  --cream: #F7FAFC; 
+  --white: #ffffff;
+  --text: #2D3748; 
+  --text-light: #718096; 
+  --border: #E2E8F0;
+  
+  --radius: 20px; 
+  --radius-sm: 8px; 
+  --max-w: 1140px;
+  
+  --transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+  --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
+  --shadow-hover: 0 20px 40px rgba(11, 29, 48, 0.12);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Noto Sans JP','Noto Sans',sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  font-size:15px;
+  line-height:1.8;
+  -webkit-font-smoothing: antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+ul{list-style:none}
+
+/* ═══ HEADER ═══ */
+.header{
+  background:var(--navy);
+  position:sticky;
+  top:0;
+  z-index:100;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.header-inner{max-width:1440px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:88px}
+.logo-mark{display:flex;align-items:center;gap:16px;cursor:pointer}
+.logo-top-row{display:flex;align-items:center;gap:14px}
+.logo-text-block{display:flex;flex-direction:column;padding-left:14px;border-left:1px solid rgba(255,255,255,0.25)}
+.logo-company-name{font-size:18px;color:var(--white);font-weight:600;letter-spacing:0.15em;white-space:nowrap;font-family:'Shippori Mincho',serif;line-height:1.2}
+.logo-sub-text{font-size:11.5px;color:rgba(255,255,255,0.7);font-weight:500;letter-spacing:0.2em;margin-top:4px;white-space:nowrap;font-family:'Shippori Mincho',serif}
+
+.nav{display:flex;align-items:center;gap:8px}
+.nav-link{
+  color:rgba(255,255,255,0.85);
+  font-size:12px;
+  font-weight:600;
+  padding:8px 10px;
+  position: relative;
+  transition:var(--transition);
+  cursor:pointer;
+  white-space:nowrap;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--gold-light);
+  transition: var(--transition);
+}
+.nav-link:hover::after, .nav-link.active::after { width: 60%; }
+.nav-link:hover, .nav-link.active{color:var(--white);}
+
+.lang-switch{display:flex;gap:4px;margin-left:16px; padding-left: 16px; border-left: 1px solid rgba(255,255,255,0.2);}
+.lang-btn{
+  padding:6px 12px;
+  border-radius:99px;
+  border:1px solid rgba(255,255,255,0.3);
+  background:transparent;
+  color:rgba(255,255,255,0.7);
+  font-size:11px;
+  font-weight:700;
+  cursor:pointer;
+  transition:var(--transition);
+  font-family:'DM Serif Display',serif;
+}
+.lang-btn:hover { border-color: var(--gold-light); color: var(--gold-light); }
+.lang-btn.active{background:var(--gold);border-color:var(--gold);color:var(--white)}
+
+.menu-toggle{display:none;background:none;border:none;cursor:pointer;width:40px;height:40px;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.menu-toggle span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:var(--transition)}
+
+@media(max-width:1024px){
+  .menu-toggle{display:flex}
+  .nav{display:none;position:absolute;top:88px;left:0;right:0;background:var(--navy-mid);flex-direction:column;padding:20px;border-bottom:1px solid rgba(255,255,255,0.1);box-shadow:0 10px 30px rgba(0,0,0,0.3)}
+  .nav.open{display:flex}
+  .nav-link{padding:16px;width:100%;font-size:15px; text-align: center;}
+  .nav-link::after { display: none; }
+  .lang-switch{margin:0; border-left:none; padding-left:0;}
+}
+@media(max-width:768px){
+  .header{background:linear-gradient(135deg,#0B1D30 0%,#1A365D 100%)}
+  .header-inner{height:auto;padding:14px 16px;flex-wrap:wrap;gap:0}
+  .nav{top:100px}
+  .logo-mark{width:100%;gap:10px;order:1;margin-bottom:8px}
+  .logo-mark img{height:32px !important;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3))}
+  .logo-text-block{padding-left:10px;border-left:2px solid var(--gold);flex:1}
+  .logo-company-name{font-size:13px;letter-spacing:0.1em;color:var(--white)}
+  .logo-sub-text{font-size:9px;letter-spacing:0.08em;margin-top:3px;color:var(--gold-light)}
+  .lang-switch{order:2;gap:4px;margin-left:0;padding-left:0;border-left:none}
+  .lang-btn{padding:5px 12px;font-size:10px;border-radius:4px;border:1px solid rgba(255,255,255,0.2)}
+  .lang-btn.active{background:var(--gold);border-color:var(--gold)}
+  .menu-toggle{order:3;width:40px;height:40px;gap:5px;margin-left:auto}
+  .menu-toggle span{width:22px;height:2px;border-radius:1px}
+}
+
+/* ═══ BUTTONS ═══ */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:16px 36px;border-radius:99px;font-weight:700;font-size:14px;transition:var(--transition);cursor:pointer;border:none;min-height:52px;text-decoration:none; letter-spacing: 0.05em;}
+.btn-gold{background:var(--gold);color:var(--white);box-shadow:0 4px 16px rgba(214, 158, 46, 0.4)}
+.btn-gold:hover{background:#C08B28; transform:translateY(-2px);box-shadow:0 8px 24px rgba(214, 158, 46, 0.5)}
+.btn-white{background:var(--white);color:var(--navy);box-shadow:var(--shadow-md)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover)}
+.btn-outline{background:rgba(255,255,255,0.1);color:var(--white);border:1px solid rgba(255,255,255,0.4); backdrop-filter: blur(4px);}
+.btn-outline:hover{background:var(--white);color:var(--navy); border-color: var(--white);}
+.btn-navy{background:var(--navy);color:var(--white); box-shadow:0 4px 16px rgba(11, 29, 48, 0.3)}
+.btn-navy:hover{background:var(--navy-mid);transform:translateY(-2px); box-shadow:0 8px 24px rgba(11, 29, 48, 0.4)}
+
+/* ═══ HERO ═══ */
+.hero{position:relative;overflow:hidden;background:var(--navy); height: calc(100vh - 88px); min-height: 500px; max-height: 800px;}
+.hero-slider{position:absolute; inset:0; z-index: 1;}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.5s ease-in-out, transform 8s ease-out;background-size:cover;background-position:center; transform: scale(1.05); background-color: #cbd5e0;}
+.hero-slide.active{opacity:1; transform: scale(1);}
+.hero-slide::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg, rgba(11,29,48,0.35) 0%, rgba(11,29,48,0.1) 100%); }
+
+.hero-content{position:relative; z-index: 2; max-width:var(--max-w); margin:0 auto; height: 100%; display:flex; align-items:center; padding: 0 24px;}
+.hero-text{
+  max-width: 600px;
+  padding: 48px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--radius);
+  border-left: 4px solid var(--gold);
+}
+.hero-badge{display:inline-block;background:rgba(255,255,255,0.25);padding:6px 16px;border-radius:99px;font-size:11px;font-weight:700;color:var(--white);letter-spacing:0.1em;margin-bottom:20px;}
+.hero h1{font-size:clamp(28px,4vw,48px);font-weight:800;color:var(--white);line-height:1.3;margin-bottom:20px; letter-spacing: -0.02em; text-shadow: 0 2px 8px rgba(0,0,0,0.3);}
+.hero h1 .accent{color:var(--gold-light)}
+.hero-desc{font-size:16px;color:rgba(255,255,255,0.9);line-height:1.8;margin-bottom:32px; font-weight: 400;}
+.hero-cta{display:flex;gap:16px;flex-wrap:wrap}
+
+.hero-dots{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;gap:12px;z-index:5}
+.hero-dot{width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,0.3);border:none;cursor:pointer;transition:var(--transition)}
+.hero-dot.active{background:var(--white); transform: scale(1.2);}
+
+@media(max-width:768px){
+  .hero{ height: auto; min-height: 600px; }
+  .hero-slide::after { background:linear-gradient(180deg, rgba(11,29,48,0.15) 0%, rgba(11,29,48,0.5) 100%); }
+  .hero-content{ padding: 60px 20px 100px; align-items: flex-end;}
+  .hero-text{ padding: 32px 24px; width: 100%; border-left: none; border-top: 4px solid var(--gold); }
+  .hero h1 { font-size: 32px; }
+}
+
+/* ═══ SECTION BASE ═══ */
+.section{padding:100px 24px}
+.section-inner{max-width:var(--max-w);margin:0 auto}
+.section-label{display:inline-block;font-size:12px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;color:var(--blue);margin-bottom:12px; font-family:'DM Serif Display',serif;}
+.section-title{font-size:clamp(28px,4vw,36px);font-weight:800;color:var(--navy);margin-bottom:24px;line-height:1.3; letter-spacing: -0.02em;}
+.section-desc{font-size:16px;color:var(--text-light);max-width:680px;line-height:1.8;margin-bottom:56px}
+.center{text-align:center;margin-left:auto;margin-right:auto; display: flex; flex-direction: column; align-items: center;}
+
+@media(max-width:768px){ .section{padding: 70px 20px} .section-desc{margin-bottom: 40px;} }
+
+/* ═══ PHILOSOPHY ═══ */
+.philosophy{background:var(--cream);padding:100px 24px;position:relative}
+.philosophy-inner{max-width:var(--max-w);margin:0 auto}
+.philosophy-block{margin-bottom:64px}
+.philosophy-block:last-child{margin-bottom:0}
+.philosophy-quote{position:relative;padding:48px 48px 48px 56px;background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-sm);border-left:4px solid var(--gold)}
+.philosophy-quote::before{content:'\201C';position:absolute;top:16px;left:16px;font-size:48px;color:var(--gold-light);font-family:'DM Serif Display',serif;line-height:1;opacity:0.5}
+.philosophy-title{font-size:clamp(22px,3vw,30px);font-weight:800;color:var(--navy);margin-bottom:24px;letter-spacing:-0.01em}
+.philosophy-title .accent{color:var(--gold)}
+.philosophy-text{font-size:15px;line-height:2;color:var(--text)}
+.dept-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.dept-card{background:linear-gradient(135deg,var(--navy),var(--navy-mid));border-radius:var(--radius);padding:40px 32px;text-align:center;color:var(--white);position:relative;overflow:hidden}
+.dept-card::after{content:'';position:absolute;top:-30px;right:-30px;width:100px;height:100px;border-radius:50%;background:rgba(214,158,46,0.1)}
+.dept-card-icon{font-size:32px;margin-bottom:16px}
+.dept-card-name{font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:0.05em}
+.dept-card-desc{font-size:13px;color:rgba(255,255,255,0.75);font-weight:500;letter-spacing:0.05em}
+.compliance-section{background:var(--white);padding:80px 24px}
+.compliance-inner{max-width:var(--max-w);margin:0 auto;text-align:center}
+.compliance-title{font-size:clamp(20px,2.5vw,26px);font-weight:800;color:var(--navy);margin-bottom:12px}
+.compliance-subtitle{font-size:14px;color:var(--text-light);margin-bottom:40px}
+.compliance-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.compliance-card{padding:32px 24px;border-radius:var(--radius);border:1px solid var(--border);background:var(--cream);text-align:center;transition:var(--transition)}
+.compliance-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.compliance-card-icon{font-size:28px;margin-bottom:12px;width:56px;height:56px;border-radius:50%;background:rgba(11,29,48,0.06);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.compliance-card-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px}
+.compliance-card-text{font-size:13px;color:var(--text-light);line-height:1.7}
+@media(max-width:768px){
+  .philosophy{padding:60px 20px}
+  .philosophy-quote{padding:32px 24px 32px 32px}
+  .dept-grid{grid-template-columns:1fr}
+  .compliance-section{padding:60px 20px}
+  .compliance-grid{grid-template-columns:1fr}
+}
+
+/* ═══ TABS ═══ */
+.tab-nav{display:flex;gap:4px;margin-bottom:32px;border-bottom:2px solid var(--border);padding-bottom:0}
+.tab-btn{padding:14px 24px;font-size:14px;font-weight:600;color:var(--text-light);background:none;border:none;cursor:pointer;position:relative;transition:var(--transition);white-space:nowrap}
+.tab-btn::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:3px;background:transparent;transition:var(--transition);border-radius:3px 3px 0 0}
+.tab-btn:hover{color:var(--navy)}
+.tab-btn.active{color:var(--navy)}
+.tab-btn.active::after{background:var(--gold)}
+.tab-content{display:none;animation:fadeIn 0.3s ease}
+.tab-content.active{display:block}
+@media(max-width:768px){.tab-nav{overflow-x:auto;-webkit-overflow-scrolling:touch}.tab-btn{padding:12px 16px;font-size:13px}}
+
+/* ═══ DUAL CTA (企業・求職者) ═══ */
+.dual-cta{background:var(--white); padding-top: 60px;}
+.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px; margin-top: -100px; position: relative; z-index: 10;}
+@media(max-width:768px){.dual-grid{grid-template-columns:1fr; margin-top: 0; gap: 24px;}}
+.dual-card{border-radius:var(--radius);padding:48px 40px;text-align:center;position:relative;overflow:hidden;transition:var(--transition);min-height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center; border: 1px solid rgba(255,255,255,0.1);}
+.dual-card:hover{transform:translateY(-8px);}
+.dual-card.for-company{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-mid) 100%);color:var(--white);box-shadow:var(--shadow-md);}
+.dual-card.for-company:hover{box-shadow:0 20px 40px rgba(11,29,48,0.25);}
+.dual-card.for-jobseeker{background:linear-gradient(135deg,var(--white) 0%,var(--cream) 100%);color:var(--navy);box-shadow:var(--shadow-md); border: 1px solid var(--border);}
+.dual-card.for-jobseeker:hover{box-shadow:var(--shadow-hover);}
+.dual-card-icon{font-size:56px;margin-bottom:24px; line-height: 1; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));}
+.dual-card h3{font-size:22px;font-weight:800;margin-bottom:16px;}
+.dual-card p{font-size:15px;opacity:0.9;margin-bottom:32px;line-height:1.7;max-width:340px}
+.dual-card.for-jobseeker p { color: var(--text-light); }
+
+/* ═══ STRENGTHS ═══ */
+.strengths{background:var(--cream)}
+.strengths-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+@media(max-width:768px){.strengths-grid{grid-template-columns:1fr; gap: 24px;}}
+.strength-card{background:var(--white);border-radius:var(--radius);padding:48px 32px;text-align:center;border:1px solid transparent;transition:var(--transition); box-shadow: var(--shadow-sm);}
+.strength-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-hover); border-color: var(--border);}
+.strength-icon{width:80px;height:80px;border-radius:24px;background:var(--cream);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 24px;box-shadow:inset 0 2px 4px rgba(0,0,0,0.02);}
+.strength-card h3{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:12px}
+.strength-card p{font-size:14px;color:var(--text-light);line-height:1.8}
+
+/* ═══ SERVICES ═══ */
+.services-section{background:var(--white)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+@media(max-width:768px){.services-grid{grid-template-columns:1fr;gap:16px}.service-img{height:140px}.service-body{padding:20px 16px}.service-card h3{font-size:16px;margin-bottom:8px}.service-card p{font-size:13px;line-height:1.6}}
+.service-card{background:var(--white);border-radius:var(--radius);overflow:hidden;transition:var(--transition);border:1px solid var(--border); box-shadow: var(--shadow-sm); display: flex; flex-direction: column;}
+.service-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-hover);}
+.service-img{height:220px;background-size:cover;background-position:center;position:relative; overflow: hidden; background-color: #e2e8f0;}
+.service-img::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg, rgba(11,29,48,0.4) 0%, transparent 100%); transition: var(--transition);}
+.service-card:hover .service-img::after{ opacity: 0; }
+.service-card:hover .service-img { transform: scale(1.05); } 
+.service-body{padding:32px 24px; flex: 1; display: flex; flex-direction: column; background: var(--white); position: relative; z-index: 2;}
+.service-card h3{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:12px}
+.service-card p{font-size:15px;color:var(--text-light);line-height:1.8}
+
+/* ═══ STATS ═══ */
+.stats{background:var(--white);padding:60px 24px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stats::before{content:'';position:absolute;top:-100px;right:-50px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,0.02); filter: blur(20px);}
+.stats::after{content:'';position:absolute;bottom:-100px;left:-50px;width:250px;height:250px;border-radius:50%;background:rgba(255,255,255,0.02); filter: blur(20px);}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;max-width:var(--max-w);margin:0 auto;text-align:center;position:relative;z-index:1}
+@media(max-width:768px){.stats-grid{grid-template-columns:repeat(2,1fr); gap: 24px;}}
+.stats-inner{max-width:var(--max-w);margin:0 auto;display:flex;justify-content:space-around;align-items:center}
+.stat-item{text-align:center;padding:0 16px;position:relative}
+.stat-item:not(:last-child)::after{content:'';position:absolute;right:0;top:10%;height:80%;width:1px;background:var(--border)}
+.stat-item .stat-number{font-family:'DM Serif Display',serif;font-size:clamp(32px,4vw,48px);color:var(--navy);line-height:1;margin-bottom:6px}
+.stat-item .stat-unit{font-size:16px;color:var(--gold);font-weight:700;font-family:'Noto Sans JP',sans-serif}
+.stat-item .stat-label{font-size:13px;color:var(--text-light);font-weight:500;letter-spacing:0.03em}
+@media(max-width:768px){.stats-inner{flex-wrap:wrap;gap:32px;justify-content:center}.stat-item::after{display:none}}
+
+/* ═══ NEWS ═══ */
+.news{background:var(--white)}
+.news-list{max-width:800px; margin: 0 auto; background: var(--cream); border-radius: var(--radius); padding: 32px; border: 1px solid var(--border);}
+.news-item{display:flex;gap:24px;padding:24px 0;border-bottom:1px dashed var(--border);align-items:flex-start; transition: var(--transition);}
+.news-item:hover { transform: translateX(8px); }
+.news-item:last-child{border-bottom:none; padding-bottom: 0;}
+.news-item:first-child{padding-top: 0;}
+.news-date{font-size:13px;font-weight:700;color:var(--blue);min-width:100px;font-family:'DM Serif Display',serif; letter-spacing: 0.05em; padding-top: 2px;}
+.news-text{font-size:15px;color:var(--text);line-height:1.6; font-weight: 500;}
+
+@media(max-width:600px){
+  .news-list{padding: 24px 16px;}
+  .news-item{flex-direction: column; gap: 8px;}
+}
+
+/* ═══ AREA TAGS ═══ */
+.area-tags{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.area-tag{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:99px;background:var(--white);border:1px solid var(--border);font-size:14px;font-weight:600;color:var(--navy);transition:var(--transition); box-shadow: var(--shadow-sm);}
+.area-tag:hover{border-color:var(--blue);color:var(--blue);transform: translateY(-2px); box-shadow: var(--shadow-md);}
+.area-tag::before{content:'📍';font-size:14px}
+
+/* ═══ CTA BANNER ═══ */
+.cta-banner{position:relative;padding:100px 24px;text-align:center;overflow:hidden; border-radius: var(--radius); max-width: calc(var(--max-w) + 48px); margin: 0 auto 60px; background-color: #cbd5e0;}
+@media(max-width:768px){ .cta-banner{ margin: 0 16px 40px; border-radius: 16px; padding: 60px 20px;} }
+.cta-banner-bg{position:absolute;inset:0;background:url('image (2).png?v=2') center/cover no-repeat;}
+.cta-banner-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(11,29,48,0.95) 0%,rgba(43,108,176,0.85) 100%); backdrop-filter: blur(2px);}
+.cta-banner>*{position:relative;z-index:1}
+.cta-banner h2{font-size:clamp(24px,4vw,36px);font-weight:800;color:var(--white);margin-bottom:16px; letter-spacing: -0.02em;}
+.cta-banner p{font-size:16px;color:rgba(255,255,255,0.8);margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto; line-height: 1.8;}
+.cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* ═══ COMPANY TABLE ═══ */
+.company-section{background:var(--cream)}
+.company-table{background:var(--white);border-radius:var(--radius);border:1px solid var(--border);overflow:hidden;box-shadow:var(--shadow-md)}
+.company-row{display:flex;border-bottom:1px solid var(--border); transition: var(--transition);}
+.company-row:hover{background: var(--cream);}
+.company-row:last-child{border-bottom:none}
+.company-label{width:220px;min-width:220px;padding:24px;background:rgba(247, 250, 252, 0.5);color:var(--navy);font-size:14px;font-weight:700; border-right: 1px solid var(--border);}
+.company-value{flex:1;padding:24px;font-size:15px;color:var(--text);line-height:1.7}
+.biz-item{font-weight:600;color:var(--navy)}
+.license-item{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.license-label{display:inline-block;width:12em;text-align:justify;text-align-last:justify;flex-shrink:0;font-weight:600;color:var(--navy)}
+.license-colon{flex-shrink:0}
+.license-number{display:inline-block;width:7em;flex-shrink:0}
+@media(max-width:600px){.license-item{flex-wrap:wrap}.license-label{min-width:unset;text-align:left;width:100%}.license-colon{display:none}}
+.license-item:last-child{margin-bottom:0}
+.license-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 18px;border-radius:99px;font-size:11px;font-weight:700;color:var(--white);background:linear-gradient(135deg,var(--blue),var(--navy-mid));border:none;transition:var(--transition);text-decoration:none;letter-spacing:0.05em;white-space:nowrap;box-shadow:0 2px 8px rgba(43,108,176,0.2)}
+.license-btn:hover{background:linear-gradient(135deg,var(--gold),#C08B28);transform:translateY(-2px);box-shadow:0 6px 16px rgba(214,158,46,0.35);color:var(--white)}
+.license-btn-icon{font-size:12px;transition:transform 0.3s ease}
+.license-btn:hover .license-btn-icon{transform:translate(2px,-2px)}
+@media(max-width:600px){.company-row{flex-direction:column}.company-label{width:100%;min-width:unset;padding:16px 20px; border-right: none; border-bottom: 1px solid var(--border); background: var(--cream);}.company-value{padding:16px 20px}}
+
+/* ═══ CONTACT ═══ */
+.contact-section{background:var(--cream)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr; gap: 24px;}}
+.contact-card{background:var(--white);border-radius:var(--radius);padding:40px;border:1px solid var(--border); box-shadow: var(--shadow-md);}
+.contact-info-item{display:flex;gap:16px;padding:20px 0;border-bottom:1px dashed var(--border)}
+.contact-info-item:first-of-type{padding-top: 0;}
+.contact-info-item:last-child{border-bottom:none; padding-bottom: 0;}
+.contact-info-icon{font-size:24px;min-width:32px;text-align:center; color: var(--blue);}
+.contact-info-label{font-size:12px;color:var(--text-light);font-weight:700; margin-bottom: 4px; letter-spacing: 0.05em;}
+.contact-info-value{font-size:16px;color:var(--navy);font-weight:600}
+
+/* ═══ FOOTER ═══ */
+.footer{background:var(--navy);padding:80px 24px 40px; color: var(--white);}
+@media(max-width:768px){.footer{padding:40px 20px 32px}}
+.footer-inner{max-width:var(--max-w);margin:0 auto}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,0.1)}
+.footer-brand{font-family:'DM Serif Display',serif;font-size:28px;color:var(--white);margin-bottom:8px; letter-spacing: 0.05em;}
+.footer-brand-sub{font-size:12px;color:rgba(255,255,255,0.6);font-weight:600; letter-spacing: 0.1em;}
+.footer-links{display:flex;gap:32px;flex-wrap:wrap}
+.footer-link{font-size:14px;color:rgba(255,255,255,0.7);font-weight:500;transition:var(--transition);cursor:pointer; position: relative;}
+.footer-link:hover{color:var(--white);}
+.footer-bottom{padding-top:24px;text-align:center;font-size:13px;color:var(--gold-light); font-family:'DM Serif Display',serif; letter-spacing: 0.05em;}
+
+/* ═══ LANG / PAGE TOGGLE ═══ */
+.lang{display:none}.lang.active{display:inline}
+.page{display:none; animation: fadeIn 0.4s ease-out;}
+.page.active{display:block}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header class="header">
+  <div class="header-inner">
+    <div class="logo-mark" onclick="showPage('home')">
+      <img src="logo.png" alt="STEP・UP" style="height: 54px; width: auto;">
+      <div class="logo-text-block">
+        <span class="logo-company-name">
+          <span class="lang active" data-lang="ja">有限会社 ステップ・アップ</span>
+          <span class="lang" data-lang="pt">Step Up Ltda.</span>
+          <span class="lang" data-lang="en">Step Up Co., Ltd.</span>
+        </span>
+        <div class="logo-sub-text">
+          <span class="lang active" data-lang="ja">総合人材サービス・通訳翻訳業務</span>
+          <span class="lang" data-lang="pt">Serviços de RH・Interpretação e Tradução</span>
+          <span class="lang" data-lang="en">HR Services・Interpretation & Translation</span>
+        </div>
+      </div>
+    </div>
+    <nav class="nav" id="main-nav">
+      <a class="nav-link active" data-page="home" onclick="showPage('home')"><span class="lang active" data-lang="ja">ホーム</span><span class="lang" data-lang="pt">Início</span><span class="lang" data-lang="en">Home</span></a>
+      <a class="nav-link" data-page="about" onclick="showPage('about')"><span class="lang active" data-lang="ja">会社概要</span><span class="lang" data-lang="pt">Empresa</span><span class="lang" data-lang="en">About</span></a>
+      <a class="nav-link" data-page="services" onclick="showPage('services')"><span class="lang active" data-lang="ja">事業案内</span><span class="lang" data-lang="pt">Serviços</span><span class="lang" data-lang="en">Services</span></a>
+      <a class="nav-link" data-page="recruit" onclick="showPage('recruit')"><span class="lang active" data-lang="ja">採用情報</span><span class="lang" data-lang="pt">Vagas</span><span class="lang" data-lang="en">Careers</span></a>
+      <a class="nav-link" data-page="dispatch-system" onclick="showPage('dispatch-system')"><span class="lang active" data-lang="ja">派遣事業制度</span><span class="lang" data-lang="pt">Sistema de Despacho</span><span class="lang" data-lang="en">Dispatch System</span></a>
+      <a class="nav-link" data-page="placement-system" onclick="showPage('placement-system')"><span class="lang active" data-lang="ja">職業紹介制度</span><span class="lang" data-lang="pt">Sistema de Colocação</span><span class="lang" data-lang="en">Placement System</span></a>
+      <a class="nav-link" data-page="access" onclick="showPage('access')"><span class="lang active" data-lang="ja">アクセス</span><span class="lang" data-lang="pt">Acesso</span><span class="lang" data-lang="en">Access</span></a>
+      <a class="nav-link" data-page="contact" onclick="showPage('contact')"><span class="lang active" data-lang="ja">お問い合わせ</span><span class="lang" data-lang="pt">Contato</span><span class="lang" data-lang="en">Contact</span></a>
+    </nav>
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="switchLang('ja')">JP</button>
+      <button class="lang-btn" onclick="switchLang('pt')">BR</button>
+      <button class="lang-btn" onclick="switchLang('en')">EN</button>
+    </div>
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ══════════════════════════════
+     PAGE: HOME
+     ══════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO with photo slideshow -->
+  <section class="hero">
+    <div class="hero-slider">
+      <!-- 会社の顔となる受付の女性 -->
+      <div class="hero-slide active" style="background-image:url('image (2).png?v=2')"></div>
+      <!-- 製造現場で真剣に作業する女性 -->
+      <div class="hero-slide" style="background-image:url('image (4).png')"></div>
+      <!-- オフィスでの面談・サポート風景 -->
+      <div class="hero-slide" style="background-image:url('image (1).png')"></div>
+      <!-- 製造現場での和やかなコミュニケーション -->
+      <div class="hero-slide" style="background-image:url('image (3).png')"></div>
+    </div>
+    
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="lang active" data-lang="ja">総合人材サービス・通訳翻訳業務</span>
+          <span class="lang" data-lang="pt">Serviços de RH・Interpretação e Tradução</span>
+          <span class="lang" data-lang="en">HR Services・Interpretation & Translation</span>
+        </div>
+        <h1>
+          <span class="lang active" data-lang="ja">「人」と「企業」を<br><span class="accent">つなぐ</span>架け橋</span>
+          <span class="lang" data-lang="pt">A <span class="accent">ponte</span> entre<br>pessoas e empresas</span>
+          <span class="lang" data-lang="en">The <span class="accent">bridge</span> between<br>people and companies</span>
+        </h1>
+        <div class="hero-desc">
+          <span class="lang active" data-lang="ja">生産事業部・介護事業部・環境事業部のエキスパートが、<br>幅広い業種の企業様とともに、地域に密着し、<br>働く方々の力になれるようサポートし続けてまいります。</span>
+          <span class="lang" data-lang="pt">Especialistas em produção, cuidados e meio ambiente,<br>trabalhando com empresas de diversos setores,<br>sempre próximos da comunidade local.</span>
+          <span class="lang" data-lang="en">Our experts in production, care, and environment<br>work closely with businesses across industries,<br>rooted in the local community.</span>
+        </div>
+        <div class="hero-cta">
+          <a class="btn btn-gold" onclick="showPage('services')">
+            <span class="lang active" data-lang="ja">サービスを見る</span>
+            <span class="lang" data-lang="pt">Ver serviços</span>
+            <span class="lang" data-lang="en">Our Services</span>
+          </a>
+          <a class="btn btn-outline" onclick="showPage('contact')">
+            <span class="lang active" data-lang="ja">お問い合わせ</span>
+            <span class="lang" data-lang="pt">Contato</span>
+            <span class="lang" data-lang="en">Contact Us</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hero-dots">
+      <button class="hero-dot active" onclick="goSlide(0)"></button>
+      <button class="hero-dot" onclick="goSlide(1)"></button>
+      <button class="hero-dot" onclick="goSlide(2)"></button>
+      <button class="hero-dot" onclick="goSlide(3)"></button>
+    </div>
+  </section>
+
+  <!-- ═══ PHILOSOPHY ═══ -->
+  <section class="philosophy">
+    <div class="philosophy-inner">
+
+      <!-- ステップ・アップの"存在" -->
+      <div class="philosophy-block">
+        <div class="philosophy-quote">
+          <h2 class="philosophy-title"><span class="lang active" data-lang="ja">ステップ・アップの<span class="accent">"存在"</span></span><span class="lang" data-lang="pt">A <span class="accent">"Existência"</span> da Step Up</span><span class="lang" data-lang="en">The <span class="accent">"Existence"</span> of Step Up</span></h2>
+          <p class="philosophy-text">
+            <span class="lang active" data-lang="ja">激しい変化を続ける時代の中で、常に必要とされている「人」の力。<br>
+            その時代の中で「企業」と「人」が良い巡り合いをするために、<br>
+            当社が人材派遣とアウトソーシングでサポートいたします。<br><br>
+            「人」を必要としている「企業」と、<br>
+            活躍の場である「企業」を必要としている「人」——<br>
+            双方が手を取り合って発展への道を進めるように力を尽くしてまいります。</span><span class="lang" data-lang="pt">Em uma era de mudanças constantes, o poder das "pessoas" é sempre necessário.<br>
+            Para que "empresas" e "pessoas" possam se encontrar da melhor forma nesta era,<br>
+            nossa empresa oferece suporte através de terceirização de mão de obra e outsourcing.<br><br>
+            "Empresas" que precisam de "pessoas" e<br>
+            "Pessoas" que precisam de "empresas" como campo de atuação —<br>
+            Nos dedicamos para que ambos caminhem juntos rumo ao desenvolvimento.</span><span class="lang" data-lang="en">In an era of constant change, the power of "people" is always needed.<br>
+            For "companies" and "people" to find the best match in this era,<br>
+            our company provides support through staffing and outsourcing services.<br><br>
+            "Companies" that need "people," and<br>
+            "People" who need "companies" as a place to thrive —<br>
+            We dedicate ourselves so that both can walk together toward growth.</span>
+          </p>
+        </div>
+
+      </div>
+
+      <!-- お客様のより良きパートナーとして -->
+      <div class="philosophy-block">
+        <div class="philosophy-quote">
+          <h2 class="philosophy-title"><span class="lang active" data-lang="ja">お客様のより良き<span class="accent">パートナー</span>として</span><span class="lang" data-lang="pt">Como melhor <span class="accent">parceiro</span> para nossos clientes</span><span class="lang" data-lang="en">As a Better <span class="accent">Partner</span> for Our Clients</span></h2>
+          <p class="philosophy-text">
+            <span class="lang active" data-lang="ja">変化の激しい時代だから「人」と「企業」の進むべき道を<br>
+            共鳴させることは容易ではありません。<br><br>
+            大切なのは「人」を育むことができる世の中。<br>
+            私たちは「企業」と共鳴しあえる「人」を育てられるような会社を目指しております。</span><span class="lang" data-lang="pt">Em uma era de mudanças intensas, não é fácil alinhar os caminhos<br>
+            de "pessoas" e "empresas".<br><br>
+            O importante é uma sociedade que possa cultivar "pessoas".<br>
+            Buscamos ser uma empresa capaz de formar "pessoas" que possam se conectar com as "empresas".</span><span class="lang" data-lang="en">In an era of intense change, it is not easy to align the paths<br>
+            of "people" and "companies."<br><br>
+            What matters is a society that can nurture "people."<br>
+            We aim to be a company that can develop "people" who resonate with "companies."</span>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ COMPLIANCE ═══ -->
+  <div style="text-align:center;padding:40px 24px 60px;background:var(--cream);">
+    <p style="font-size:14px;color:var(--text-light);letter-spacing:0.08em;line-height:1.8;">
+      <span class="lang active" data-lang="ja">⚖️ 法令遵守・個人情報保護・安全衛生管理を徹底し、信頼される企業であり続けます。</span><span class="lang" data-lang="pt">⚖️ Cumprimos rigorosamente as leis, proteção de dados pessoais e gestão de segurança e saúde, mantendo-nos como uma empresa confiável.</span><span class="lang" data-lang="en">⚖️ We thoroughly enforce legal compliance, personal data protection, and safety/health management, remaining a trusted company.</span>
+    </p>
+  </div>
+
+  <!-- DUAL CTA: 企業向け & 求職者向け -->
+  <section class="dual-cta">
+    <div class="section-inner">
+      <div class="dual-grid">
+        <div class="dual-card for-company">
+          <div class="dual-card-icon">🏢</div>
+          <h3><span class="lang active" data-lang="ja">企業の皆様へ</span><span class="lang" data-lang="pt">Para Empresas</span><span class="lang" data-lang="en">For Companies</span></h3>
+          <p><span class="lang active" data-lang="ja">人材不足を解決します。製造業・介護・事務など、御社のニーズに合った即戦力人材をご紹介。多言語対応で外国人材の活用もサポート。</span><span class="lang" data-lang="pt">Resolvemos a falta de mão de obra. Apresentamos profissionais prontos para manufatura, cuidados e escritório. Suporte multilíngue.</span><span class="lang" data-lang="en">We solve your staffing needs. Ready-to-work talent for manufacturing, care, and office roles. Multilingual support available.</span></p>
+          <a class="btn btn-white" onclick="showPage('services')">
+            <span class="lang active" data-lang="ja">サービス詳細</span><span class="lang" data-lang="pt">Detalhes</span><span class="lang" data-lang="en">Learn More</span>
+          </a>
+        </div>
+        <div class="dual-card for-jobseeker">
+          <div class="dual-card-icon">💼</div>
+          <h3><span class="lang active" data-lang="ja">お仕事をお探しの方</span><span class="lang" data-lang="pt">Para Quem Busca Emprego</span><span class="lang" data-lang="en">For Job Seekers</span></h3>
+          <p><span class="lang active" data-lang="ja">あなたに最適なお仕事をご紹介。ポルトガル語でのサポートも可能。正社員・派遣・短期など多様な働き方から選べます。</span><span class="lang" data-lang="pt">Encontramos o trabalho ideal para você. Suporte em português disponível. Escolha entre efetivo, temporário e mais.</span><span class="lang" data-lang="en">We find the ideal job for you. Portuguese support available. Choose from permanent, dispatch, short-term and more.</span></p>
+          <a class="btn btn-navy" onclick="showPage('recruit')">
+            <span class="lang active" data-lang="ja">求人を見る</span><span class="lang" data-lang="pt">Ver vagas</span><span class="lang" data-lang="en">View Jobs</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRENGTHS -->
+  <section class="section strengths">
+    <div class="section-inner center">
+      <div class="section-label"><span class="lang active" data-lang="ja">私たちの強み</span><span class="lang" data-lang="pt">Diferenciais</span><span class="lang" data-lang="en">Our Strengths</span></div>
+      <h2 class="section-title"><span class="lang active" data-lang="ja">選ばれる3つの理由</span><span class="lang" data-lang="pt">3 Razões para nos escolher</span><span class="lang" data-lang="en">3 Reasons to Choose Us</span></h2>
+      <div class="section-desc center"><span class="lang active" data-lang="ja">地域に根ざし、多文化共生を大切にするからこそ提供できる、独自の価値があります。</span><span class="lang" data-lang="pt">Serviços únicos enraizados na comunidade local e convivência multicultural.</span><span class="lang" data-lang="en">Unique value rooted in the local community and multicultural coexistence.</span></div>
+      
+      <div class="strengths-grid">
+        <div class="strength-card">
+          <div class="strength-icon">🌏</div>
+          <h3><span class="lang active" data-lang="ja">多言語サポート</span><span class="lang" data-lang="pt">Suporte Multilíngue</span><span class="lang" data-lang="en">Multilingual Support</span></h3>
+          <p><span class="lang active" data-lang="ja">日本語・ポルトガル語にネイティブレベルで対応。通訳・翻訳サービスも提供し、企業と外国人材のコミュニケーションの壁を取り払います。</span><span class="lang" data-lang="pt">Japonês e português. Serviço de interpretação e tradução, quebrando as barreiras de comunicação.</span><span class="lang" data-lang="en">Japanese and Portuguese support with interpretation services, breaking down communication barriers.</span></p>
+        </div>
+        <div class="strength-card">
+          <div class="strength-icon">🏭</div>
+          <h3><span class="lang active" data-lang="ja">製造業への専門性</span><span class="lang" data-lang="pt">Especialistas em Manufatura</span><span class="lang" data-lang="en">Manufacturing Experts</span></h3>
+          <p><span class="lang active" data-lang="ja">生産系・製造業界を中心に20年以上の豊富な実績。現場のニーズを深く理解し、企業と人材の精度の高いベストマッチングを実現します。</span><span class="lang" data-lang="pt">Mais de 20 anos de experiência em manufatura. Realizamos o melhor matching com alta precisão.</span><span class="lang" data-lang="en">Over 20 years of manufacturing experience. We achieve highly accurate optimal matching.</span></p>
+        </div>
+        <div class="strength-card">
+          <div class="strength-icon">🤝</div>
+          <h3><span class="lang active" data-lang="ja">地域密着のフォロー</span><span class="lang" data-lang="pt">Presença e Suporte Local</span><span class="lang" data-lang="en">Locally Rooted Support</span></h3>
+          <p><span class="lang active" data-lang="ja">静岡県西部（磐田・浜松・袋井・掛川・菊川・湖西）に完全密着。就業前の準備から就業後のアフターフォローまで、きめ細やかでスピーディな対応をお約束します。</span><span class="lang" data-lang="pt">Forte presença no oeste de Shizuoka. Garantimos um suporte detalhado e rápido do início ao fim.</span><span class="lang" data-lang="en">Strong presence in western Shizuoka. We promise detailed and speedy support from start to finish.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES PREVIEW with photos -->
+  <section class="section services-section">
+    <div class="section-inner center">
+      <div class="section-label">SERVICES</div>
+      <h2 class="section-title"><span class="lang active" data-lang="ja">事業案内</span><span class="lang" data-lang="pt">Serviços</span><span class="lang" data-lang="en">Services</span></h2>
+      <div class="section-desc center"><span class="lang active" data-lang="ja">3つのコア事業を軸に、企業の人材課題解決と求職者のキャリア形成をトータルサポートします。</span><span class="lang" data-lang="pt">3 serviços centrais para suporte total a empresas e candidatos.</span><span class="lang" data-lang="en">3 core services for total support to companies and job seekers.</span></div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-img" style="background-image:url('image (5).png')"></div>
+          <div class="service-body">
+            <h3><span class="lang active" data-lang="ja">人材派遣</span><span class="lang" data-lang="pt">Despacho de Pessoal</span><span class="lang" data-lang="en">Staffing</span></h3>
+            <p><span class="lang active" data-lang="ja">生産・介護・環境の3事業部体制で、即戦力となる人材を派遣。繁忙期の短期から長期レギュラーまで柔軟に対応します。</span><span class="lang" data-lang="pt">Profissionais prontos em 3 divisões: produção, cuidados e meio ambiente.</span><span class="lang" data-lang="en">Ready-to-work talent across 3 divisions: production, care, and environment.</span></p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-img" style="background-image:url('image (1).png')"></div>
+          <div class="service-body">
+            <h3><span class="lang active" data-lang="ja">職業紹介</span><span class="lang" data-lang="pt">Colocação Profissional</span><span class="lang" data-lang="en">Recruitment</span></h3>
+            <p><span class="lang active" data-lang="ja">正社員・契約社員としての直接雇用を前提とした人材マッチング。採用の手間とコストを削減し、貴社に合った人材をご提案します。</span><span class="lang" data-lang="pt">Apoiamos contratação direta. Reduza tempo e custo encontrando o talento ideal.</span><span class="lang" data-lang="en">Supporting direct hiring. Reduce time and cost by finding the ideal talent.</span></p>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-img" style="background-image:url('image (3).png')"></div>
+          <div class="service-body">
+            <h3><span class="lang active" data-lang="ja">通訳・翻訳</span><span class="lang" data-lang="pt">Interpretação e Tradução</span><span class="lang" data-lang="en">Translation</span></h3>
+            <p><span class="lang active" data-lang="ja">ビジネスレベルのポルトガル語通訳・翻訳サービス。マニュアル翻訳や現場での通訳を通じ、多文化職場の円滑な運営を支援します。</span><span class="lang" data-lang="pt">Interpretação e tradução profissional em português para operações tranquilas.</span><span class="lang" data-lang="en">Professional Portuguese interpretation and translation for smooth operations.</span></p>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:48px">
+        <a class="btn btn-outline" style="color:var(--navy); border-color:var(--border);" onmouseover="this.style.background='var(--navy)'; this.style.color='var(--white)'" onmouseout="this.style.background='transparent'; this.style.color='var(--navy)'" onclick="showPage('services')">
+          <span class="lang active" data-lang="ja">サービス詳細を見る</span><span class="lang" data-lang="pt">Ver Detalhes</span><span class="lang" data-lang="en">View Details</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stats-inner">
+      <div class="stat-item">
+        <div class="stat-number">20<span class="stat-unit">年+</span></div>
+        <div class="stat-label"><span class="lang active" data-lang="ja">地域に根ざした実績</span><span class="lang" data-lang="pt">Experiência local</span><span class="lang" data-lang="en">Local experience</span></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">6<span class="stat-unit">市</span></div>
+        <div class="stat-label"><span class="lang active" data-lang="ja">静岡県西部対応エリア</span><span class="lang" data-lang="pt">Cidades atendidas</span><span class="lang" data-lang="en">Cities covered</span></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3<span class="stat-unit">言語</span></div>
+        <div class="stat-label"><span class="lang active" data-lang="ja">多言語ネイティブ対応</span><span class="lang" data-lang="pt">Suporte multilíngue</span><span class="lang" data-lang="en">Multilingual support</span></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3<span class="stat-unit">事業部</span></div>
+        <div class="stat-label"><span class="lang active" data-lang="ja">生産・介護・環境</span><span class="lang" data-lang="pt">Produção・Cuidados・Ambiente</span><span class="lang" data-lang="en">Production・Care・Environment</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS -->
+  <section class="section news">
+    <div class="section-inner">
+      <div class="section-label" style="text-align: center; display: block;">NEWS</div>
+      <h2 class="section-title" style="text-align: center;"><span class="lang active" data-lang="ja">お知らせ</span><span class="lang" data-lang="pt">Avisos</span><span class="lang" data-lang="en">News</span></h2>
+      <div class="news-list">
+        <div class="news-item"><div class="news-date">2026.03.15</div><div class="news-text"><span class="lang active" data-lang="ja">ホームページをリニューアルしました。今後ともよろしくお願いいたします。</span><span class="lang" data-lang="pt">Renovamos nosso site. Obrigado pelo apoio contínuo.</span><span class="lang" data-lang="en">We have renewed our website. Thank you for your continued support.</span></div></div>
+        <div class="news-item"><div class="news-date">2025.11.06</div><div class="news-text"><span class="lang active" data-lang="ja">マージン率等情報を更新しました</span><span class="lang" data-lang="pt">Informações de margem atualizadas</span><span class="lang" data-lang="en">Margin rate information updated</span></div></div>
+        <div class="news-item"><div class="news-date">2025.04.14</div><div class="news-text"><span class="lang active" data-lang="ja">有料職業紹介事業の概要を追加しました</span><span class="lang" data-lang="pt">Visão geral de colocação profissional adicionada</span><span class="lang" data-lang="en">Job placement overview added</span></div></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ══════════════════════════════
+     PAGE: ABOUT
+     ══════════════════════════════ -->
+<div class="page" id="page-about">
+  <section class="section company-section" style="padding-top: 60px;">
+    <div class="section-inner">
+      <div class="center" style="margin-bottom: 40px;">
+        <div class="section-label">COMPANY</div>
+        <h2 class="section-title"><span class="lang active" data-lang="ja">会社概要</span><span class="lang" data-lang="pt">Sobre a Empresa</span><span class="lang" data-lang="en">Company Overview</span></h2>
+        <div class="section-desc"><span class="lang active" data-lang="ja">当社は「人」と「企業」をつなぐ、総合人材サービスをご提供いたします。生産事業部・介護事業部・環境事業部のエキスパートが、幅広い業種の企業様とともに、地域に密着し、働く方々の力になれるようサポートし続けてまいります。</span><span class="lang" data-lang="pt">Oferecemos serviços completos de RH conectando pessoas e empresas. Nossos especialistas em produção, cuidados e meio ambiente apoiam empresas de diversos setores, sempre próximos da comunidade.</span><span class="lang" data-lang="en">We provide comprehensive HR services bridging people and companies. Our experts in production, care, and environment support businesses across industries, rooted in the local community.</span></div>
+      </div>
+      
+      <div class="company-table">
+        <div class="company-row"><div class="company-label"><span class="lang active" data-lang="ja">会社名</span><span class="lang" data-lang="pt">Empresa</span><span class="lang" data-lang="en">Company</span></div><div class="company-value">有限会社ステップ・アップ</div></div>
+        <div class="company-row"><div class="company-label"><span class="lang active" data-lang="ja">設立</span><span class="lang" data-lang="pt">Fundação</span><span class="lang" data-lang="en">Established</span></div><div class="company-value">2004年10月</div></div>
+        <div class="company-row"><div class="company-label"><span class="lang active" data-lang="ja">資本金</span><span class="lang" data-lang="pt">Capital</span><span class="lang" data-lang="en">Capital</span></div><div class="company-value">3,000千円</div></div>
+        <div class="company-row"><div class="company-label"><span class="lang active" data-lang="ja">代表者</span><span class="lang" data-lang="pt">Representante</span><span class="lang" data-lang="en">Representative</span></div><div class="company-value">代表取締役　山下 浩俊</div></div>
+        <div class="company-row"><div class="company-label"><span class="lang active" data-lang="ja">所在地</span><span class="lang" data-lang="pt">Endereço</span><span class="lang" data-lang="en">Address</span></div><div class="company-value">〒438-0822 静岡県磐田市上本郷1006番地７
+            <div style="margin-top:10px;">
+              <a onclick="showPage('access')" class="license-btn" style="cursor:pointer;">アクセスMAP ↗</a>
+              <span style="margin-left:8px;font-size:12px;color:var(--text-light);">🅿 駐車場あり</span>
+            </div>
+          </div></div>
+        <div class="company-row"><div class="company-label"><span class="lang active" data-lang="ja">電話番号</span><span class="lang" data-lang="pt">Telefone</span><span class="lang" data-lang="en">Phone</span></div><div class="company-value">0538-36-6968</div></div>
+        <div class="company-row"><div class="company-label"><span class="lang active" data-lang="ja">FAX番号</span><span class="lang" data-lang="pt">FAX</span><span class="lang" data-lang="en">FAX</span></div><div class="company-value">0538-36-6978</div></div>
+        <div class="company-row"><div class="company-label"><span class="lang active" data-lang="ja">事業内容</span><span class="lang" data-lang="pt">Atividades</span><span class="lang" data-lang="en">Business</span></div><div class="company-value"><span class="lang active" data-lang="ja"><span class="biz-item">◆ 労働者派遣事業</span><br>　　・生産事業部<br>　　・介護事業部<br>　　・環境事業部<br><span class="biz-item">◆ 有料職業紹介事業</span><br><span class="biz-item">◆ ポルトガル語通訳・翻訳業務</span></span><span class="lang" data-lang="pt"><span class="biz-item">◆ Despacho de trabalhadores</span><br>　　・Divisão de Produção<br>　　・Divisão de Cuidados<br>　　・Divisão Ambiental<br><span class="biz-item">◆ Colocação profissional</span><br><span class="biz-item">◆ Interpretação e tradução em português</span></span><span class="lang" data-lang="en"><span class="biz-item">◆ Worker Dispatching Services</span><br>　　・Production Division<br>　　・Care Division<br>　　・Environmental Division<br><span class="biz-item">◆ Paid Employment Placement</span><br><span class="biz-item">◆ Portuguese Interpretation & Translation</span></span></div></div>
+        <div class="company-row"><div class="company-label"><span class="lang active" data-lang="ja">許可番号</span><span class="lang" data-lang="pt">Licenças</span><span class="lang" data-lang="en">Licenses</span></div><div class="company-value">
+            <div class="license-item">
+              <span class="license-label">◇ 労働者派遣事業許可</span><span class="license-colon">：</span><span class="license-number">派 22-300880</span>
+              <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:8ebf1a1f-c161-4075-81e2-631dd4b898c3" target="_blank" rel="noopener" class="license-btn">許可証 <span class="license-btn-icon">↗</span></a>
+            </div>
+            <div class="license-item">
+              <span class="license-label">◇ 有料職業紹介事業許可</span><span class="license-colon">：</span><span class="license-number">22-ﾕ-300572</span>
+              <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:789c144b-e9f8-47fa-ac2b-36679f70c086" target="_blank" rel="noopener" class="license-btn">許可証 <span class="license-btn-icon">↗</span></a>
+            </div>
+          </div></div>
+        <div class="company-row"><div class="company-label"><span class="lang active" data-lang="ja">適格請求書発行事業者<br>登録番号</span><span class="lang" data-lang="pt">Número de registro de<br>fatura qualificada</span><span class="lang" data-lang="en">Qualified Invoice<br>Registration No.</span></div><div class="company-value">T1080402021107</div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════
+     PAGE: SERVICES
+     ══════════════════════════════ -->
+<div class="page" id="page-services">
+  <section class="section" style="background:var(--white); padding-top: 60px;">
+    <div class="section-inner center">
+      <div class="section-label">SERVICES</div>
+      <h2 class="section-title"><span class="lang active" data-lang="ja">事業案内</span><span class="lang" data-lang="pt">Nossos Serviços</span><span class="lang" data-lang="en">Our Services</span></h2>
+      <div class="section-desc center"><span class="lang active" data-lang="ja">生産・介護・環境の3事業部体制で、企業の人材課題解決と求職者のキャリア形成をトータルサポートします。</span><span class="lang" data-lang="pt">Com 3 divisões (produção, cuidados e meio ambiente), oferecemos suporte total.</span><span class="lang" data-lang="en">With 3 divisions (production, care, environment), we provide total support.</span></div>
+
+      <div class="services-grid" style="grid-template-columns:repeat(2,1fr);">
+        <div class="service-card" style="box-shadow: var(--shadow-md);">
+          <div class="service-img" style="background-image:url('image (5).png')"></div>
+          <div class="service-body">
+            <h3 style="font-size: 24px;"><span class="lang active" data-lang="ja">01. 人材派遣</span><span class="lang" data-lang="pt">01. Despacho</span><span class="lang" data-lang="en">01. Staffing</span></h3>
+            <p><span class="lang active" data-lang="ja">生産事業部・介護事業部・環境事業部の3部門体制で、必要なスキルを持った人材を必要な期間だけ派遣します。突発的な欠員補充や繁忙期の増員など、企業のニーズに柔軟に対応し、業務の効率化と生産性向上に貢献します。</span><span class="lang" data-lang="pt">Com 3 divisões, despachamos profissionais qualificados. Contribuímos para a eficiência e produtividade.</span><span class="lang" data-lang="en">With 3 divisions, we dispatch skilled talent flexibly. Contributing to efficiency and productivity.</span></p>
+          </div>
+        </div>
+        <div class="service-card" style="box-shadow: var(--shadow-md);">
+          <div class="service-img" style="background-image:url('image (1).png')"></div>
+          <div class="service-body">
+            <h3 style="font-size: 24px;"><span class="lang active" data-lang="ja">02. 職業紹介</span><span class="lang" data-lang="pt">02. Colocação</span><span class="lang" data-lang="en">02. Recruitment</span></h3>
+            <p><span class="lang active" data-lang="ja">正社員・契約社員としての直接雇用を希望する企業と求職者をマッチングします。採用にかかる時間とコストを大幅に削減し、企業文化にフィットする優秀な人材を責任を持ってご紹介します。</span><span class="lang" data-lang="pt">Apoiamos contratação direta. Apresentamos os melhores candidatos com responsabilidade.</span><span class="lang" data-lang="en">Supporting direct hiring. We responsibly introduce the best candidates that fit your company.</span></p>
+          </div>
+        </div>
+        <div class="service-card" style="box-shadow: var(--shadow-md);">
+          <div class="service-img" style="background-image:url('image (3).png')"></div>
+          <div class="service-body">
+            <h3 style="font-size: 24px;"><span class="lang active" data-lang="ja">03. 通訳・翻訳</span><span class="lang" data-lang="pt">03. Interpretação</span><span class="lang" data-lang="en">03. Translation</span></h3>
+            <p><span class="lang active" data-lang="ja">ビジネスシーンに特化したポルトガル語の通訳・翻訳サービスを提供します。作業現場での指示伝達、会議の通訳、マニュアルの翻訳などを通じ、多文化職場の円滑なコミュニケーションを支援します。</span><span class="lang" data-lang="pt">Interpretação e tradução em português para negócios. Facilitamos a comunicação multicultural.</span><span class="lang" data-lang="en">Business-focused Portuguese interpretation and translation for smooth multicultural communication.</span></p>
+          </div>
+        </div>
+        <div class="service-card" style="box-shadow: var(--shadow-md);">
+          <div class="service-img" style="background-image:url('image (4).png')"></div>
+          <div class="service-body">
+            <h3 style="font-size: 24px;"><span class="lang active" data-lang="ja">04. 環境事業</span><span class="lang" data-lang="pt">04. Meio Ambiente</span><span class="lang" data-lang="en">04. Environment</span></h3>
+            <p><span class="lang active" data-lang="ja">環境関連業務に特化した人材を提供します。清掃・廃棄物処理・リサイクルなどの環境事業分野で、企業の持続可能な取り組みと地域の環境保全をサポートします。</span><span class="lang" data-lang="pt">Profissionais especializados em meio ambiente. Apoiamos iniciativas sustentáveis e preservação ambiental.</span><span class="lang" data-lang="en">Specialized environmental talent. Supporting sustainable initiatives and environmental conservation.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="cta-banner">
+    <div class="cta-banner-bg"></div><div class="cta-banner-overlay"></div>
+    <h2><span class="lang active" data-lang="ja">人材に関する課題、一緒に解決しませんか？</span><span class="lang" data-lang="pt">Vamos resolver seus problemas de RH?</span><span class="lang" data-lang="en">Let's solve your HR challenges together</span></h2>
+    <p><span class="lang active" data-lang="ja">採用計画や人員配置についてお悩みの企業様、まずはお気軽にご相談ください。最適なプランをご提案いたします。</span><span class="lang" data-lang="pt">Consulte-nos sobre suas necessidades de pessoal. Oferecemos o melhor plano.</span><span class="lang" data-lang="en">Consult us about your staffing needs. We will propose the optimal plan.</span></p>
+    <a class="btn btn-gold" onclick="showPage('contact')"><span class="lang active" data-lang="ja">お問い合わせフォームへ</span><span class="lang" data-lang="pt">Ir para o Contato</span><span class="lang" data-lang="en">Go to Contact Form</span></a>
+  </section>
+</div>
+
+<!-- ══════════════════════════════
+     PAGE: RECRUIT
+     ══════════════════════════════ -->
+<div class="page" id="page-recruit">
+  <section class="section" style="background:var(--cream); padding-top: 60px;">
+    <div class="section-inner center">
+      <div class="section-label">RECRUIT</div>
+      <h2 class="section-title"><span class="lang active" data-lang="ja">採用情報</span><span class="lang" data-lang="pt">Vagas de Emprego</span><span class="lang" data-lang="en">Career Opportunities</span></h2>
+      <div class="section-desc center"><span class="lang active" data-lang="ja">あなたに合った働き方が見つかる。現在募集中の最新求人情報は、専用の求人サイトからご確認いただけます。</span><span class="lang" data-lang="pt">Encontre a melhor forma de trabalhar. Confira as vagas no site abaixo.</span><span class="lang" data-lang="en">Find the best way to work. Check available positions on our job site.</span></div>
+      
+      <div style="background:var(--white); padding:40px; border-radius:var(--radius); box-shadow:var(--shadow-md); width:100%; max-width:600px; margin: 0 auto;">
+        <div style="margin-bottom:32px">
+          <h3 style="font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 16px; text-align: center;"><span class="lang active" data-lang="ja">主な募集エリア</span><span class="lang" data-lang="pt">Áreas de recrutamento</span><span class="lang" data-lang="en">Recruitment Areas</span></h3>
+          <div class="area-tags">
+            <span class="area-tag">磐田市</span><span class="area-tag">浜松市</span><span class="area-tag">袋井市</span><span class="area-tag">掛川市</span><span class="area-tag">湖西市</span><span class="area-tag">菊川市</span>
+          </div>
+        </div>
+        
+        <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
+          <a class="btn btn-gold" href="https://www.stepup-group.jp/job/" target="_blank" style="width:100%; font-size: 16px; padding: 20px;">
+            <span class="lang active" data-lang="ja">最新の求人一覧を見る ↗</span><span class="lang" data-lang="pt">Ver todas as vagas ↗</span><span class="lang" data-lang="en">View All Jobs ↗</span>
+          </a>
+          <p style="font-size: 13px; color: var(--text-light);"><span class="lang active" data-lang="ja">※外部の求人専門サイトへ移動します</span><span class="lang" data-lang="pt">* Redireciona para site externo</span><span class="lang" data-lang="en">* Redirects to external site</span></p>
+          
+          <div style="width: 100%; height: 1px; background: var(--border); margin: 16px 0;"></div>
+          
+          <p style="font-size: 14px; color: var(--text); margin-bottom: 8px;"><span class="lang active" data-lang="ja">求人に関する直接のお問い合わせはこちら</span><span class="lang" data-lang="pt">Para contato direto sobre vagas</span><span class="lang" data-lang="en">For direct inquiries about jobs</span></p>
+          <a class="btn btn-outline" style="width:100%; color: var(--navy); border-color: var(--navy);" onclick="showPage('contact')"><span class="lang active" data-lang="ja">お問い合わせフォーム</span><span class="lang" data-lang="pt">Formulário de Contato</span><span class="lang" data-lang="en">Contact Form</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════
+     PAGE: DISPATCH SYSTEM
+     ══════════════════════════════ -->
+<div class="page" id="page-dispatch-system">
+  <section class="section" style="padding-top:60px;">
+    <div class="section-header" style="max-width:var(--max-w);margin:0 auto;padding:0 24px;">
+      <h2 class="section-title"><span class="lang active" data-lang="ja">労働者派遣事業</span><span class="lang" data-lang="pt">Serviço de Despacho de Trabalhadores</span><span class="lang" data-lang="en">Worker Dispatching Service</span></h2>
+      <div class="section-desc"><span class="lang active" data-lang="ja">労働者派遣法に基づく制度・マージン率・教育訓練についてご案内します。</span><span class="lang" data-lang="pt">Informações sobre o sistema, taxa de margem e treinamento com base na Lei de Despacho de Trabalhadores.</span><span class="lang" data-lang="en">Information about the system, margin rates, and training based on the Worker Dispatching Act.</span></div>
+    </div>
+    <div style="max-width:var(--max-w);margin:40px auto 0;padding:0 24px;">
+      <div style="background:var(--white);border-radius:var(--radius);padding:48px;box-shadow:var(--shadow-md);">
+
+        <!-- タブナビ -->
+        <div class="tab-nav">
+          <button class="tab-btn active" onclick="switchTab(this,'dispatch')"><span class="lang active" data-lang="ja">制度の概要</span><span class="lang" data-lang="pt">Visão Geral do Sistema</span><span class="lang" data-lang="en">System Overview</span></button>
+          <button class="tab-btn" onclick="switchTab(this,'dispatch')"><span class="lang active" data-lang="ja">マージン率等情報</span><span class="lang" data-lang="pt">Informações de Margem</span><span class="lang" data-lang="en">Margin Rate Information</span></button>
+          <button class="tab-btn" onclick="switchTab(this,'dispatch')"><span class="lang active" data-lang="ja">教育訓練について</span><span class="lang" data-lang="pt">Sobre Treinamento</span><span class="lang" data-lang="en">About Training</span></button>
+        </div>
+
+        <!-- TAB1: 制度の概要 -->
+        <div class="tab-content active" id="dispatch-tab-0">
+
+          <!-- 三者関係図 -->
+          <div style="margin-bottom:48px;">
+            <svg viewBox="0 0 560 280" style="max-width:560px;margin:0 auto;display:block;" xmlns="http://www.w3.org/2000/svg">
+              <rect x="10" y="20" width="160" height="70" rx="8" fill="#0B1D30"/>
+              <text x="90" y="50" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" font-family="'Noto Sans JP',sans-serif">派遣元事業主</text>
+              <text x="90" y="72" text-anchor="middle" fill="#ECC94B" font-size="11" font-family="'Noto Sans JP',sans-serif">（当社）</text>
+              <rect x="390" y="20" width="160" height="70" rx="8" fill="#0B1D30"/>
+              <text x="470" y="55" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" font-family="'Noto Sans JP',sans-serif">派遣先</text>
+              <text x="280" y="38" text-anchor="middle" fill="#0B1D30" font-size="12" font-weight="600" font-family="'Noto Sans JP',sans-serif">労働者派遣契約</text>
+              <line x1="170" y1="55" x2="390" y2="55" stroke="#0B1D30" stroke-width="2"/>
+              <polygon points="385,50 395,55 385,60" fill="#0B1D30"/>
+              <polygon points="175,50 165,55 175,60" fill="#0B1D30"/>
+              <rect x="190" y="210" width="180" height="60" rx="8" fill="#D69E2E"/>
+              <text x="280" y="247" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" font-family="'Noto Sans JP',sans-serif">派遣労働者</text>
+              <line x1="70" y1="90" x2="230" y2="210" stroke="#0B1D30" stroke-width="1.5"/>
+              <polygon points="66,85 74,85 70,95" fill="#0B1D30"/>
+              <polygon points="226,205 234,205 230,215" fill="#0B1D30"/>
+              <text x="95" y="175" fill="#2D3748" font-size="12" font-weight="600" font-family="'Noto Sans JP',sans-serif" transform="rotate(-40,95,175)">雇用関係</text>
+              <line x1="490" y1="90" x2="330" y2="210" stroke="#0B1D30" stroke-width="1.5"/>
+              <polygon points="486,85 494,85 490,95" fill="#0B1D30"/>
+              <polygon points="326,205 334,205 330,215" fill="#0B1D30"/>
+              <text x="440" y="160" fill="#2D3748" font-size="12" font-weight="600" font-family="'Noto Sans JP',sans-serif" transform="rotate(40,440,160)">指揮命令関係</text>
+            </svg>
+          </div>
+          <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px;border-left:4px solid var(--gold);padding-left:16px;"><span class="lang active" data-lang="ja">派遣労働者との関係について</span><span class="lang" data-lang="pt">Sobre a relação com trabalhadores despachados</span><span class="lang" data-lang="en">About the relationship with dispatched workers</span></h3>
+          <ul style="font-size:15px;line-height:2;color:var(--text);margin-bottom:40px;padding-left:20px;list-style:disc;">
+            <li><span class="lang active" data-lang="ja">派遣労働者は派遣元事業主と雇用関係を結びます</span><span class="lang" data-lang="pt">O trabalhador despachado estabelece uma relação de emprego com a empresa de despacho</span><span class="lang" data-lang="en">Dispatched workers establish an employment relationship with the dispatching company</span></li>
+            <li><span class="lang active" data-lang="ja">就業条件、給与の支払、福利厚生は派遣元事業主にて行います</span><span class="lang" data-lang="pt">As condições de trabalho, pagamento de salário e benefícios são gerenciados pela empresa de despacho</span><span class="lang" data-lang="en">Working conditions, salary payment, and benefits are managed by the dispatching company</span></li>
+            <li><span class="lang active" data-lang="ja">就業時間、残業等業務に関しての指揮命令は派遣先事業主が行います</span><span class="lang" data-lang="pt">As instruções de trabalho, horas extras e outras tarefas são dadas pela empresa cliente</span><span class="lang" data-lang="en">Work instructions, overtime, and other task directives are given by the client company</span></li>
+          </ul>
+          <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px;border-left:4px solid var(--gold);padding-left:16px;"><span class="lang active" data-lang="ja">当該派遣労働者への明示事項</span><span class="lang" data-lang="pt">Itens a serem informados ao trabalhador despachado</span><span class="lang" data-lang="en">Items to be disclosed to dispatched workers</span></h3>
+          <p style="font-size:15px;line-height:2;color:var(--text);margin-bottom:16px;"><span class="lang active" data-lang="ja">待遇に関する事項の説明については雇用契約締結前に書面、メール、FAX、HP等にて明示します。</span><span class="lang" data-lang="pt">As informações sobre tratamento serão divulgadas por escrito, e-mail, FAX, site, etc., antes da celebração do contrato de trabalho.</span><span class="lang" data-lang="en">Information regarding treatment will be disclosed in writing, email, FAX, website, etc., before the employment contract is concluded.</span></p>
+          <div style="background:var(--cream);border-radius:var(--radius-sm);padding:20px 24px;margin-bottom:16px;font-size:14px;line-height:1.8;color:var(--text);"><span class="lang active" data-lang="ja">賃金・就業時間・就業場所・教育訓練 等<br>会社概要については当社のホームページ</span><span class="lang" data-lang="pt">Salário, horário de trabalho, local de trabalho, treinamento, etc.<br>Para informações da empresa, consulte nosso site</span><span class="lang" data-lang="en">Wages, working hours, workplace, training, etc.<br>For company information, please see our website</span></div>
+          <p style="font-size:15px;line-height:2;color:var(--text);margin-bottom:12px;"><span class="lang active" data-lang="ja">雇用の契約に際し<strong>労働条件通知書兼就業条件明示書</strong>にて以下の事項を通知します。</span><span class="lang" data-lang="pt">Ao celebrar o contrato de trabalho, os seguintes itens serão notificados por meio do <strong>Aviso de Condições de Trabalho / Declaração de Condições de Emprego</strong>.</span><span class="lang" data-lang="en">Upon concluding the employment contract, the following items will be notified via the <strong>Working Conditions Notice / Employment Conditions Statement</strong>.</span></p>
+          <div style="background:var(--cream);border-radius:var(--radius-sm);padding:20px 24px;margin-bottom:40px;font-size:14px;line-height:1.8;color:var(--text);"><span class="lang active" data-lang="ja">業務内容・就業時間・就業日・就業期間・休憩時間・指揮命令者・責任者・福利厚生・社会保険・労働保険・安全衛生・労働者派遣契約の解除にあたって講ずる派遣労働者の雇用の安定を図るための措置・抵触日に関する事項・紹介予定派遣の場合に関する事項・当該事業所における派遣料金の平均額 その他</span><span class="lang" data-lang="pt">Conteúdo do trabalho, horário de trabalho, dias de trabalho, período de trabalho, intervalo, supervisor, responsável, benefícios, seguro social, seguro trabalhista, segurança e saúde, medidas para estabilização do emprego na rescisão do contrato de despacho, assuntos relativos à data de restrição, assuntos de despacho com previsão de contratação, valor médio da taxa de despacho no estabelecimento, outros</span><span class="lang" data-lang="en">Job content, working hours, working days, employment period, break time, supervisor, person in charge, benefits, social insurance, labor insurance, safety and health, measures for employment stability upon termination of the dispatch contract, matters regarding restriction dates, matters for temp-to-perm dispatch, average dispatch fee at the establishment, and others</span></div>
+          <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px;border-left:4px solid var(--gold);padding-left:16px;"><span class="lang active" data-lang="ja">日雇派遣に関する概要</span><span class="lang" data-lang="pt">Resumo sobre despacho diário</span><span class="lang" data-lang="en">Overview of day labor dispatch</span></h3>
+          <div style="background:#FFF8E7;border:1px solid #F6E05E;border-radius:var(--radius-sm);padding:20px 24px;margin-bottom:20px;font-size:14px;line-height:1.8;color:var(--text);"><span class="lang active" data-lang="ja"><strong>日雇派遣の原則禁止</strong><br>平成24年10月1日より労働者派遣法の改正により日雇派遣が制限され、30日以内の短期派遣が禁止になりました。<br>但し、例外として認められる業務・条件があります。</span><span class="lang" data-lang="pt"><strong>Proibição em princípio do despacho diário</strong><br>A partir de 1 de outubro de 2012, a revisão da Lei de Despacho de Trabalhadores restringiu o despacho diário, proibindo despachos de curto prazo de 30 dias ou menos.<br>No entanto, existem tarefas e condições permitidas como exceção.</span><span class="lang" data-lang="en"><strong>Day labor dispatch is prohibited in principle</strong><br>From October 1, 2012, the amendment to the Worker Dispatching Act restricted day labor dispatch, prohibiting short-term dispatches of 30 days or less.<br>However, there are tasks and conditions permitted as exceptions.</span></div>
+          <h4 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:12px;"><span class="lang active" data-lang="ja">例外として認められる要件</span><span class="lang" data-lang="pt">Requisitos permitidos como exceção</span><span class="lang" data-lang="en">Requirements permitted as exceptions</span></h4>
+          <div style="overflow-x:auto;margin-bottom:24px;">
+            <table style="width:100%;border-collapse:collapse;font-size:14px;line-height:1.7;">
+              <thead><tr style="background:var(--navy);color:var(--white);"><th style="padding:12px 16px;text-align:left;font-weight:600;"><span class="lang active" data-lang="ja">対象者</span><span class="lang" data-lang="pt">Pessoa elegível</span><span class="lang" data-lang="en">Eligible person</span></th><th style="padding:12px 16px;text-align:left;font-weight:600;"><span class="lang active" data-lang="ja">必要書類</span><span class="lang" data-lang="pt">Documentos necessários</span><span class="lang" data-lang="en">Required documents</span></th></tr></thead>
+              <tbody>
+                <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px 16px;"><span class="lang active" data-lang="ja">60歳以上の方</span><span class="lang" data-lang="pt">Pessoas com 60 anos ou mais</span><span class="lang" data-lang="en">Persons aged 60 or older</span></td><td style="padding:12px 16px;"><span class="lang active" data-lang="ja">運転免許証・住民票 等</span><span class="lang" data-lang="pt">Carteira de motorista, registro de residência, etc.</span><span class="lang" data-lang="en">Driver's license, residence certificate, etc.</span></td></tr>
+                <tr style="border-bottom:1px solid var(--border);background:var(--cream);"><td style="padding:12px 16px;"><span class="lang active" data-lang="ja">雇用保険の適用を受けない学生</span><span class="lang" data-lang="pt">Estudantes não cobertos pelo seguro-desemprego</span><span class="lang" data-lang="en">Students not covered by employment insurance</span></td><td style="padding:12px 16px;"><span class="lang active" data-lang="ja">学生証</span><span class="lang" data-lang="pt">Carteira de estudante</span><span class="lang" data-lang="en">Student ID</span></td></tr>
+                <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px 16px;"><span class="lang active" data-lang="ja">副業として従事する方（生業収入が500万円以上）</span><span class="lang" data-lang="pt">Pessoas que trabalham como atividade secundária (renda principal de 5 milhões de ienes ou mais)</span><span class="lang" data-lang="en">Persons working as a side job (primary income of 5 million yen or more)</span></td><td style="padding:12px 16px;"><span class="lang active" data-lang="ja">所得証明書・源泉徴収票</span><span class="lang" data-lang="pt">Certificado de renda, comprovante de retenção na fonte</span><span class="lang" data-lang="en">Income certificate, withholding tax statement</span></td></tr>
+                <tr style="background:var(--cream);"><td style="padding:12px 16px;"><span class="lang active" data-lang="ja">主たる生計者でない方（世帯収入が500万円以上）</span><span class="lang" data-lang="pt">Pessoas que não são o principal provedor do lar (renda familiar de 5 milhões de ienes ou mais)</span><span class="lang" data-lang="en">Persons who are not the primary breadwinner (household income of 5 million yen or more)</span></td><td style="padding:12px 16px;"><span class="lang active" data-lang="ja">住民票 等</span><span class="lang" data-lang="pt">Registro de residência, etc.</span><span class="lang" data-lang="en">Residence certificate, etc.</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h4 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:12px;"><span class="lang active" data-lang="ja">禁止の例外として政令で定める業務</span><span class="lang" data-lang="pt">Atividades designadas por decreto como exceções à proibição</span><span class="lang" data-lang="en">Tasks designated by government decree as exceptions to the prohibition</span></h4>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px;">
+            <span style="background:var(--cream);border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:12px;color:var(--text);"><span class="lang active" data-lang="ja">ソフトウェアの開発</span><span class="lang" data-lang="pt">Desenvolvimento de software</span><span class="lang" data-lang="en">Software development</span></span><span style="background:var(--cream);border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:12px;color:var(--text);"><span class="lang active" data-lang="ja">調査</span><span class="lang" data-lang="pt">Pesquisa</span><span class="lang" data-lang="en">Research</span></span><span style="background:var(--cream);border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:12px;color:var(--text);"><span class="lang active" data-lang="ja">事業の実施体制の企画・立案</span><span class="lang" data-lang="pt">Planejamento de estrutura empresarial</span><span class="lang" data-lang="en">Business structure planning</span></span><span style="background:var(--cream);border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:12px;color:var(--text);"><span class="lang active" data-lang="ja">機械設計</span><span class="lang" data-lang="pt">Projeto mecânico</span><span class="lang" data-lang="en">Mechanical design</span></span><span style="background:var(--cream);border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:12px;color:var(--text);"><span class="lang active" data-lang="ja">財務処理</span><span class="lang" data-lang="pt">Processamento financeiro</span><span class="lang" data-lang="en">Financial processing</span></span><span style="background:var(--cream);border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:12px;color:var(--text);"><span class="lang active" data-lang="ja">書籍等の製作・編集</span><span class="lang" data-lang="pt">Produção e edição de livros</span><span class="lang" data-lang="en">Book production & editing</span></span><span style="background:var(--cream);border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:12px;color:var(--text);"><span class="lang active" data-lang="ja">事務用機器操作</span><span class="lang" data-lang="pt">Operação de equipamentos de escritório</span><span class="lang" data-lang="en">Office equipment operation</span></span><span style="background:var(--cream);border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:12px;color:var(--text);"><span class="lang active" data-lang="ja">取引文書作成</span><span class="lang" data-lang="pt">Elaboração de documentos comerciais</span><span class="lang" data-lang="en">Business document preparation</span></span><span style="background:var(--cream);border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:12px;color:var(--text);"><span class="lang active" data-lang="ja">広告デザイン</span><span class="lang" data-lang="pt">Design publicitário</span><span class="lang" data-lang="en">Advertising design</span></span><span style="background:var(--cream);border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:12px;color:var(--text);"><span class="lang active" data-lang="ja">通訳・翻訳・速記</span><span class="lang" data-lang="pt">Interpretação, tradução e estenografia</span><span class="lang" data-lang="en">Interpretation, translation & stenography</span></span><span style="background:var(--cream);border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:12px;color:var(--text);"><span class="lang active" data-lang="ja">添乗</span><span class="lang" data-lang="pt">Acompanhamento de viagem</span><span class="lang" data-lang="en">Tour escort</span></span><span style="background:var(--cream);border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:12px;color:var(--text);"><span class="lang active" data-lang="ja">デモンストレーション</span><span class="lang" data-lang="pt">Demonstração</span><span class="lang" data-lang="en">Demonstration</span></span><span style="background:var(--cream);border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:12px;color:var(--text);"><span class="lang active" data-lang="ja">秘書</span><span class="lang" data-lang="pt">Secretariado</span><span class="lang" data-lang="en">Secretarial</span></span><span style="background:var(--cream);border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:12px;color:var(--text);"><span class="lang active" data-lang="ja">ファイリング</span><span class="lang" data-lang="pt">Arquivamento</span><span class="lang" data-lang="en">Filing</span></span><span style="background:var(--cream);border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:12px;color:var(--text);"><span class="lang active" data-lang="ja">OAインストラクション</span><span class="lang" data-lang="pt">Instrução de OA</span><span class="lang" data-lang="en">OA instruction</span></span><span style="background:var(--cream);border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:12px;color:var(--text);"><span class="lang active" data-lang="ja">受付・案内</span><span class="lang" data-lang="pt">Recepção e orientação</span><span class="lang" data-lang="en">Reception & guidance</span></span><span style="background:var(--cream);border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:12px;color:var(--text);"><span class="lang active" data-lang="ja">研究・開発</span><span class="lang" data-lang="pt">Pesquisa e desenvolvimento</span><span class="lang" data-lang="en">Research & development</span></span><span style="background:var(--cream);border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:12px;color:var(--text);"><span class="lang active" data-lang="ja">セールスエンジニアの営業</span><span class="lang" data-lang="pt">Vendas de engenharia</span><span class="lang" data-lang="en">Sales engineering</span></span><span style="background:var(--cream);border:1px solid var(--border);border-radius:99px;padding:6px 14px;font-size:12px;color:var(--text);"><span class="lang active" data-lang="ja">金融商品の営業</span><span class="lang" data-lang="pt">Vendas de produtos financeiros</span><span class="lang" data-lang="en">Financial product sales</span></span>
+          </div>
+          <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px;border-left:4px solid var(--gold);padding-left:16px;"><span class="lang active" data-lang="ja">離職後1年以内の労働者派遣の禁止</span><span class="lang" data-lang="pt">Proibição de despacho dentro de 1 ano após a saída</span><span class="lang" data-lang="en">Prohibition of dispatch within 1 year after leaving</span></h3>
+          <div style="background:#FFF5F5;border:1px solid #FEB2B2;border-radius:var(--radius-sm);padding:20px 24px;margin-bottom:40px;font-size:14px;line-height:1.8;color:var(--text);"><span class="lang active" data-lang="ja">離職した労働者を離職後1年以内に、離職前事業者へ派遣労働者として派遣することは禁止されています。</span><span class="lang" data-lang="pt">É proibido despachar um trabalhador que deixou uma empresa como trabalhador despachado para a mesma empresa dentro de 1 ano após a saída.</span><span class="lang" data-lang="en">It is prohibited to dispatch a worker who left a company as a dispatched worker to the same company within 1 year after leaving.</span></div>
+          <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px;border-left:4px solid var(--gold);padding-left:16px;"><span class="lang active" data-lang="ja">当社の許可情報</span><span class="lang" data-lang="pt">Informações de licença da nossa empresa</span><span class="lang" data-lang="en">Our company's license information</span></h3>
+          <div style="background:var(--cream);border-radius:var(--radius-sm);padding:24px;font-size:15px;line-height:2;color:var(--text);"><span class="lang active" data-lang="ja"><strong>労働者派遣事業許可番号：</strong>派 22-300880</span><span class="lang" data-lang="pt"><strong>Número da licença de despacho de trabalhadores:</strong> Ha 22-300880</span><span class="lang" data-lang="en"><strong>Worker dispatching business license number:</strong> Ha 22-300880</span><br><a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:8ebf1a1f-c161-4075-81e2-631dd4b898c3" target="_blank" rel="noopener" class="license-btn" style="margin-top:8px;"><span class="lang active" data-lang="ja">許可証</span><span class="lang" data-lang="pt">Licença</span><span class="lang" data-lang="en">License</span> <span class="license-btn-icon">↗</span></a></div>
+        </div>
+
+        <!-- TAB2: マージン率等情報 -->
+        <div class="tab-content" id="dispatch-tab-1">
+          <div style="background:var(--cream);border-radius:var(--radius-sm);padding:16px 20px;margin-bottom:32px;font-size:13px;color:var(--text-light);"><span class="lang active" data-lang="ja">情報対象期間：2025年提出 派遣事業報告書より</span><span class="lang" data-lang="pt">Período de referência: Relatório de negócios de despacho apresentado em 2025</span><span class="lang" data-lang="en">Reference period: From the dispatch business report submitted in 2025</span></div>
+
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;">
+            <div style="background:var(--cream);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px 16px;text-align:center;">
+              <div style="font-size:11px;color:var(--text-light);margin-bottom:6px;"><span class="lang active" data-lang="ja">派遣労働者数</span><span class="lang" data-lang="pt">Nº de trabalhadores despachados</span><span class="lang" data-lang="en">No. of dispatched workers</span></div>
+              <div style="font-size:24px;font-weight:700;color:var(--navy);">251<span style="font-size:13px;font-weight:400;"><span class="lang active" data-lang="ja">人</span><span class="lang" data-lang="pt"> pessoas</span><span class="lang" data-lang="en"> persons</span></span></div>
+              <div style="font-size:10px;color:var(--text-light);margin-top:4px;"><span class="lang active" data-lang="ja">2025年6月1日現在</span><span class="lang" data-lang="pt">Em 1 de junho de 2025</span><span class="lang" data-lang="en">As of June 1, 2025</span></div>
+            </div>
+            <div style="background:var(--cream);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px 16px;text-align:center;">
+              <div style="font-size:11px;color:var(--text-light);margin-bottom:6px;"><span class="lang active" data-lang="ja">派遣先事業所数</span><span class="lang" data-lang="pt">Nº de empresas clientes</span><span class="lang" data-lang="en">No. of client workplaces</span></div>
+              <div style="font-size:24px;font-weight:700;color:var(--navy);">22<span style="font-size:13px;font-weight:400;"><span class="lang active" data-lang="ja">事業所</span><span class="lang" data-lang="pt"> locais</span><span class="lang" data-lang="en"> workplaces</span></span></div>
+            </div>
+            <div style="background:var(--cream);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px 16px;text-align:center;">
+              <div style="font-size:11px;color:var(--text-light);margin-bottom:6px;"><span class="lang active" data-lang="ja">マージン率</span><span class="lang" data-lang="pt">Taxa de margem</span><span class="lang" data-lang="en">Margin rate</span></div>
+              <div style="font-size:24px;font-weight:700;color:var(--navy);">31.76<span style="font-size:13px;font-weight:400;">%</span></div>
+            </div>
+          </div>
+
+          <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px;border-left:4px solid var(--gold);padding-left:16px;"><span class="lang active" data-lang="ja">派遣料金・賃金の平均額</span><span class="lang" data-lang="pt">Valor médio da taxa de despacho e salário</span><span class="lang" data-lang="en">Average dispatch fee and wage</span></h3>
+          <div style="overflow-x:auto;margin-bottom:32px;">
+            <table style="width:100%;border-collapse:collapse;font-size:15px;line-height:1.7;">
+              <tbody>
+                <tr style="border-bottom:1px solid var(--border);"><td style="padding:16px;font-weight:600;color:var(--navy);width:50%;"><span class="lang active" data-lang="ja">労働者派遣に関する料金の額の平均額</span><span class="lang" data-lang="pt">Valor médio da taxa de despacho de trabalhadores</span><span class="lang" data-lang="en">Average dispatch fee amount</span></td><td style="padding:16px;font-size:20px;font-weight:700;color:var(--navy);">¥17,760<span style="font-size:13px;font-weight:400;color:var(--text-light);margin-left:8px;"><span class="lang active" data-lang="ja">（8時間あたり全業務平均）</span><span class="lang" data-lang="pt">(média de todas as tarefas por 8 horas)</span><span class="lang" data-lang="en">(average of all tasks per 8 hours)</span></span></td></tr>
+                <tr style="border-bottom:1px solid var(--border);background:var(--cream);"><td style="padding:16px;font-weight:600;color:var(--navy);"><span class="lang active" data-lang="ja">派遣労働者の賃金の額の平均額</span><span class="lang" data-lang="pt">Valor médio do salário dos trabalhadores despachados</span><span class="lang" data-lang="en">Average wage of dispatched workers</span></td><td style="padding:16px;font-size:20px;font-weight:700;color:var(--navy);">¥12,120<span style="font-size:13px;font-weight:400;color:var(--text-light);margin-left:8px;"><span class="lang active" data-lang="ja">（8時間あたり全業務平均）</span><span class="lang" data-lang="pt">(média de todas as tarefas por 8 horas)</span><span class="lang" data-lang="en">(average of all tasks per 8 hours)</span></span></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px;border-left:4px solid var(--gold);padding-left:16px;"><span class="lang active" data-lang="ja">マージン率の計算式</span><span class="lang" data-lang="pt">Fórmula de cálculo da taxa de margem</span><span class="lang" data-lang="en">Margin rate calculation formula</span></h3>
+          <div style="background:var(--cream);border-radius:var(--radius-sm);padding:24px;margin-bottom:32px;text-align:center;font-size:15px;line-height:2;color:var(--text);">
+            <div style="font-size:13px;color:var(--text-light);margin-bottom:8px;"><span class="lang active" data-lang="ja">計算式</span><span class="lang" data-lang="pt">Fórmula</span><span class="lang" data-lang="en">Formula</span></div>
+            <div style="font-size:18px;font-weight:700;color:var(--navy);"><span class="lang active" data-lang="ja">（派遣料金 − 賃金） ÷ 派遣料金 × 100 ＝ <span style="color:var(--gold);">31.76%</span></span><span class="lang" data-lang="pt">(Taxa de despacho − Salário) ÷ Taxa de despacho × 100 ＝ <span style="color:var(--gold);">31.76%</span></span><span class="lang" data-lang="en">(Dispatch fee − Wage) ÷ Dispatch fee × 100 ＝ <span style="color:var(--gold);">31.76%</span></span></div>
+            <div style="font-size:13px;color:var(--text-light);margin-top:8px;">（¥17,760 − ¥12,120） ÷ ¥17,760 × 100</div>
+          </div>
+
+          <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px;border-left:4px solid var(--gold);padding-left:16px;"><span class="lang active" data-lang="ja">マージン率に含まれる費用</span><span class="lang" data-lang="pt">Custos incluídos na taxa de margem</span><span class="lang" data-lang="en">Costs included in the margin rate</span></h3>
+          <ul style="font-size:15px;line-height:2;color:var(--text);margin-bottom:40px;padding-left:20px;list-style:disc;">
+            <li><span class="lang active" data-lang="ja">弊社負担の社会保険料（厚生年金保険、健康保険、雇用保険、労災保険等）</span><span class="lang" data-lang="pt">Contribuições de seguro social pagas pela empresa (pensão, saúde, desemprego, acidentes de trabalho, etc.)</span><span class="lang" data-lang="en">Social insurance premiums borne by our company (pension, health, employment, workers' compensation, etc.)</span></li>
+            <li><span class="lang active" data-lang="ja">派遣労働者が取得する年次有給休暇に係る費用</span><span class="lang" data-lang="pt">Custos relacionados às férias remuneradas anuais dos trabalhadores despachados</span><span class="lang" data-lang="en">Costs related to annual paid leave taken by dispatched workers</span></li>
+            <li><span class="lang active" data-lang="ja">派遣社員の法定健康診断費用</span><span class="lang" data-lang="pt">Custos de exames médicos obrigatórios dos trabalhadores despachados</span><span class="lang" data-lang="en">Statutory health examination costs for dispatched workers</span></li>
+            <li><span class="lang active" data-lang="ja">派遣労働者に係る教育訓練費用（有給無償）</span><span class="lang" data-lang="pt">Custos de treinamento dos trabalhadores despachados (remunerado e gratuito)</span><span class="lang" data-lang="en">Training costs for dispatched workers (paid and free of charge)</span></li>
+            <li><span class="lang active" data-lang="ja">広告宣伝費、送迎に係る費用、営業・管理社員の人件費、通信費、オフィス賃料、事業運営に係る諸費用など</span><span class="lang" data-lang="pt">Custos de publicidade, transporte, pessoal de vendas e gestão, comunicação, aluguel de escritório e outras despesas operacionais</span><span class="lang" data-lang="en">Advertising costs, transportation costs, sales and management staff labor costs, communication costs, office rent, and other operational expenses</span></li>
+          </ul>
+
+          <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px;border-left:4px solid var(--gold);padding-left:16px;"><span class="lang active" data-lang="ja">労使協定・福利厚生</span><span class="lang" data-lang="pt">Acordo trabalhista e benefícios</span><span class="lang" data-lang="en">Labor-management agreement & benefits</span></h3>
+          <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;font-size:14px;line-height:1.7;">
+              <tbody>
+                <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px 16px;font-weight:600;color:var(--navy);width:40%;"><span class="lang active" data-lang="ja">労使協定の締結</span><span class="lang" data-lang="pt">Celebração do acordo trabalhista</span><span class="lang" data-lang="en">Labor-management agreement</span></td><td style="padding:12px 16px;"><span class="lang active" data-lang="ja">有</span><span class="lang" data-lang="pt">Sim</span><span class="lang" data-lang="en">Yes</span></td></tr>
+                <tr style="border-bottom:1px solid var(--border);background:var(--cream);"><td style="padding:12px 16px;font-weight:600;color:var(--navy);"><span class="lang active" data-lang="ja">労使協定の範囲</span><span class="lang" data-lang="pt">Abrangência do acordo</span><span class="lang" data-lang="en">Scope of agreement</span></td><td style="padding:12px 16px;"><span class="lang active" data-lang="ja">全ての派遣労働者</span><span class="lang" data-lang="pt">Todos os trabalhadores despachados</span><span class="lang" data-lang="en">All dispatched workers</span></td></tr>
+                <tr style="border-bottom:1px solid var(--border);"><td style="padding:12px 16px;font-weight:600;color:var(--navy);"><span class="lang active" data-lang="ja">有効期間</span><span class="lang" data-lang="pt">Período de validade</span><span class="lang" data-lang="en">Validity period</span></td><td style="padding:12px 16px;"><span class="lang active" data-lang="ja">2025年4月1日～2026年3月31日</span><span class="lang" data-lang="pt">1 de abril de 2025 a 31 de março de 2026</span><span class="lang" data-lang="en">April 1, 2025 – March 31, 2026</span></td></tr>
+                <tr style="border-bottom:1px solid var(--border);background:var(--cream);"><td style="padding:12px 16px;font-weight:600;color:var(--navy);"><span class="lang active" data-lang="ja">福利厚生</span><span class="lang" data-lang="pt">Benefícios</span><span class="lang" data-lang="en">Benefits</span></td><td style="padding:12px 16px;"><span class="lang active" data-lang="ja">各種保険（適用事業所）</span><span class="lang" data-lang="pt">Diversos seguros (escritório aplicável)</span><span class="lang" data-lang="en">Various insurance (applicable workplace)</span></td></tr>
+                <tr><td style="padding:12px 16px;font-weight:600;color:var(--navy);"><span class="lang active" data-lang="ja">その他</span><span class="lang" data-lang="pt">Outros</span><span class="lang" data-lang="en">Others</span></td><td style="padding:12px 16px;"><span class="lang active" data-lang="ja">派遣社員の送迎あり（一部派遣先、規定有）</span><span class="lang" data-lang="pt">Transporte disponível para trabalhadores despachados (algumas empresas clientes, com regulamentos)</span><span class="lang" data-lang="en">Transportation available for dispatched workers (some client companies, with regulations)</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- TAB3: 教育訓練について -->
+        <div class="tab-content" id="dispatch-tab-2">
+          <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px;border-left:4px solid var(--gold);padding-left:16px;"><span class="lang active" data-lang="ja">キャリア形成支援制度</span><span class="lang" data-lang="pt">Sistema de apoio ao desenvolvimento de carreira</span><span class="lang" data-lang="en">Career development support system</span></h3>
+          <p style="font-size:15px;line-height:2;color:var(--text);margin-bottom:24px;">
+            <span class="lang active" data-lang="ja">当社では、派遣労働者のキャリアアップを支援するため、e-ラーニングシステム「クロスラーニング」による教育訓練を実施しています。<br>
+            スマホ・PC・タブレットで受講可能で、<strong>年間8時間の教育訓練を有給・無償</strong>で提供しています。</span><span class="lang" data-lang="pt">Nossa empresa oferece treinamento educacional por meio do sistema de e-learning "Cross Learning" para apoiar o desenvolvimento de carreira dos trabalhadores despachados.<br>
+            Disponível em smartphones, PCs e tablets, oferecemos <strong>8 horas anuais de treinamento remunerado e gratuito</strong>.</span><span class="lang" data-lang="en">Our company provides educational training through the e-learning system "Cross Learning" to support the career development of dispatched workers.<br>
+            Available on smartphones, PCs, and tablets, we provide <strong>8 hours of annual training, paid and free of charge</strong>.</span>
+          </p>
+
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;">
+            <div style="background:var(--cream);border-radius:var(--radius-sm);padding:24px;text-align:center;">
+              <div style="font-size:28px;margin-bottom:8px;">📱</div>
+              <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:4px;"><span class="lang active" data-lang="ja">スマホ・PC対応</span><span class="lang" data-lang="pt">Smartphone e PC</span><span class="lang" data-lang="en">Smartphone & PC</span></div>
+              <div style="font-size:12px;color:var(--text-light);"><span class="lang active" data-lang="ja">いつでもどこでも受講可能</span><span class="lang" data-lang="pt">Disponível a qualquer hora, em qualquer lugar</span><span class="lang" data-lang="en">Available anytime, anywhere</span></div>
+            </div>
+            <div style="background:var(--cream);border-radius:var(--radius-sm);padding:24px;text-align:center;">
+              <div style="font-size:28px;margin-bottom:8px;">💰</div>
+              <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:4px;"><span class="lang active" data-lang="ja">有給・無償</span><span class="lang" data-lang="pt">Remunerado e gratuito</span><span class="lang" data-lang="en">Paid & free</span></div>
+              <div style="font-size:12px;color:var(--text-light);"><span class="lang active" data-lang="ja">時給をもらいながら学習</span><span class="lang" data-lang="pt">Aprenda enquanto recebe salário</span><span class="lang" data-lang="en">Learn while earning hourly wage</span></div>
+            </div>
+            <div style="background:var(--cream);border-radius:var(--radius-sm);padding:24px;text-align:center;">
+              <div style="font-size:28px;margin-bottom:8px;">🌐</div>
+              <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:4px;"><span class="lang active" data-lang="ja">多言語対応</span><span class="lang" data-lang="pt">Multilíngue</span><span class="lang" data-lang="en">Multilingual</span></div>
+              <div style="font-size:12px;color:var(--text-light);"><span class="lang active" data-lang="ja">日本語・英語・ポルトガル語</span><span class="lang" data-lang="pt">Japonês, inglês e português</span><span class="lang" data-lang="en">Japanese, English & Portuguese</span></div>
+            </div>
+          </div>
+
+          <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px;border-left:4px solid var(--gold);padding-left:16px;"><span class="lang active" data-lang="ja">教育訓練カリキュラム（製造派遣）</span><span class="lang" data-lang="pt">Currículo de treinamento (despacho para manufatura)</span><span class="lang" data-lang="en">Training curriculum (manufacturing dispatch)</span></h3>
+          <div style="overflow-x:auto;margin-bottom:32px;">
+            <table style="width:100%;border-collapse:collapse;font-size:13px;line-height:1.6;">
+              <thead><tr style="background:var(--navy);color:var(--white);"><th style="padding:12px;text-align:center;font-weight:600;"><span class="lang active" data-lang="ja">年次</span><span class="lang" data-lang="pt">Ano</span><span class="lang" data-lang="en">Year</span></th><th style="padding:12px;text-align:left;font-weight:600;"><span class="lang active" data-lang="ja">訓練内容</span><span class="lang" data-lang="pt">Conteúdo do treinamento</span><span class="lang" data-lang="en">Training content</span></th><th style="padding:12px;text-align:center;font-weight:600;"><span class="lang active" data-lang="ja">時間</span><span class="lang" data-lang="pt">Horas</span><span class="lang" data-lang="en">Hours</span></th><th style="padding:12px;text-align:center;font-weight:600;"><span class="lang active" data-lang="ja">種別</span><span class="lang" data-lang="pt">Tipo</span><span class="lang" data-lang="en">Type</span></th></tr></thead>
+              <tbody>
+                <tr style="background:var(--gold);color:var(--white);"><td colspan="4" style="padding:10px 12px;font-weight:700;"><span class="lang active" data-lang="ja">1年目（合計8時間）</span><span class="lang" data-lang="pt">1º ano (total de 8 horas)</span><span class="lang" data-lang="en">Year 1 (total 8 hours)</span></td></tr>
+                <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 12px;text-align:center;" rowspan="4"><span class="lang active" data-lang="ja">1年目</span><span class="lang" data-lang="pt">1º ano</span><span class="lang" data-lang="en">Year 1</span></td><td style="padding:8px 12px;"><span class="lang active" data-lang="ja">ヒューマンスキル「自責と他責」</span><span class="lang" data-lang="pt">Habilidades humanas: "Responsabilidade pessoal e dos outros"</span><span class="lang" data-lang="en">Human skills: "Self-responsibility and blaming others"</span></td><td style="padding:8px 12px;text-align:center;">1h</td><td style="padding:8px 12px;text-align:center;"><span class="lang active" data-lang="ja">入職時</span><span class="lang" data-lang="pt">Admissão</span><span class="lang" data-lang="en">Upon joining</span></td></tr>
+                <tr style="border-bottom:1px solid var(--border);background:var(--cream);"><td style="padding:8px 12px;"><span class="lang active" data-lang="ja">ビジネスマナー「電話応対、訪問、ビジネス文書」</span><span class="lang" data-lang="pt">Etiqueta empresarial: "Atendimento telefônico, visitas e documentos comerciais"</span><span class="lang" data-lang="en">Business manners: "Phone handling, visits, business documents"</span></td><td style="padding:8px 12px;text-align:center;">2h</td><td style="padding:8px 12px;text-align:center;"><span class="lang active" data-lang="ja">入職時</span><span class="lang" data-lang="pt">Admissão</span><span class="lang" data-lang="en">Upon joining</span></td></tr>
+                <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 12px;"><span class="lang active" data-lang="ja">ビジネスマナー「仕事のルールと基本、ビジネス会話」</span><span class="lang" data-lang="pt">Etiqueta empresarial: "Regras e fundamentos do trabalho, conversação empresarial"</span><span class="lang" data-lang="en">Business manners: "Work rules and basics, business conversation"</span></td><td style="padding:8px 12px;text-align:center;">2h</td><td style="padding:8px 12px;text-align:center;"><span class="lang active" data-lang="ja">入職時</span><span class="lang" data-lang="pt">Admissão</span><span class="lang" data-lang="en">Upon joining</span></td></tr>
+                <tr style="border-bottom:1px solid var(--border);background:var(--cream);"><td style="padding:8px 12px;"><span class="lang active" data-lang="ja">製造のプロを目指す人のための旋盤 / ものづくり教育【初級】Ⅰ</span><span class="lang" data-lang="pt">Torno para aspirantes a profissionais de manufatura / Educação em manufatura [Iniciante] I</span><span class="lang" data-lang="en">Lathe for aspiring manufacturing professionals / Manufacturing education [Beginner] I</span></td><td style="padding:8px 12px;text-align:center;">3h</td><td style="padding:8px 12px;text-align:center;"><span class="lang active" data-lang="ja">職能別</span><span class="lang" data-lang="pt">Por função</span><span class="lang" data-lang="en">By function</span></td></tr>
+                <tr style="background:var(--navy-mid);color:var(--white);"><td colspan="4" style="padding:10px 12px;font-weight:700;"><span class="lang active" data-lang="ja">2年目（合計8時間）</span><span class="lang" data-lang="pt">2º ano (total de 8 horas)</span><span class="lang" data-lang="en">Year 2 (total 8 hours)</span></td></tr>
+                <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 12px;text-align:center;" rowspan="2"><span class="lang active" data-lang="ja">2年目</span><span class="lang" data-lang="pt">2º ano</span><span class="lang" data-lang="en">Year 2</span></td><td style="padding:8px 12px;"><span class="lang active" data-lang="ja">ものづくり教育プログラム【中級】Ⅰ・Ⅱ</span><span class="lang" data-lang="pt">Programa de educação em manufatura [Intermediário] I e II</span><span class="lang" data-lang="en">Manufacturing education program [Intermediate] I & II</span></td><td style="padding:8px 12px;text-align:center;">4h</td><td style="padding:8px 12px;text-align:center;"><span class="lang active" data-lang="ja">職能別</span><span class="lang" data-lang="pt">Por função</span><span class="lang" data-lang="en">By function</span></td></tr>
+                <tr style="border-bottom:1px solid var(--border);background:var(--cream);"><td style="padding:8px 12px;"><span class="lang active" data-lang="ja">品質管理プログラム【中級】Ⅰ・Ⅱ</span><span class="lang" data-lang="pt">Programa de controle de qualidade [Intermediário] I e II</span><span class="lang" data-lang="en">Quality control program [Intermediate] I & II</span></td><td style="padding:8px 12px;text-align:center;">4h</td><td style="padding:8px 12px;text-align:center;"><span class="lang active" data-lang="ja">職能別</span><span class="lang" data-lang="pt">Por função</span><span class="lang" data-lang="en">By function</span></td></tr>
+                <tr style="background:var(--navy-mid);color:var(--white);"><td colspan="4" style="padding:10px 12px;font-weight:700;"><span class="lang active" data-lang="ja">3年目（合計8時間）</span><span class="lang" data-lang="pt">3º ano (total de 8 horas)</span><span class="lang" data-lang="en">Year 3 (total 8 hours)</span></td></tr>
+                <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 12px;text-align:center;" rowspan="2"><span class="lang active" data-lang="ja">3年目</span><span class="lang" data-lang="pt">3º ano</span><span class="lang" data-lang="en">Year 3</span></td><td style="padding:8px 12px;"><span class="lang active" data-lang="ja">ものづくり教育プログラム【上級】Ⅰ・Ⅱ</span><span class="lang" data-lang="pt">Programa de educação em manufatura [Avançado] I e II</span><span class="lang" data-lang="en">Manufacturing education program [Advanced] I & II</span></td><td style="padding:8px 12px;text-align:center;">4h</td><td style="padding:8px 12px;text-align:center;"><span class="lang active" data-lang="ja">職能別</span><span class="lang" data-lang="pt">Por função</span><span class="lang" data-lang="en">By function</span></td></tr>
+                <tr style="border-bottom:1px solid var(--border);background:var(--cream);"><td style="padding:8px 12px;"><span class="lang active" data-lang="ja">現場リーダー教育【初級】①②</span><span class="lang" data-lang="pt">Educação de líder de campo [Iniciante] 1 e 2</span><span class="lang" data-lang="en">Field leader education [Beginner] 1 & 2</span></td><td style="padding:8px 12px;text-align:center;">4h</td><td style="padding:8px 12px;text-align:center;"><span class="lang active" data-lang="ja">階層別</span><span class="lang" data-lang="pt">Por nível</span><span class="lang" data-lang="en">By level</span></td></tr>
+                <tr style="background:var(--navy-mid);color:var(--white);"><td colspan="4" style="padding:10px 12px;font-weight:700;"><span class="lang active" data-lang="ja">4年目（合計2時間）</span><span class="lang" data-lang="pt">4º ano (total de 2 horas)</span><span class="lang" data-lang="en">Year 4 (total 2 hours)</span></td></tr>
+                <tr style="border-bottom:1px solid var(--border);"><td style="padding:8px 12px;text-align:center;"><span class="lang active" data-lang="ja">4年目</span><span class="lang" data-lang="pt">4º ano</span><span class="lang" data-lang="en">Year 4</span></td><td style="padding:8px 12px;"><span class="lang active" data-lang="ja">ケースで学ぶコンプライアンス（個人情報取り扱い注意・情報セキュリティ）</span><span class="lang" data-lang="pt">Compliance aprendido por meio de casos (cuidados com informações pessoais e segurança da informação)</span><span class="lang" data-lang="en">Case-based compliance learning (personal data handling and information security)</span></td><td style="padding:8px 12px;text-align:center;">2h</td><td style="padding:8px 12px;text-align:center;"><span class="lang active" data-lang="ja">階層別</span><span class="lang" data-lang="pt">Por nível</span><span class="lang" data-lang="en">By level</span></td></tr>
+                <tr style="background:var(--cream);"><td style="padding:8px 12px;text-align:center;"><span class="lang active" data-lang="ja">5年目〜</span><span class="lang" data-lang="pt">5º ano em diante</span><span class="lang" data-lang="en">Year 5+</span></td><td style="padding:8px 12px;"><span class="lang active" data-lang="ja">リスクマネジメント講座</span><span class="lang" data-lang="pt">Curso de gerenciamento de riscos</span><span class="lang" data-lang="en">Risk management course</span></td><td style="padding:8px 12px;text-align:center;">2h</td><td style="padding:8px 12px;text-align:center;"><span class="lang active" data-lang="ja">階層別</span><span class="lang" data-lang="pt">Por nível</span><span class="lang" data-lang="en">By level</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px;border-left:4px solid var(--gold);padding-left:16px;"><span class="lang active" data-lang="ja">キャリアコンサルティング</span><span class="lang" data-lang="pt">Consultoria de carreira</span><span class="lang" data-lang="en">Career consulting</span></h3>
+          <div style="background:var(--cream);border-radius:var(--radius-sm);padding:24px;font-size:15px;line-height:2;color:var(--text);">
+            <span class="lang active" data-lang="ja"><strong>キャリアコンサルティング相談窓口</strong><br>
+            本社内 派遣元責任者宛て<br>
+            TEL：0538-36-6968</span><span class="lang" data-lang="pt"><strong>Balcão de consulta de carreira</strong><br>
+            Dirigido ao responsável de despacho na sede<br>
+            TEL: 0538-36-6968</span><span class="lang" data-lang="en"><strong>Career consulting contact</strong><br>
+            To the dispatch manager at head office<br>
+            TEL: 0538-36-6968</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════
+     PAGE: PLACEMENT SYSTEM
+     ══════════════════════════════ -->
+<div class="page" id="page-placement-system">
+  <section class="section" style="padding-top:60px;">
+    <div class="section-header" style="max-width:var(--max-w);margin:0 auto;padding:0 24px;">
+      <h2 class="section-title"><span class="lang active" data-lang="ja">有料職業紹介事業</span><span class="lang" data-lang="pt">Serviço de Colocação Profissional Pago</span><span class="lang" data-lang="en">Paid Employment Placement Service</span></h2>
+      <div class="section-desc"><span class="lang active" data-lang="ja">職業安定法に基づく有料職業紹介事業の制度・規定・手数料についてご案内します。</span><span class="lang" data-lang="pt">Informações sobre o sistema, regulamentos e taxas do serviço de colocação profissional pago, conforme a Lei de Estabilidade no Emprego.</span><span class="lang" data-lang="en">Information about the system, regulations, and fees for our paid employment placement service under the Employment Security Act.</span></div>
+    </div>
+    <div style="max-width:var(--max-w);margin:40px auto 0;padding:0 24px;">
+      <div style="background:var(--white);border-radius:var(--radius);padding:48px;box-shadow:var(--shadow-md);">
+
+        <!-- タブナビ -->
+        <div class="tab-nav">
+          <button class="tab-btn active" onclick="switchTab(this,'placement')"><span class="lang active" data-lang="ja">制度の概要</span><span class="lang" data-lang="pt">Visão Geral</span><span class="lang" data-lang="en">Overview</span></button>
+          <button class="tab-btn" onclick="switchTab(this,'placement')"><span class="lang active" data-lang="ja">業務運営規定</span><span class="lang" data-lang="pt">Regulamento de Operações</span><span class="lang" data-lang="en">Operating Regulations</span></button>
+          <button class="tab-btn" onclick="switchTab(this,'placement')"><span class="lang active" data-lang="ja">手数料表</span><span class="lang" data-lang="pt">Tabela de Taxas</span><span class="lang" data-lang="en">Fee Schedule</span></button>
+          <button class="tab-btn" onclick="switchTab(this,'placement')"><span class="lang active" data-lang="ja">返戻金制度</span><span class="lang" data-lang="pt">Sistema de Reembolso</span><span class="lang" data-lang="en">Refund System</span></button>
+        </div>
+
+        <!-- TAB1: 制度の概要 -->
+        <div class="tab-content active" id="placement-tab-0">
+          <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px;border-left:4px solid var(--gold);padding-left:16px;"><span class="lang active" data-lang="ja">有料職業紹介とは</span><span class="lang" data-lang="pt">O que é Colocação Profissional Paga?</span><span class="lang" data-lang="en">What is Paid Employment Placement?</span></h3>
+          <p style="font-size:15px;line-height:2;color:var(--text);margin-bottom:32px;"><span class="lang active" data-lang="ja">有料職業紹介事業とは、求人及び求職の申込みを受け、求人者と求職者との間における雇用関係の成立をあっせんすることを業として行うものです。<br>職業安定法に基づき、厚生労働大臣の許可を受けて行います。</span><span class="lang" data-lang="pt">O serviço de colocação profissional paga consiste em receber solicitações de ofertas e buscas de emprego, intermediando o estabelecimento de relações empregatícias entre empregadores e candidatos.<br>É realizado com a permissão do Ministro da Saúde, Trabalho e Bem-Estar, conforme a Lei de Estabilidade no Emprego.</span><span class="lang" data-lang="en">Paid employment placement is a service that receives job posting and job seeking applications, and mediates the establishment of employment relationships between employers and job seekers.<br>It is conducted with permission from the Minister of Health, Labour and Welfare under the Employment Security Act.</span></p>
+          <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px;border-left:4px solid var(--gold);padding-left:16px;"><span class="lang active" data-lang="ja">事業の特徴</span><span class="lang" data-lang="pt">Características do Serviço</span><span class="lang" data-lang="en">Service Features</span></h3>
+          <ul style="font-size:15px;line-height:2;color:var(--text);margin-bottom:32px;padding-left:20px;list-style:disc;">
+            <li><span class="lang active" data-lang="ja">求人企業と求職者のマッチングを行います</span><span class="lang" data-lang="pt">Realizamos a correspondência entre empresas com vagas e candidatos</span><span class="lang" data-lang="en">We match employers with job seekers</span></li>
+            <li><span class="lang active" data-lang="ja">採用が決定した場合に手数料が発生します</span><span class="lang" data-lang="pt">A taxa é cobrada quando a contratação é confirmada</span><span class="lang" data-lang="en">Fees are charged when hiring is confirmed</span></li>
+            <li><span class="lang active" data-lang="ja">正社員・契約社員等の直接雇用をあっせんします</span><span class="lang" data-lang="pt">Intermediamos contratação direta como funcionários efetivos ou contratados</span><span class="lang" data-lang="en">We mediate direct employment such as full-time or contract employees</span></li>
+            <li><span class="lang active" data-lang="ja">求職者から手数料を徴収することは原則禁止されています</span><span class="lang" data-lang="pt">Em princípio, é proibido cobrar taxas dos candidatos</span><span class="lang" data-lang="en">In principle, charging fees to job seekers is prohibited</span></li>
+          </ul>
+          <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px;border-left:4px solid var(--gold);padding-left:16px;"><span class="lang active" data-lang="ja">求職者の皆様へ</span><span class="lang" data-lang="pt">Para os Candidatos</span><span class="lang" data-lang="en">For Job Seekers</span></h3>
+          <p style="font-size:15px;line-height:2;color:var(--text);margin-bottom:32px;"><span class="lang active" data-lang="ja">当社の職業紹介サービスは無料でご利用いただけます。<br>ご希望の条件に合った求人をご紹介し、面接から入社まで丁寧にサポートいたします。</span><span class="lang" data-lang="pt">Nosso serviço de colocação profissional é gratuito para candidatos.<br>Apresentaremos vagas que correspondam às suas condições desejadas e ofereceremos suporte cuidadoso desde a entrevista até a admissão.</span><span class="lang" data-lang="en">Our employment placement service is free for job seekers.<br>We will introduce job opportunities matching your desired conditions and provide careful support from interviews through to employment.</span></p>
+          <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px;border-left:4px solid var(--gold);padding-left:16px;"><span class="lang active" data-lang="ja">許可情報</span><span class="lang" data-lang="pt">Informações de Licença</span><span class="lang" data-lang="en">License Information</span></h3>
+          <div style="background:var(--cream);border-radius:var(--radius-sm);padding:24px;font-size:15px;line-height:2;color:var(--text);">
+            <strong><span class="lang active" data-lang="ja">有料職業紹介事業許可番号：</span><span class="lang" data-lang="pt">Número da licença de colocação profissional paga: </span><span class="lang" data-lang="en">Paid Employment Placement License No.: </span></strong>22-ﾕ-300572<br>
+            <a href="https://acrobat.adobe.com/id/urn:aaid:sc:AP:789c144b-e9f8-47fa-ac2b-36679f70c086" target="_blank" rel="noopener" class="license-btn" style="margin-top:8px;"><span class="lang active" data-lang="ja">許可証</span><span class="lang" data-lang="pt">Certificado de Licença</span><span class="lang" data-lang="en">License Certificate</span> <span class="license-btn-icon">↗</span></a>
+          </div>
+        </div>
+
+        <!-- TAB2: 業務運営規定 -->
+        <div class="tab-content" id="placement-tab-1">
+          <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:24px;border-left:4px solid var(--gold);padding-left:16px;"><span class="lang active" data-lang="ja">業務の運営に関する規定</span><span class="lang" data-lang="pt">Regulamento sobre a Operação do Serviço</span><span class="lang" data-lang="en">Regulations on Service Operations</span></h3>
+          <div style="font-size:14px;line-height:2;color:var(--text);">
+            <h4 style="font-size:16px;font-weight:700;color:var(--navy);margin:24px 0 12px;background:var(--cream);padding:10px 16px;border-radius:var(--radius-sm);"><span class="lang active" data-lang="ja">第1 求人</span><span class="lang" data-lang="pt">Artigo 1 - Ofertas de Emprego</span><span class="lang" data-lang="en">Article 1 - Job Postings</span></h4>
+            <ol style="padding-left:20px;margin-bottom:20px;">
+              <li style="margin-bottom:8px;"><span class="lang active" data-lang="ja">本所は、取扱職種の範囲等に関する限り、いかなる求人の申込みについてもこれを受理します。ただし、法令違反や著しく不適当な労働条件の場合、暴力団員等による求人の場合は受理しません。</span><span class="lang" data-lang="pt">Este escritório aceita qualquer solicitação de oferta de emprego dentro do escopo das ocupações tratadas. No entanto, não aceitaremos ofertas que violem leis, apresentem condições de trabalho significativamente inadequadas, ou sejam feitas por membros de organizações criminosas.</span><span class="lang" data-lang="en">This office accepts any job posting application within the scope of occupations handled. However, we will not accept postings that violate laws, have significantly inappropriate working conditions, or are made by members of organized crime groups.</span></li>
+              <li style="margin-bottom:8px;"><span class="lang active" data-lang="ja">求人の申込みは、所定の求人票によりお申込みください。郵便、電話、FAX、電子メールでも可能です。</span><span class="lang" data-lang="pt">As solicitações de oferta de emprego devem ser feitas através do formulário designado. Também é possível por correio, telefone, fax ou e-mail.</span><span class="lang" data-lang="en">Job posting applications should be made using the designated form. Applications by mail, telephone, fax, or email are also accepted.</span></li>
+              <li style="margin-bottom:8px;"><span class="lang active" data-lang="ja">求人申込みの際には、業務内容、賃金、労働時間等の労働条件をあらかじめ書面等により明示してください。</span><span class="lang" data-lang="pt">Ao solicitar uma oferta de emprego, especifique previamente por escrito as condições de trabalho, incluindo conteúdo do trabalho, salário e horário de trabalho.</span><span class="lang" data-lang="en">When applying for a job posting, please specify in advance in writing the working conditions including job description, wages, and working hours.</span></li>
+              <li><span class="lang active" data-lang="ja">求人受付の際には、受付手数料を別表の料金表に基づき申し受けます。</span><span class="lang" data-lang="pt">Ao aceitar uma oferta de emprego, será cobrada uma taxa de recepção conforme a tabela de taxas em anexo.</span><span class="lang" data-lang="en">Upon acceptance of a job posting, a reception fee will be charged based on the attached fee schedule.</span></li>
+            </ol>
+            <h4 style="font-size:16px;font-weight:700;color:var(--navy);margin:24px 0 12px;background:var(--cream);padding:10px 16px;border-radius:var(--radius-sm);"><span class="lang active" data-lang="ja">第2 求職</span><span class="lang" data-lang="pt">Artigo 2 - Busca de Emprego</span><span class="lang" data-lang="en">Article 2 - Job Seeking</span></h4>
+            <ol style="padding-left:20px;margin-bottom:20px;">
+              <li style="margin-bottom:8px;"><span class="lang active" data-lang="ja">本所は、取扱職種の範囲等に関する限り、いかなる求職の申込みについてもこれを受理します。ただし、法令違反の場合は受理しません。</span><span class="lang" data-lang="pt">Este escritório aceita qualquer solicitação de busca de emprego dentro do escopo das ocupações tratadas. No entanto, não aceitaremos em caso de violação de leis.</span><span class="lang" data-lang="en">This office accepts any job seeking application within the scope of occupations handled. However, we will not accept applications that violate laws.</span></li>
+              <li style="margin-bottom:8px;"><span class="lang active" data-lang="ja">求職申込みは、本人が直接来所され、所定の求職票によりお申込みください。</span><span class="lang" data-lang="pt">As solicitações de busca de emprego devem ser feitas pessoalmente, utilizando o formulário designado.</span><span class="lang" data-lang="en">Job seeking applications must be made in person using the designated form.</span></li>
+              <li><span class="lang active" data-lang="ja">日雇的又は臨時的な労働を希望される方は、特別の登録が可能です。</span><span class="lang" data-lang="pt">Pessoas que desejam trabalho diário ou temporário podem fazer um registro especial.</span><span class="lang" data-lang="en">Those seeking daily or temporary work may register under a special registration.</span></li>
+            </ol>
+            <h4 style="font-size:16px;font-weight:700;color:var(--navy);margin:24px 0 12px;background:var(--cream);padding:10px 16px;border-radius:var(--radius-sm);"><span class="lang active" data-lang="ja">第3 紹介</span><span class="lang" data-lang="pt">Artigo 3 - Apresentação</span><span class="lang" data-lang="en">Article 3 - Referral</span></h4>
+            <ol style="padding-left:20px;margin-bottom:20px;">
+              <li style="margin-bottom:8px;"><span class="lang active" data-lang="ja">求職者には、職業選択の自由の趣旨を踏まえ、希望と能力に応ずる職業に速やかに就くことができるよう極力お世話致します。</span><span class="lang" data-lang="pt">Respeitando o princípio da liberdade de escolha profissional, faremos o possível para que os candidatos encontrem rapidamente um emprego adequado aos seus desejos e habilidades.</span><span class="lang" data-lang="en">Respecting the principle of freedom of occupational choice, we will make every effort to help job seekers promptly find employment matching their wishes and abilities.</span></li>
+              <li style="margin-bottom:8px;"><span class="lang active" data-lang="ja">紹介に際しては、業務内容、賃金、労働時間等の労働条件を書面等により明示します。</span><span class="lang" data-lang="pt">Na apresentação, as condições de trabalho, incluindo conteúdo do trabalho, salário e horário, serão especificadas por escrito.</span><span class="lang" data-lang="en">Upon referral, working conditions including job description, wages, and working hours will be specified in writing.</span></li>
+              <li style="margin-bottom:8px;"><span class="lang active" data-lang="ja">紹介状を発行しますので、持参して求人者へ行っていただきます。</span><span class="lang" data-lang="pt">Emitiremos uma carta de apresentação que o candidato deve levar ao empregador.</span><span class="lang" data-lang="en">We will issue a letter of introduction to be brought to the employer.</span></li>
+              <li style="margin-bottom:8px;"><span class="lang active" data-lang="ja">同盟罷業又は作業閉鎖の行われている間は紹介を致しません。</span><span class="lang" data-lang="pt">Não faremos apresentações durante greves ou lockouts.</span><span class="lang" data-lang="en">We will not make referrals during strikes or lockouts.</span></li>
+              <li><span class="lang active" data-lang="ja">就職決定後、別表の手数料表に基づき紹介手数料を申し受けます。</span><span class="lang" data-lang="pt">Após a confirmação da contratação, será cobrada uma taxa de apresentação conforme a tabela de taxas em anexo.</span><span class="lang" data-lang="en">After employment is confirmed, a referral fee will be charged based on the attached fee schedule.</span></li>
+            </ol>
+            <h4 style="font-size:16px;font-weight:700;color:var(--navy);margin:24px 0 12px;background:var(--cream);padding:10px 16px;border-radius:var(--radius-sm);"><span class="lang active" data-lang="ja">第4 その他</span><span class="lang" data-lang="pt">Artigo 4 - Outros</span><span class="lang" data-lang="en">Article 4 - Other Matters</span></h4>
+            <ul style="padding-left:20px;list-style:disc;margin-bottom:20px;">
+              <li style="margin-bottom:8px;"><span class="lang active" data-lang="ja">苦情があった場合は、迅速・適切に対応いたします。</span><span class="lang" data-lang="pt">Em caso de reclamações, responderemos de forma rápida e adequada.</span><span class="lang" data-lang="en">In case of complaints, we will respond promptly and appropriately.</span></li>
+              <li style="margin-bottom:8px;"><span class="lang active" data-lang="ja">個人情報は個人情報適正管理規程に基づき適正に取り扱います。</span><span class="lang" data-lang="pt">As informações pessoais serão tratadas adequadamente conforme o Regulamento de Gestão Adequada de Informações Pessoais.</span><span class="lang" data-lang="en">Personal information will be handled appropriately in accordance with the Personal Information Management Regulations.</span></li>
+              <li style="margin-bottom:8px;"><span class="lang active" data-lang="ja">差別的な取扱いは一切致しません。</span><span class="lang" data-lang="pt">Não haverá nenhum tratamento discriminatório.</span><span class="lang" data-lang="en">There will be no discriminatory treatment whatsoever.</span></li>
+              <li><span class="lang active" data-lang="ja">取扱職種の範囲は、国内における全職種です。</span><span class="lang" data-lang="pt">O escopo das ocupações tratadas abrange todas as ocupações no Japão.</span><span class="lang" data-lang="en">The scope of occupations handled covers all occupations within Japan.</span></li>
+            </ul>
+            <div style="text-align:right;font-size:13px;color:var(--text-light);margin-top:24px;"><span class="lang active" data-lang="ja">2025年3月1日　代表取締役　山下 浩俊</span><span class="lang" data-lang="pt">1 de março de 2025 — Diretor Representante: Hirotoshi Yamashita</span><span class="lang" data-lang="en">March 1, 2025 — Representative Director: Hirotoshi Yamashita</span></div>
+          </div>
+        </div>
+
+        <!-- TAB3: 手数料表 -->
+        <div class="tab-content" id="placement-tab-2">
+          <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:24px;border-left:4px solid var(--gold);padding-left:16px;"><span class="lang active" data-lang="ja">手数料表（一般登録型）</span><span class="lang" data-lang="pt">Tabela de Taxas (Tipo Registro Geral)</span><span class="lang" data-lang="en">Fee Schedule (General Registration Type)</span></h3>
+          <div style="overflow-x:auto;">
+            <table style="width:100%;border-collapse:collapse;font-size:14px;line-height:1.8;">
+              <thead><tr style="background:var(--navy);color:var(--white);"><th style="padding:14px 16px;text-align:left;font-weight:600;width:40%;"><span class="lang active" data-lang="ja">サービスの種類</span><span class="lang" data-lang="pt">Tipo de Serviço</span><span class="lang" data-lang="en">Service Type</span></th><th style="padding:14px 16px;text-align:left;font-weight:600;"><span class="lang active" data-lang="ja">手数料の額・負担者</span><span class="lang" data-lang="pt">Valor da Taxa / Responsável</span><span class="lang" data-lang="en">Fee Amount / Payer</span></th></tr></thead>
+              <tbody>
+                <tr style="border-bottom:1px solid var(--border);">
+                  <td style="padding:16px;font-weight:600;color:var(--navy);"><span class="lang active" data-lang="ja">求人受理時の事務費用</span><span class="lang" data-lang="pt">Custo administrativo na aceitação da oferta de emprego</span><span class="lang" data-lang="en">Administrative fee upon job posting acceptance</span></td>
+                  <td style="padding:16px;">
+                    <span style="font-size:20px;font-weight:700;color:var(--navy);"><span class="lang active" data-lang="ja">1,000円</span><span class="lang" data-lang="pt">¥1.000</span><span class="lang" data-lang="en">¥1,000</span></span><br>
+                    <span style="font-size:13px;color:var(--text-light);"><span class="lang active" data-lang="ja">手数料負担者：求人者</span><span class="lang" data-lang="pt">Responsável pela taxa: Empregador</span><span class="lang" data-lang="en">Fee payer: Employer</span></span>
+                  </td>
+                </tr>
+                <tr style="border-bottom:1px solid var(--border);background:var(--cream);">
+                  <td style="padding:16px;font-weight:600;color:var(--navy);"><span class="lang active" data-lang="ja">職業紹介サービス</span><span class="lang" data-lang="pt">Serviço de Colocação Profissional</span><span class="lang" data-lang="en">Employment Placement Service</span><br><span style="font-size:12px;font-weight:400;color:var(--text-light);"><span class="lang active" data-lang="ja">求人者に求職者を紹介</span><span class="lang" data-lang="pt">Apresentação de candidatos a empregadores</span><span class="lang" data-lang="en">Introducing job seekers to employers</span></span></td>
+                  <td style="padding:16px;">
+                    <div style="margin-bottom:12px;"><strong><span class="lang active" data-lang="ja">期間の定めのない雇用契約の場合</span><span class="lang" data-lang="pt">Para contratos de trabalho por tempo indeterminado</span><span class="lang" data-lang="en">For indefinite-term employment contracts</span></strong><br><span class="lang active" data-lang="ja">就職後1年間に支払われる賃金の</span><span class="lang" data-lang="pt">Do salário pago no primeiro ano após a contratação:</span><span class="lang" data-lang="en">Of wages paid in the first year after employment:</span> <span style="font-size:20px;font-weight:700;color:var(--gold);">40%</span></div>
+                    <div><strong><span class="lang active" data-lang="ja">期間の定めのある雇用契約の場合</span><span class="lang" data-lang="pt">Para contratos de trabalho por tempo determinado</span><span class="lang" data-lang="en">For fixed-term employment contracts</span></strong><br><span class="lang active" data-lang="ja">雇用契約期間中（最大1年間分）に支払われる賃金の</span><span class="lang" data-lang="pt">Do salário pago durante o período do contrato (máximo 1 ano):</span><span class="lang" data-lang="en">Of wages paid during the contract period (up to 1 year):</span> <span style="font-size:20px;font-weight:700;color:var(--gold);">40%</span></div>
+                    <div style="font-size:13px;color:var(--text-light);margin-top:8px;"><span class="lang active" data-lang="ja">手数料負担者：求人者</span><span class="lang" data-lang="pt">Responsável pela taxa: Empregador</span><span class="lang" data-lang="en">Fee payer: Employer</span></div>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:16px;font-weight:600;color:var(--navy);"><span class="lang active" data-lang="ja">職業紹介の付加サービス</span><span class="lang" data-lang="pt">Serviço Adicional de Colocação</span><span class="lang" data-lang="en">Additional Placement Service</span><br><span style="font-size:12px;font-weight:400;color:var(--text-light);"><span class="lang active" data-lang="ja">専門的な相談・助言</span><span class="lang" data-lang="pt">Consultoria e aconselhamento especializado</span><span class="lang" data-lang="en">Specialized consultation and advice</span></span></td>
+                  <td style="padding:16px;">
+                    <span class="lang active" data-lang="ja">就職後1年間に支払われる賃金の</span><span class="lang" data-lang="pt">Do salário pago no primeiro ano após a contratação:</span><span class="lang" data-lang="en">Of wages paid in the first year after employment:</span> <span style="font-size:20px;font-weight:700;color:var(--gold);">40%</span><br>
+                    <span style="font-size:13px;color:var(--text-light);"><span class="lang active" data-lang="ja">手数料負担者：求人者</span><span class="lang" data-lang="pt">Responsável pela taxa: Empregador</span><span class="lang" data-lang="en">Fee payer: Employer</span></span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="background:#FFF8E7;border:1px solid #F6E05E;border-radius:var(--radius-sm);padding:16px 20px;margin-top:20px;font-size:13px;color:var(--text);">
+            <span class="lang active" data-lang="ja">上記手数料には消費税は含まれておりません。別途加算となります。</span><span class="lang" data-lang="pt">As taxas acima não incluem imposto sobre consumo. Será adicionado separadamente.</span><span class="lang" data-lang="en">The above fees do not include consumption tax. Tax will be added separately.</span>
+          </div>
+          <div style="background:var(--cream);border-radius:var(--radius-sm);padding:20px 24px;margin-top:20px;font-size:14px;line-height:1.8;color:var(--text);">
+            <strong><span class="lang active" data-lang="ja">許可番号：</span><span class="lang" data-lang="pt">Número da licença: </span><span class="lang" data-lang="en">License No.: </span></strong>22-ユ-300572<br>
+            <strong><span class="lang active" data-lang="ja">事業所名：</span><span class="lang" data-lang="pt">Nome da empresa: </span><span class="lang" data-lang="en">Company name: </span></strong><span class="lang active" data-lang="ja">有限会社ステップ・アップ</span><span class="lang" data-lang="pt">Step Up Ltda.</span><span class="lang" data-lang="en">Step Up Co., Ltd.</span><br>
+            <strong><span class="lang active" data-lang="ja">所在地：</span><span class="lang" data-lang="pt">Endereço: </span><span class="lang" data-lang="en">Address: </span></strong><span class="lang active" data-lang="ja">静岡県磐田市上本郷1006-7</span><span class="lang" data-lang="pt">1006-7 Kamihongo, Iwata, Shizuoka</span><span class="lang" data-lang="en">1006-7 Kamihongo, Iwata, Shizuoka</span>
+          </div>
+        </div>
+
+        <!-- TAB4: 返戻金制度 -->
+        <div class="tab-content" id="placement-tab-3">
+          <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:24px;border-left:4px solid var(--gold);padding-left:16px;"><span class="lang active" data-lang="ja">返戻金制度に関する事項</span><span class="lang" data-lang="pt">Sobre o Sistema de Reembolso</span><span class="lang" data-lang="en">About the Refund System</span></h3>
+          <p style="font-size:15px;line-height:2;color:var(--text);margin-bottom:24px;">
+            <span class="lang active" data-lang="ja">当社の紹介により採用決定者（求職者）が入社後、一身上の都合又は自己の責めに帰すべき事由により退職に至った場合、受領した紹介手数料の一部を下記の期間及び割合に定める金額を求人者へ返還致します。</span><span class="lang" data-lang="pt">Caso o candidato contratado por meio de nossa apresentação se demita após a admissão por motivos pessoais ou por causas atribuíveis a si próprio, devolveremos ao empregador uma parte da taxa de apresentação recebida, conforme os períodos e proporções definidos abaixo.</span><span class="lang" data-lang="en">If an employee hired through our referral resigns after joining due to personal reasons or causes attributable to themselves, we will return a portion of the referral fee received to the employer according to the periods and rates defined below.</span>
+          </p>
+          <h4 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:16px;"><span class="lang active" data-lang="ja">返金割合（入職後の暦日により計算）</span><span class="lang" data-lang="pt">Proporção de Reembolso (calculado por dias corridos após admissão)</span><span class="lang" data-lang="en">Refund Rate (calculated by calendar days after employment)</span></h4>
+          <div style="overflow-x:auto;margin-bottom:24px;">
+            <table style="width:100%;border-collapse:collapse;font-size:15px;line-height:1.7;max-width:500px;">
+              <thead><tr style="background:var(--navy);color:var(--white);"><th style="padding:12px 20px;text-align:left;font-weight:600;"><span class="lang active" data-lang="ja">退職時期</span><span class="lang" data-lang="pt">Período de Demissão</span><span class="lang" data-lang="en">Resignation Period</span></th><th style="padding:12px 20px;text-align:center;font-weight:600;"><span class="lang active" data-lang="ja">返金割合</span><span class="lang" data-lang="pt">Taxa de Reembolso</span><span class="lang" data-lang="en">Refund Rate</span></th></tr></thead>
+              <tbody>
+                <tr style="border-bottom:1px solid var(--border);"><td style="padding:14px 20px;"><span class="lang active" data-lang="ja">入社後 <strong>30日以内</strong> に退職</span><span class="lang" data-lang="pt">Demissão dentro de <strong>30 dias</strong> após admissão</span><span class="lang" data-lang="en">Resignation within <strong>30 days</strong> after joining</span></td><td style="padding:14px 20px;text-align:center;font-size:20px;font-weight:700;color:var(--gold);">80%</td></tr>
+                <tr style="border-bottom:1px solid var(--border);background:var(--cream);"><td style="padding:14px 20px;"><span class="lang active" data-lang="ja">入社後 <strong>60日以内</strong> に退職</span><span class="lang" data-lang="pt">Demissão dentro de <strong>60 dias</strong> após admissão</span><span class="lang" data-lang="en">Resignation within <strong>60 days</strong> after joining</span></td><td style="padding:14px 20px;text-align:center;font-size:20px;font-weight:700;color:var(--gold);">50%</td></tr>
+                <tr><td style="padding:14px 20px;"><span class="lang active" data-lang="ja">入社後 <strong>90日以内</strong> に退職</span><span class="lang" data-lang="pt">Demissão dentro de <strong>90 dias</strong> após admissão</span><span class="lang" data-lang="en">Resignation within <strong>90 days</strong> after joining</span></td><td style="padding:14px 20px;text-align:center;font-size:20px;font-weight:700;color:var(--gold);">20%</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="background:var(--cream);border-radius:var(--radius-sm);padding:20px 24px;margin-bottom:24px;font-size:14px;line-height:1.8;color:var(--text);">
+            <strong><span class="lang active" data-lang="ja">返金の条件：</span><span class="lang" data-lang="pt">Condições de reembolso: </span><span class="lang" data-lang="en">Refund conditions: </span></strong><span class="lang active" data-lang="ja">採用者の退職日から1か月以内に求人者が書面により報告し、退職に関する事実関係を確認できた場合に限ります。返金は事実確認後1か月以内にお支払いします。</span><span class="lang" data-lang="pt">Limitado aos casos em que o empregador relatar por escrito dentro de 1 mês da data de demissão do contratado, e os fatos relativos à demissão puderem ser confirmados. O reembolso será pago dentro de 1 mês após a confirmação dos fatos.</span><span class="lang" data-lang="en">Limited to cases where the employer reports in writing within 1 month of the employee's resignation date and the facts regarding the resignation can be confirmed. The refund will be paid within 1 month after fact confirmation.</span>
+          </div>
+          <h4 style="font-size:16px;font-weight:700;color:var(--navy);margin-bottom:12px;"><span class="lang active" data-lang="ja">返戻金を支払わない場合</span><span class="lang" data-lang="pt">Casos em que o Reembolso Não Será Pago</span><span class="lang" data-lang="en">Cases Where Refund Will Not Be Paid</span></h4>
+          <ul style="font-size:14px;line-height:2;color:var(--text);padding-left:20px;list-style:disc;margin-bottom:24px;">
+            <li><span class="lang active" data-lang="ja">雇用主による解雇、雇用主の責めに帰すべき事由による雇用契約の終了をした場合</span><span class="lang" data-lang="pt">Demissão pelo empregador ou rescisão do contrato de trabalho por causas atribuíveis ao empregador</span><span class="lang" data-lang="en">Dismissal by the employer or termination of employment contract due to causes attributable to the employer</span></li>
+            <li><span class="lang active" data-lang="ja">採用者の死亡、天災事変等の不測の事態の場合</span><span class="lang" data-lang="pt">Falecimento do contratado, desastres naturais ou outros eventos imprevistos</span><span class="lang" data-lang="en">Death of the employee, natural disasters, or other unforeseen circumstances</span></li>
+            <li><span class="lang active" data-lang="ja">その他、弊社の免責が相当と認められる場合</span><span class="lang" data-lang="pt">Outros casos em que nossa isenção de responsabilidade seja considerada razoável</span><span class="lang" data-lang="en">Other cases where our exemption from liability is deemed reasonable</span></li>
+            <li><span class="lang active" data-lang="ja">短期雇用契約に基づく求職者の採用の場合</span><span class="lang" data-lang="pt">Contratação de candidatos com base em contratos de trabalho de curto prazo</span><span class="lang" data-lang="en">Hiring of job seekers based on short-term employment contracts</span></li>
+          </ul>
+          <div style="background:#FFF8E7;border:1px solid #F6E05E;border-radius:var(--radius-sm);padding:16px 20px;font-size:13px;line-height:1.8;color:var(--text);">
+            <span class="lang active" data-lang="ja">※派遣先で就業中の派遣労働者を紹介することにより発生した紹介手数料や紹介予定派遣により発生した紹介手数料については、この返戻金制度は適用しません。<br>※返戻金制度は有料職業紹介契約書により別の定めをする場合があります。</span><span class="lang" data-lang="pt">※Este sistema de reembolso não se aplica a taxas de apresentação geradas pela apresentação de trabalhadores temporários em serviço no local de despacho, nem a taxas geradas por despacho com previsão de apresentação.<br>※O sistema de reembolso pode ter disposições diferentes conforme o contrato de colocação profissional paga.</span><span class="lang" data-lang="en">※This refund system does not apply to referral fees generated by introducing dispatched workers currently working at dispatch destinations, or referral fees generated through temp-to-perm dispatch.<br>※The refund system may have different provisions as specified in the paid employment placement contract.</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════
+     PAGE: ACCESS
+     ══════════════════════════════ -->
+<div class="page" id="page-access">
+  <section class="section" style="padding-top:60px;">
+    <div class="section-header" style="max-width:var(--max-w);margin:0 auto;padding:0 24px;">
+      <h2 class="section-title"><span class="lang active" data-lang="ja">アクセスMAP</span><span class="lang" data-lang="pt">Mapa de Acesso</span><span class="lang" data-lang="en">Access Map</span></h2>
+      <div class="section-desc"><span class="lang active" data-lang="ja">有限会社ステップ・アップへのアクセス方法をご案内します。</span><span class="lang" data-lang="pt">Como chegar à Step Up Ltda.</span><span class="lang" data-lang="en">Directions to Step Up Co., Ltd.</span></div>
+    </div>
+    <div style="max-width:var(--max-w);margin:40px auto 0;padding:0 24px;">
+      <div style="background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-md);">
+        <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=%E9%9D%99%E5%B2%A1%E7%9C%8C%E7%A3%90%E7%94%B0%E5%B8%82%E4%B8%8A%E6%9C%AC%E9%83%B71006%E7%95%AA%E5%9C%B0%EF%BC%97&zoom=16" width="100%" height="450" style="border:0;display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div style="padding:32px;">
+          <div style="display:flex;flex-wrap:wrap;gap:32px;">
+            <div style="flex:1;min-width:250px;">
+              <h3 style="font-size:18px;font-weight:700;color:var(--navy);margin-bottom:16px;"><span class="lang active" data-lang="ja">有限会社ステップ・アップ</span><span class="lang" data-lang="pt">Step Up Ltda.</span><span class="lang" data-lang="en">Step Up Co., Ltd.</span></h3>
+              <p style="font-size:15px;line-height:2;color:var(--text);">
+                〒438-0822<br>
+                <span class="lang active" data-lang="ja">静岡県磐田市上本郷1006番地７</span><span class="lang" data-lang="pt">1006-7 Kamihongo, Iwata, Shizuoka</span><span class="lang" data-lang="en">1006-7 Kamihongo, Iwata, Shizuoka</span>
+              </p>
+              <p style="margin-top:12px;font-size:15px;color:var(--text);"><span class="lang active" data-lang="ja">TEL：0538-36-6968<br>FAX：0538-36-6978</span><span class="lang" data-lang="pt">Tel: 0538-36-6968<br>Fax: 0538-36-6978</span><span class="lang" data-lang="en">Tel: 0538-36-6968<br>Fax: 0538-36-6978</span></p>
+            </div>
+            <div style="flex:1;min-width:250px;">
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <div style="display:flex;align-items:flex-start;gap:12px;padding:16px;background:var(--cream);border-radius:var(--radius-sm);">
+                  <span style="font-size:20px;">🅿</span>
+                  <div>
+                    <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:4px;"><span class="lang active" data-lang="ja">駐車場</span><span class="lang" data-lang="pt">Estacionamento</span><span class="lang" data-lang="en">Parking</span></div>
+                    <div style="font-size:13px;color:var(--text-light);"><span class="lang active" data-lang="ja">敷地内に駐車場がございます。お車でお越しの方はご利用ください。</span><span class="lang" data-lang="pt">Estacionamento disponível no local.</span><span class="lang" data-lang="en">On-site parking available.</span></div>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:flex-start;gap:12px;padding:16px;background:var(--cream);border-radius:var(--radius-sm);">
+                  <span style="font-size:20px;">🕐</span>
+                  <div>
+                    <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:4px;"><span class="lang active" data-lang="ja">営業時間</span><span class="lang" data-lang="pt">Horário</span><span class="lang" data-lang="en">Hours</span></div>
+                    <div style="font-size:13px;color:var(--text-light);"><span class="lang active" data-lang="ja">平日 8:30～17:30（土日祝日等休み）</span><span class="lang" data-lang="pt">Seg-Sex 8:30～17:30</span><span class="lang" data-lang="en">Mon-Fri 8:30-17:30</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ══════════════════════════════
+     PAGE: CONTACT
+     ══════════════════════════════ -->
+<div class="page" id="page-contact">
+  <section class="section contact-section" style="padding-top: 60px;">
+    <div class="section-inner">
+      <div class="center" style="margin-bottom: 40px;">
+        <div class="section-label">CONTACT</div>
+        <h2 class="section-title"><span class="lang active" data-lang="ja">お問い合わせ</span><span class="lang" data-lang="pt">Contato</span><span class="lang" data-lang="en">Contact Us</span></h2>
+        <div class="section-desc"><span class="lang active" data-lang="ja">人材派遣・紹介に関するご相談や、求人へのご応募など、お気軽にご連絡ください。担当者より速やかにご返答いたします。</span><span class="lang" data-lang="pt">Entre em contato para consultas ou candidaturas. Responderemos prontamente.</span><span class="lang" data-lang="en">Feel free to contact us for inquiries or applications. We will respond promptly.</span></div>
+      </div>
+      
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3 style="font-size:20px;font-weight:800;color:var(--navy);margin-bottom:24px; display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 24px;">🏢</span>
+            <span class="lang active" data-lang="ja">連絡先情報</span><span class="lang" data-lang="pt">Informações</span><span class="lang" data-lang="en">Contact Information</span>
+          </h3>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📍</div>
+            <div><div class="contact-info-label"><span class="lang active" data-lang="ja">所在地</span><span class="lang" data-lang="pt">Endereço</span><span class="lang" data-lang="en">Address</span></div><div class="contact-info-value">〒438-0822<br>静岡県磐田市上本郷1006番地７</div></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">📞</div>
+            <div><div class="contact-info-label"><span class="lang active" data-lang="ja">電話番号（代表）</span><span class="lang" data-lang="pt">Telefone</span><span class="lang" data-lang="en">Phone</span></div><div class="contact-info-value" style="font-size: 20px;">0538-36-6968</div></div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-info-icon">🕐</div>
+            <div><div class="contact-info-label"><span class="lang active" data-lang="ja">営業時間</span><span class="lang" data-lang="pt">Horário</span><span class="lang" data-lang="en">Business Hours</span></div><div class="contact-info-value"><span class="lang active" data-lang="ja">平日 8:00〜17:00</span><span class="lang" data-lang="pt">Seg-Sex 8:30～17:30</span><span class="lang" data-lang="en">Mon-Fri 8:30-17:30</span></div></div>
+          </div>
+        </div>
+        
+        <div class="contact-card" style="display:flex;flex-direction:column;align-items:center;justify-content:center; text-align:center; background: linear-gradient(135deg, var(--cream) 0%, #E2E8F0 100%);">
+          <div style="font-size: 48px; margin-bottom: 16px;">✉️</div>
+          <h3 style="font-size:20px;font-weight:800;color:var(--navy);margin-bottom:16px;">
+            <span class="lang active" data-lang="ja">Webからのお問い合わせ</span><span class="lang" data-lang="pt">Contato via Web</span><span class="lang" data-lang="en">Online Inquiry</span>
+          </h3>
+          <p style="font-size:14px;color:var(--text);margin-bottom:24px; line-height: 1.6;">
+            <span class="lang active" data-lang="ja">24時間受け付けております。<br>以下のフォームより必要事項をご入力ください。</span>
+            <span class="lang" data-lang="pt">Aberto 24 horas. Preencha o formulário abaixo.</span>
+            <span class="lang" data-lang="en">Open 24 hours. Please fill out the form below.</span>
+          </p>
+          <a class="btn btn-navy" href="#" target="_blank" style="width: 100%; max-width: 300px;">
+            <span class="lang active" data-lang="ja">お問い合わせフォームを開く ↗</span><span class="lang" data-lang="pt">Abrir Formulário ↗</span><span class="lang" data-lang="en">Open Form ↗</span>
+          </a>
+          <p style="font-size:12px;color:var(--text-light);margin-top:16px">※ Google Formsを使用しています</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">STEP・UP</div>
+        <div class="footer-brand-sub">有限会社ステップ・アップ</div>
+      </div>
+      <div class="footer-links">
+        <a class="footer-link" onclick="showPage('home')"><span class="lang active" data-lang="ja">ホーム</span><span class="lang" data-lang="pt">Início</span><span class="lang" data-lang="en">Home</span></a>
+        <a class="footer-link" onclick="showPage('about')"><span class="lang active" data-lang="ja">会社概要</span><span class="lang" data-lang="pt">Empresa</span><span class="lang" data-lang="en">About</span></a>
+        <a class="footer-link" onclick="showPage('services')"><span class="lang active" data-lang="ja">事業案内</span><span class="lang" data-lang="pt">Serviços</span><span class="lang" data-lang="en">Services</span></a>
+        <a class="footer-link" onclick="showPage('recruit')"><span class="lang active" data-lang="ja">採用情報</span><span class="lang" data-lang="pt">Vagas</span><span class="lang" data-lang="en">Careers</span></a>
+        <a class="footer-link" onclick="showPage('dispatch-system')"><span class="lang active" data-lang="ja">派遣事業制度</span><span class="lang" data-lang="pt">Sistema de Despacho</span><span class="lang" data-lang="en">Dispatch System</span></a>
+        <a class="footer-link" onclick="showPage('placement-system')"><span class="lang active" data-lang="ja">職業紹介制度</span><span class="lang" data-lang="pt">Sistema de Colocação</span><span class="lang" data-lang="en">Placement System</span></a>
+        <a class="footer-link" onclick="showPage('access')"><span class="lang active" data-lang="ja">アクセス</span><span class="lang" data-lang="pt">Acesso</span><span class="lang" data-lang="en">Access</span></a>
+        <a class="footer-link" onclick="showPage('contact')"><span class="lang active" data-lang="ja">お問い合わせ</span><span class="lang" data-lang="pt">Contato</span><span class="lang" data-lang="en">Contact</span></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 有限会社ステップ・アップ / Step Up Co., Ltd. All rights reserved.<br>
+      <a onclick="document.getElementById('privacy-modal').style.display='flex'" style="color:var(--gold-light);cursor:pointer;font-size:12px;font-family:'Noto Sans JP',sans-serif;text-decoration:underline;margin-top:8px;display:inline-block;"><span class="lang active" data-lang="ja">プライバシーポリシー</span><span class="lang" data-lang="pt">Política de Privacidade</span><span class="lang" data-lang="en">Privacy Policy</span></a>
+    </div>
+  </div>
+</footer>
+
+<!-- プライバシーポリシー モーダル -->
+<div id="privacy-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:24px;" onclick="if(event.target===this)this.style.display='none'">
+  <div style="background:var(--white);border-radius:var(--radius);max-width:720px;width:100%;max-height:85vh;overflow-y:auto;padding:48px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <button onclick="document.getElementById('privacy-modal').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--text-light);width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:var(--transition);" onmouseover="this.style.background='var(--cream)'" onmouseout="this.style.background='none'">&times;</button>
+    <h2 style="font-size:24px;font-weight:800;color:var(--navy);margin-bottom:8px;"><span class="lang active" data-lang="ja">プライバシーポリシー</span><span class="lang" data-lang="pt">Política de Privacidade</span><span class="lang" data-lang="en">Privacy Policy</span></h2>
+    <p style="font-size:13px;color:var(--text-light);margin-bottom:32px;"><span class="lang active" data-lang="ja">Privacy Policy</span><span class="lang" data-lang="pt">Privacy Policy</span><span class="lang" data-lang="en">Privacy Policy</span></p>
+    <div style="font-size:14px;line-height:2;color:var(--text);">
+      <p style="margin-bottom:24px;"><span class="lang active" data-lang="ja">有限会社ステップ・アップ（以下「当社」といいます。）は、個人情報の重要性を認識し、個人情報の保護に関する法律その他関係法令等を遵守し、適切に取り扱います。</span><span class="lang" data-lang="pt">A Step Up Ltda. (doravante "a Empresa") reconhece a importância dos dados pessoais e os trata adequadamente em conformidade com a Lei de Proteção de Informações Pessoais e demais legislações aplicáveis.</span><span class="lang" data-lang="en">Step Up Co., Ltd. (hereinafter "the Company") recognizes the importance of personal information and handles it appropriately in compliance with the Act on the Protection of Personal Information and other relevant laws and regulations.</span></p>
+      <h3 style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px;border-left:3px solid var(--gold);padding-left:12px;"><span class="lang active" data-lang="ja">1. 個人情報の取得</span><span class="lang" data-lang="pt">1. Coleta de dados pessoais</span><span class="lang" data-lang="en">1. Collection of personal information</span></h3>
+      <p style="margin-bottom:20px;"><span class="lang active" data-lang="ja">当社は、適法かつ公正な手段により、業務上必要な範囲で個人情報を取得します。</span><span class="lang" data-lang="pt">A Empresa coleta dados pessoais por meios legais e justos, dentro do escopo necessário para suas operações.</span><span class="lang" data-lang="en">The Company collects personal information by lawful and fair means, within the scope necessary for its business operations.</span></p>
+      <h3 style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px;border-left:3px solid var(--gold);padding-left:12px;"><span class="lang active" data-lang="ja">2. 個人情報の利用目的</span><span class="lang" data-lang="pt">2. Finalidade de uso dos dados pessoais</span><span class="lang" data-lang="en">2. Purpose of use of personal information</span></h3>
+      <p style="margin-bottom:8px;"><span class="lang active" data-lang="ja">当社は、取得した個人情報を、以下の目的の範囲内で利用します。</span><span class="lang" data-lang="pt">A Empresa utiliza os dados pessoais coletados dentro do escopo das seguintes finalidades.</span><span class="lang" data-lang="en">The Company uses collected personal information within the scope of the following purposes.</span></p>
+      <ul style="padding-left:20px;list-style:disc;margin-bottom:20px;">
+        <li><span class="lang active" data-lang="ja">お問い合わせへの対応</span><span class="lang" data-lang="pt">Resposta a consultas</span><span class="lang" data-lang="en">Responding to inquiries</span></li>
+        <li><span class="lang active" data-lang="ja">当社サービスに関するご案内、ご連絡</span><span class="lang" data-lang="pt">Informações e comunicações sobre nossos serviços</span><span class="lang" data-lang="en">Providing information and communications regarding our services</span></li>
+        <li><span class="lang active" data-lang="ja">お取引先との契約の締結および履行</span><span class="lang" data-lang="pt">Celebração e execução de contratos com parceiros comerciais</span><span class="lang" data-lang="en">Conclusion and performance of contracts with business partners</span></li>
+        <li><span class="lang active" data-lang="ja">採用応募者への連絡および採用選考</span><span class="lang" data-lang="pt">Contato com candidatos e processo seletivo</span><span class="lang" data-lang="en">Contacting job applicants and conducting recruitment screening</span></li>
+        <li><span class="lang active" data-lang="ja">従業員の雇用管理および労務管理</span><span class="lang" data-lang="pt">Gestão de emprego e administração de pessoal</span><span class="lang" data-lang="en">Employment management and labor administration of employees</span></li>
+        <li><span class="lang active" data-lang="ja">法令に基づく手続への対応</span><span class="lang" data-lang="pt">Cumprimento de procedimentos legais</span><span class="lang" data-lang="en">Compliance with legally required procedures</span></li>
+        <li><span class="lang active" data-lang="ja">その他、上記に付随する業務</span><span class="lang" data-lang="pt">Outras atividades relacionadas às acima</span><span class="lang" data-lang="en">Other operations incidental to the above</span></li>
+      </ul>
+      <h3 style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px;border-left:3px solid var(--gold);padding-left:12px;"><span class="lang active" data-lang="ja">3. 第三者提供</span><span class="lang" data-lang="pt">3. Fornecimento a terceiros</span><span class="lang" data-lang="en">3. Third-party disclosure</span></h3>
+      <p style="margin-bottom:20px;"><span class="lang active" data-lang="ja">当社は、法令に基づく場合その他正当な理由がある場合を除き、本人の同意なく個人情報を第三者に提供しません。</span><span class="lang" data-lang="pt">A Empresa não fornece dados pessoais a terceiros sem o consentimento do titular, exceto quando exigido por lei ou por outro motivo legítimo.</span><span class="lang" data-lang="en">The Company will not provide personal information to third parties without the consent of the individual, except when required by law or for other legitimate reasons.</span></p>
+      <h3 style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px;border-left:3px solid var(--gold);padding-left:12px;"><span class="lang active" data-lang="ja">4. 安全管理</span><span class="lang" data-lang="pt">4. Gestão de segurança</span><span class="lang" data-lang="en">4. Security management</span></h3>
+      <p style="margin-bottom:20px;"><span class="lang active" data-lang="ja">当社は、個人情報の漏えい、滅失、毀損等を防止するため、必要かつ適切な安全管理措置を講じます。</span><span class="lang" data-lang="pt">A Empresa toma medidas de segurança necessárias e apropriadas para prevenir vazamento, perda ou dano de dados pessoais.</span><span class="lang" data-lang="en">The Company takes necessary and appropriate security measures to prevent leakage, loss, or damage of personal information.</span></p>
+      <h3 style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px;border-left:3px solid var(--gold);padding-left:12px;"><span class="lang active" data-lang="ja">5. 委託先の監督</span><span class="lang" data-lang="pt">5. Supervisão de subcontratados</span><span class="lang" data-lang="en">5. Supervision of contractors</span></h3>
+      <p style="margin-bottom:20px;"><span class="lang active" data-lang="ja">当社は、利用目的の達成に必要な範囲で個人情報の取扱いを外部に委託する場合、委託先に対し必要かつ適切な監督を行います。</span><span class="lang" data-lang="pt">Quando a Empresa terceiriza o tratamento de dados pessoais dentro do escopo necessário para atingir a finalidade de uso, realiza supervisão necessária e apropriada sobre o subcontratado.</span><span class="lang" data-lang="en">When the Company outsources the handling of personal information to the extent necessary to achieve the purpose of use, it exercises necessary and appropriate supervision over the contractor.</span></p>
+      <h3 style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px;border-left:3px solid var(--gold);padding-left:12px;"><span class="lang active" data-lang="ja">6. 開示・訂正・利用停止等</span><span class="lang" data-lang="pt">6. Divulgação, correção e suspensão de uso</span><span class="lang" data-lang="en">6. Disclosure, correction, and suspension of use</span></h3>
+      <p style="margin-bottom:20px;"><span class="lang active" data-lang="ja">当社は、本人から自己の個人情報について、開示、訂正、利用停止等の請求があった場合には、法令に従い適切に対応します。</span><span class="lang" data-lang="pt">Quando o titular solicitar divulgação, correção ou suspensão de uso de seus dados pessoais, a Empresa responderá adequadamente conforme a legislação.</span><span class="lang" data-lang="en">When an individual requests disclosure, correction, or suspension of use of their personal information, the Company will respond appropriately in accordance with the law.</span></p>
+      <h3 style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px;border-left:3px solid var(--gold);padding-left:12px;"><span class="lang active" data-lang="ja">7. 継続的改善</span><span class="lang" data-lang="pt">7. Melhoria contínua</span><span class="lang" data-lang="en">7. Continuous improvement</span></h3>
+      <p style="margin-bottom:20px;"><span class="lang active" data-lang="ja">当社は、個人情報の取扱いについて継続的に見直し、その改善に努めます。</span><span class="lang" data-lang="pt">A Empresa revisa continuamente o tratamento de dados pessoais e se esforça para melhorá-lo.</span><span class="lang" data-lang="en">The Company continuously reviews its handling of personal information and strives to improve it.</span></p>
+      <h3 style="font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px;border-left:3px solid var(--gold);padding-left:12px;"><span class="lang active" data-lang="ja">8. お問い合わせ窓口</span><span class="lang" data-lang="pt">8. Canal de consultas</span><span class="lang" data-lang="en">8. Contact for inquiries</span></h3>
+      <p style="margin-bottom:24px;"><span class="lang active" data-lang="ja">個人情報の取扱いに関するお問い合わせは、下記までご連絡ください。</span><span class="lang" data-lang="pt">Para consultas sobre o tratamento de dados pessoais, entre em contato pelo canal abaixo.</span><span class="lang" data-lang="en">For inquiries regarding the handling of personal information, please contact us at the following.</span></p>
+      <div style="background:var(--cream);border-radius:var(--radius-sm);padding:20px 24px;margin-bottom:24px;">
+        <strong><span class="lang active" data-lang="ja">有限会社ステップ・アップ</span><span class="lang" data-lang="pt">Step Up Ltda.</span><span class="lang" data-lang="en">Step Up Co., Ltd.</span></strong><br>
+        <span class="lang active" data-lang="ja">住所：静岡県磐田市上本郷1006番地7</span><span class="lang" data-lang="pt">Endereço: 1006-7 Kamihongo, Iwata, Shizuoka</span><span class="lang" data-lang="en">Address: 1006-7 Kamihongo, Iwata, Shizuoka</span><br>
+        <span class="lang active" data-lang="ja">電話番号：0538-36-6968</span><span class="lang" data-lang="pt">Telefone: 0538-36-6968</span><span class="lang" data-lang="en">Phone: 0538-36-6968</span>
+      </div>
+      <div style="font-size:12px;color:var(--text-light);text-align:right;">
+        <span class="lang active" data-lang="ja">制定日：平成22年11月20日</span><span class="lang" data-lang="pt">Data de criação: 20 de novembro de 2010</span><span class="lang" data-lang="en">Established: November 20, 2010</span><br>
+        <span class="lang active" data-lang="ja">改定日：2026年3月24日</span><span class="lang" data-lang="pt">Data de revisão: 24 de março de 2026</span><span class="lang" data-lang="en">Revised: March 24, 2026</span><br>
+        <span class="lang active" data-lang="ja">有限会社ステップ・アップ　代表取締役　山下 浩俊</span><span class="lang" data-lang="pt">Step Up Ltda. — Diretor Representante: Hirotoshi Yamashita</span><span class="lang" data-lang="en">Step Up Co., Ltd. — Representative Director: Hirotoshi Yamashita</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ── Slideshow ── */
+var slideIndex=0;
+var slides=document.querySelectorAll('.hero-slide');
+var dots=document.querySelectorAll('.hero-dot');
+
+function goSlide(n){
+  if(slides.length === 0) return;
+  slides.forEach(function(s){s.classList.remove('active')});
+  if(dots.length > 0) dots.forEach(function(d){d.classList.remove('active')});
+  
+  slideIndex=n;
+  slides[slideIndex].classList.add('active');
+  if(dots.length > 0) dots[slideIndex].classList.add('active');
+}
+
+function nextSlide(){
+  if(slides.length === 0) return;
+  goSlide((slideIndex+1)%slides.length);
+}
+setInterval(nextSlide, 6000);
+
+/* ── 言語切り替え ── */
+var currentLang='ja';
+function switchLang(lang){
+  currentLang=lang;
+  document.querySelectorAll('.lang').forEach(function(el){
+    el.classList.toggle('active', el.dataset.lang === lang);
+  });
+  document.querySelectorAll('.lang-btn').forEach(function(b){
+    b.classList.toggle('active', b.textContent.trim() === (lang==='ja'?'JP':lang==='pt'?'BR':'EN'));
+  });
+  document.documentElement.lang = lang==='ja'?'ja':lang==='pt'?'pt-BR':'en';
+}
+
+/* ── ページ(タブ)切り替え ── */
+function switchTab(btn, prefix){
+  var nav = btn.parentElement;
+  var btns = nav.querySelectorAll('.tab-btn');
+  var idx = Array.prototype.indexOf.call(btns, btn);
+  btns.forEach(function(b){b.classList.remove('active')});
+  btn.classList.add('active');
+  var container = nav.parentElement;
+  container.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active')});
+  document.getElementById(prefix+'-tab-'+idx).classList.add('active');
+}
+
+function showPage(page){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
+  document.getElementById('page-'+page).classList.add('active');
+  
+  document.querySelectorAll('.nav-link').forEach(function(l){
+    l.classList.toggle('active', l.dataset.page === page);
+  });
+  
+  window.scrollTo({top:0, behavior:'smooth'});
+  document.getElementById('main-nav').classList.remove('open');
+}
+
+/* ── スマホメニュー切り替え ── */
+function toggleMenu(){
+  document.getElementById('main-nav').classList.toggle('open');
+}
+</script>
+</body>
+</html>
