@@ -102,6 +102,7 @@ ul{list-style:none}
 .lang-panel-item .check{opacity:0;color:var(--gold);font-size:14px}
 .lang-panel-item.active .check{opacity:1}
 
+.header-right-icons{display:flex;align-items:center;gap:8px}
 .menu-toggle{display:none;background:none;border:none;cursor:pointer;width:40px;height:40px;flex-direction:column;align-items:center;justify-content:center;gap:6px}
 .menu-toggle span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:var(--transition)}
 
@@ -115,19 +116,20 @@ ul{list-style:none}
 }
 @media(max-width:768px){
   .header{background:linear-gradient(135deg,#0B1D30 0%,#1A365D 100%)}
-  .header-inner{height:auto;padding:14px 16px;display:grid;grid-template-columns:1fr auto;grid-template-rows:1fr;gap:0;overflow:visible;align-items:center}
-  .nav{top:auto;grid-column:1/-1}
-  .logo-mark{grid-column:1;grid-row:1;gap:0;align-self:center;flex-direction:column;align-items:flex-start}
-  .logo-top-row{gap:8px;margin-bottom:6px}
+  .header-inner{height:auto;padding:10px 14px;display:flex;flex-wrap:wrap;gap:0;overflow:visible;align-items:center}
+  .nav{top:auto;width:100%}
+  .logo-mark{flex:1;gap:10px;align-items:center;flex-direction:row}
+  .logo-top-row{gap:10px;align-items:center}
   .logo-mark img{height:26px !important;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3))}
-  .logo-text-block{padding-left:12px;border-left:2px solid var(--gold);margin-top:0}
-  .logo-company-name{font-size:12px;letter-spacing:0.1em;color:var(--white)}
-  .logo-sub-text{font-size:8px;letter-spacing:0.12em;margin-top:2px;color:rgba(255,255,255,0.55)}
-  .lang-switch{margin:0;grid-column:2;grid-row:1;justify-self:end;align-self:start;margin-top:2px}
-  .globe-btn{width:28px;height:28px;font-size:13px;border:1px solid rgba(255,255,255,0.2)}
+  .logo-text-block{padding-left:10px;border-left:1px solid rgba(255,255,255,0.25);margin-top:0}
+  .logo-company-name{font-size:11px;letter-spacing:0.08em;color:var(--white)}
+  .logo-sub-text{font-size:7.5px;letter-spacing:0.1em;margin-top:1px;color:rgba(255,255,255,0.5)}
+  .header-right-icons{display:flex;flex-direction:column;align-items:center;gap:6px;margin-left:auto}
+  .lang-switch{margin:0}
+  .globe-btn{width:26px;height:26px;font-size:12px;border:1px solid rgba(255,255,255,0.2)}
   .lang-panel{right:-10px;min-width:180px;padding:16px 20px}
-  .menu-toggle{grid-column:2;grid-row:1;justify-self:end;align-self:end;width:28px;height:28px;gap:4px;margin:0 0 2px 0}
-  .menu-toggle span{width:18px;height:1.5px;border-radius:1px}
+  .menu-toggle{width:28px;height:28px;gap:5px;margin:0}
+  .menu-toggle span{width:20px;height:1.5px;border-radius:1px}
 }
 
 /* ═══ BUTTONS ═══ */
@@ -410,28 +412,30 @@ h3[style*="font-size:20px"]{font-size:17px !important}
       <a class="nav-link" data-page="access" onclick="showPage('access')"><span class="lang active" data-lang="ja">アクセス</span><span class="lang" data-lang="pt">Acesso</span><span class="lang" data-lang="en">Access</span></a>
       <a class="nav-link" data-page="contact" onclick="showPage('contact')"><span class="lang active" data-lang="ja">お問い合わせ</span><span class="lang" data-lang="pt">Contato</span><span class="lang" data-lang="en">Contact</span></a>
     </nav>
-    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
-    <div class="lang-switch">
-      <button class="globe-btn" onclick="toggleLangPanel()" aria-label="Language">&#x1F310;</button>
-      <div class="lang-panel" id="lang-panel">
-        <button class="lang-panel-close" onclick="toggleLangPanel()">&times;</button>
-        <h4>Language</h4>
-        <div class="lang-panel-item active" onclick="switchLang('ja');toggleLangPanel()">
-          <span class="flag">&#127471;&#127477;</span>
-          <span class="lang-label">日本語</span>
-          <span class="check">&#10003;</span>
-        </div>
-        <div class="lang-panel-item" onclick="switchLang('pt');toggleLangPanel()">
-          <span class="flag">&#127463;&#127479;</span>
-          <span class="lang-label">Português</span>
-          <span class="check">&#10003;</span>
-        </div>
-        <div class="lang-panel-item" onclick="switchLang('en');toggleLangPanel()">
-          <span class="flag">&#127468;&#127463;</span>
-          <span class="lang-label">English</span>
-          <span class="check">&#10003;</span>
+    <div class="header-right-icons">
+      <div class="lang-switch">
+        <button class="globe-btn" onclick="toggleLangPanel()" aria-label="Language">&#x1F310;</button>
+        <div class="lang-panel" id="lang-panel">
+          <button class="lang-panel-close" onclick="toggleLangPanel()">&times;</button>
+          <h4>Language</h4>
+          <div class="lang-panel-item active" onclick="switchLang('ja');toggleLangPanel()">
+            <span class="flag">&#127471;&#127477;</span>
+            <span class="lang-label">日本語</span>
+            <span class="check">&#10003;</span>
+          </div>
+          <div class="lang-panel-item" onclick="switchLang('pt');toggleLangPanel()">
+            <span class="flag">&#127463;&#127479;</span>
+            <span class="lang-label">Português</span>
+            <span class="check">&#10003;</span>
+          </div>
+          <div class="lang-panel-item" onclick="switchLang('en');toggleLangPanel()">
+            <span class="flag">&#127468;&#127463;</span>
+            <span class="lang-label">English</span>
+            <span class="check">&#10003;</span>
+          </div>
         </div>
       </div>
+      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>
