@@ -51,6 +51,7 @@ ul{list-style:none}
   top:0;
   z-index:100;
   box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  overflow:visible;
 }
 .header-inner{max-width:1440px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:88px}
 .logo-mark{display:flex;align-items:center;gap:16px;cursor:pointer}
@@ -84,21 +85,22 @@ ul{list-style:none}
 .nav-link:hover::after, .nav-link.active::after { width: 60%; }
 .nav-link:hover, .nav-link.active{color:var(--white);}
 
-.lang-switch{display:flex;gap:4px;margin-left:16px; padding-left: 16px; border-left: 1px solid rgba(255,255,255,0.2);}
-.lang-btn{
-  padding:6px 12px;
-  border-radius:99px;
-  border:1px solid rgba(255,255,255,0.3);
-  background:transparent;
-  color:rgba(255,255,255,0.7);
-  font-size:11px;
-  font-weight:700;
-  cursor:pointer;
-  transition:var(--transition);
-  font-family:'DM Serif Display',serif;
-}
-.lang-btn:hover { border-color: var(--gold-light); color: var(--gold-light); }
-.lang-btn.active{background:var(--gold);border-color:var(--gold);color:var(--white)}
+.lang-switch{position:relative;margin-left:16px;}
+.globe-btn{background:none;border:1px solid rgba(255,255,255,0.3);border-radius:50%;width:38px;height:38px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--transition);color:rgba(255,255,255,0.7);font-size:18px;}
+.globe-btn:hover{border-color:var(--gold-light);color:var(--gold-light)}
+.globe-btn.open{border-color:var(--gold);color:var(--gold)}
+.lang-panel{display:none;position:absolute;top:calc(100% + 12px);right:0;background:var(--white);border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.15);padding:20px 24px;min-width:200px;z-index:1001}
+.lang-panel.show{display:block;animation:fadeIn 0.2s ease}
+.lang-panel-close{position:absolute;top:10px;right:14px;background:none;border:none;font-size:18px;cursor:pointer;color:#999;transition:var(--transition)}
+.lang-panel-close:hover{color:var(--navy)}
+.lang-panel h4{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid #eee}
+.lang-panel-item{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;cursor:pointer;transition:var(--transition);color:var(--text);font-size:14px;font-weight:500}
+.lang-panel-item:hover{background:rgba(var(--gold-rgb,212,175,55),0.1)}
+.lang-panel-item.active{color:var(--gold);font-weight:700}
+.lang-panel-item .flag{font-size:18px}
+.lang-panel-item .lang-label{flex:1}
+.lang-panel-item .check{opacity:0;color:var(--gold);font-size:14px}
+.lang-panel-item.active .check{opacity:1}
 
 .menu-toggle{display:none;background:none;border:none;cursor:pointer;width:40px;height:40px;flex-direction:column;align-items:center;justify-content:center;gap:6px}
 .menu-toggle span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:var(--transition)}
@@ -109,20 +111,20 @@ ul{list-style:none}
   .nav.open{display:flex}
   .nav-link{padding:16px;width:100%;font-size:15px; text-align: center;}
   .nav-link::after { display: none; }
-  .lang-switch{margin:0; border-left:none; padding-left:0;}
+  .lang-switch{margin:0;}
 }
 @media(max-width:768px){
   .header{background:linear-gradient(135deg,#0B1D30 0%,#1A365D 100%)}
-  .header-inner{height:auto;padding:12px 16px;flex-wrap:wrap;gap:0;overflow:hidden}
+  .header-inner{height:auto;padding:12px 16px;flex-wrap:wrap;gap:0;overflow:visible}
   .nav{top:100px}
   .logo-mark{width:100%;gap:10px;order:1;margin-bottom:8px}
   .logo-mark img{height:32px !important;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3))}
   .logo-text-block{padding-left:10px;border-left:2px solid var(--gold);flex:1}
   .logo-company-name{font-size:11px;letter-spacing:0.06em;color:var(--white)}
   .logo-sub-text{font-size:9px;letter-spacing:0.08em;margin-top:3px;color:var(--gold-light)}
-  .lang-switch{order:2;gap:3px;margin-left:0;padding-left:0;border-left:none}
-  .lang-btn{padding:4px 10px;font-size:9px;border-radius:4px;border:1px solid rgba(255,255,255,0.2)}
-  .lang-btn.active{background:var(--gold);border-color:var(--gold)}
+  .lang-switch{order:2;margin-left:auto}
+  .globe-btn{width:34px;height:34px;font-size:16px}
+  .lang-panel{right:-10px;min-width:180px;padding:16px 20px}
   .menu-toggle{order:3;width:40px;height:40px;gap:5px;margin-left:auto}
   .menu-toggle span{width:22px;height:2px;border-radius:1px}
 }
@@ -408,9 +410,26 @@ h3[style*="font-size:20px"]{font-size:17px !important}
       <a class="nav-link" data-page="contact" onclick="showPage('contact')"><span class="lang active" data-lang="ja">お問い合わせ</span><span class="lang" data-lang="pt">Contato</span><span class="lang" data-lang="en">Contact</span></a>
     </nav>
     <div class="lang-switch">
-      <button class="lang-btn active" onclick="switchLang('ja')">JP</button>
-      <button class="lang-btn" onclick="switchLang('pt')">BR</button>
-      <button class="lang-btn" onclick="switchLang('en')">EN</button>
+      <button class="globe-btn" onclick="toggleLangPanel()" aria-label="Language">&#x1F310;</button>
+      <div class="lang-panel" id="lang-panel">
+        <button class="lang-panel-close" onclick="toggleLangPanel()">&times;</button>
+        <h4>Language</h4>
+        <div class="lang-panel-item active" onclick="switchLang('ja');toggleLangPanel()">
+          <span class="flag">&#127471;&#127477;</span>
+          <span class="lang-label">日本語</span>
+          <span class="check">&#10003;</span>
+        </div>
+        <div class="lang-panel-item" onclick="switchLang('pt');toggleLangPanel()">
+          <span class="flag">&#127463;&#127479;</span>
+          <span class="lang-label">Português</span>
+          <span class="check">&#10003;</span>
+        </div>
+        <div class="lang-panel-item" onclick="switchLang('en');toggleLangPanel()">
+          <span class="flag">&#127468;&#127463;</span>
+          <span class="lang-label">English</span>
+          <span class="check">&#10003;</span>
+        </div>
+      </div>
     </div>
     <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
@@ -1345,11 +1364,27 @@ function switchLang(lang){
   document.querySelectorAll('.lang').forEach(function(el){
     el.classList.toggle('active', el.dataset.lang === lang);
   });
-  document.querySelectorAll('.lang-btn').forEach(function(b){
-    b.classList.toggle('active', b.textContent.trim() === (lang==='ja'?'JP':lang==='pt'?'BR':'EN'));
+  document.querySelectorAll('.lang-panel-item').forEach(function(item){
+    var itemLang = item.querySelector('.lang-label').textContent.trim();
+    var isActive = (lang==='ja'&&itemLang==='日本語')||(lang==='pt'&&itemLang==='Português')||(lang==='en'&&itemLang==='English');
+    item.classList.toggle('active', isActive);
   });
   document.documentElement.lang = lang==='ja'?'ja':lang==='pt'?'pt-BR':'en';
 }
+function toggleLangPanel(){
+  var panel=document.getElementById('lang-panel');
+  var btn=document.querySelector('.globe-btn');
+  panel.classList.toggle('show');
+  btn.classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  var panel=document.getElementById('lang-panel');
+  var sw=document.querySelector('.lang-switch');
+  if(panel.classList.contains('show')&&!sw.contains(e.target)){
+    panel.classList.remove('show');
+    document.querySelector('.globe-btn').classList.remove('open');
+  }
+});
 
 /* ── ページ(タブ)切り替え ── */
 function switchTab(btn, prefix){
