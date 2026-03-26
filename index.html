@@ -160,6 +160,7 @@ ul{list-style:none}
 .header-right-icons{display:none;align-items:center;gap:12px;position:relative;z-index:1001;flex-shrink:0}
 .menu-toggle{display:none;background:none;border:none;cursor:pointer;width:40px;height:40px;flex-direction:column;align-items:center;justify-content:center;gap:6px}
 .menu-toggle span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:var(--transition)}
+.menu-label{font-size:8px;color:rgba(255,255,255,0.7);letter-spacing:0.5px;margin-top:2px;font-family:'Inter',sans-serif}
 
 @media(max-width:1024px){
   .header-right-icons{display:flex}
@@ -493,7 +494,7 @@ h3[style*="font-size:20px"]{font-size:17px !important}
           </div>
         </div>
       </div>
-      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+      <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span><span class="menu-label">Menu</span></button>
     </div>
     <!-- Row 2: Desktop Nav (hidden on mobile) -->
     <div class="header-row-nav">
