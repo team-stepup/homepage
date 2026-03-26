@@ -100,13 +100,15 @@ ul{list-style:none}
   box-shadow: 0 4px 20px rgba(0,0,0,0.15);
   overflow:visible;
 }
-.header-inner{max-width:1440px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:88px}
+.header-inner{max-width:1440px;margin:0 auto;display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;align-items:center;padding:8px 24px;gap:0 16px}
+.header-row-top{display:contents}
+.header-row-nav{grid-column:1/-1;display:flex;justify-content:flex-end;border-top:1px solid rgba(255,255,255,0.1);padding-top:6px;margin-top:4px}
 .logo-mark{display:flex;align-items:center;gap:16px;cursor:pointer}
 .logo-top-row{display:flex;align-items:center;gap:14px}
 .logo-text-block{display:flex;flex-direction:column;padding-left:14px;border-left:2px solid var(--gold)}
 .logo-company-name{font-size:18px;color:var(--white);font-weight:600;letter-spacing:0.15em;white-space:nowrap;font-family:'Shippori Mincho',serif;line-height:1.2}
-.logo-sub-text{font-size:11.5px;color:var(--gold-light);font-weight:500;letter-spacing:0.2em;margin-top:4px;white-space:nowrap;font-family:'Shippori Mincho',serif}
-.sub-break{display:none}
+.logo-sub-text{font-size:11px;color:var(--gold-light);font-weight:500;letter-spacing:0.15em;margin-top:3px;font-family:'Shippori Mincho',serif;line-height:1.5}
+.sub-break{display:block}
 .company-prefix{font-size:inherit}
 .ja-only{display:inline-flex}
 .training-features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px}
@@ -115,38 +117,25 @@ ul{list-style:none}
 .privacy-modal-content{padding:20px 16px !important;max-height:90vh !important;border-radius:12px !important}
 }
 
-.nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(6px);flex-direction:column;padding:0;z-index:999;align-items:center;justify-content:center;overflow:hidden}
-.nav.open{display:flex}
-.nav-inner-popup{background:var(--white);border-radius:16px;padding:24px 24px;width:calc(100% - 64px);max-width:380px;box-shadow:0 20px 60px rgba(0,0,0,0.3);display:flex;flex-direction:column;gap:0;max-height:calc(100vh - 100px);overflow-y:auto}
-/* menu-toggle always visible - set in default styles */
+/* Mobile popup nav - hidden by default */
+.nav{display:none}
+.nav-inner-popup{display:contents}
+/* Desktop nav row */
+.nav-desktop{display:flex;align-items:center;gap:4px;justify-content:flex-end}
 .nav-link{
-  color:var(--navy);
-  font-size:14px;
+  color:rgba(255,255,255,0.85);
+  font-size:12px;
   font-weight:500;
-  padding:13px 16px;
+  padding:8px 10px;
   transition:var(--transition);
   cursor:pointer;
   white-space:nowrap;
-  text-align:center;
-  width:100%;
-  border-bottom:1px solid var(--border);
-  letter-spacing:0.06em;
+  letter-spacing:0.04em;
+  position:relative;
 }
-.nav-link:last-child{border-bottom:none}
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 2px;
-  background: var(--gold-light);
-  transition: var(--transition);
-}
-.nav-link::after{display:none}
-.nav-link:hover{color:var(--gold);background:var(--cream);border-radius:8px}
-.nav-link.active{color:var(--navy);font-weight:700}
+.nav-link::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:2px;background:var(--gold-light);transition:var(--transition);border-radius:2px}
+.nav-link:hover::after,.nav-link.active::after{width:60%}
+.nav-link:hover,.nav-link.active{color:var(--white)}
 
 .lang-switch{position:relative;margin-left:16px;}
 .globe-btn{background:none;border:none;width:auto;height:auto;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:var(--transition);color:rgba(255,255,255,0.7);padding:4px 8px;gap:2px;}
@@ -168,21 +157,31 @@ ul{list-style:none}
 .lang-panel-item.active .check{opacity:1}
 
 .header-right-icons{display:flex;align-items:center;gap:12px;position:relative;z-index:1001;flex-shrink:0}
-.menu-toggle{display:flex;background:none;border:none;cursor:pointer;width:40px;height:40px;flex-direction:column;align-items:center;justify-content:center;gap:6px}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer;width:40px;height:40px;flex-direction:column;align-items:center;justify-content:center;gap:6px}
 .menu-toggle span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:var(--transition)}
 
-/* 1280px以下は全てデフォルトのポップアップメニューを使用 */
+@media(max-width:1024px){
+  .menu-toggle{display:flex}
+  .header-row-nav{display:none}
+  .nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(6px);flex-direction:column;padding:0;z-index:999;align-items:center;justify-content:center;overflow:hidden}
+  .nav.open{display:flex}
+  .nav-inner-popup{display:flex;flex-direction:column;background:var(--white);border-radius:16px;padding:20px 20px;width:calc(100% - 64px);max-width:380px;box-shadow:0 20px 60px rgba(0,0,0,0.3);max-height:calc(100vh - 100px);overflow-y:auto}
+  .nav-link{color:var(--navy);font-size:14px;padding:12px 16px;text-align:center;border-bottom:1px solid var(--border);width:100%}
+  .nav-link:last-child{border-bottom:none}
+  .nav-link::after{display:none}
+  .nav-link:hover{color:var(--gold);background:var(--cream);border-radius:8px}
+  .nav-link.active{color:var(--navy);font-weight:700}
+}
 @media(max-width:768px){
   .header{background:linear-gradient(135deg,#0B1D30 0%,#1A365D 100%)}
-  .header-inner{height:auto;padding:10px 10px 10px 14px;display:flex;flex-wrap:wrap;gap:0;overflow:visible;align-items:center}
-  .nav{top:0 !important;left:0 !important;right:0 !important;bottom:0 !important;width:100%;justify-content:center !important;align-items:center !important;padding:0 !important}
+  .header-inner{height:auto;padding:10px 14px;display:flex;flex-wrap:wrap;gap:0;overflow:visible;align-items:center}
   .logo-mark{flex:1;gap:6px;align-items:center;flex-direction:row;margin-right:8px;overflow:hidden}
   .logo-top-row{gap:6px;align-items:center}
   .logo-mark img{height:24px !important;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));flex-shrink:0}
   .logo-text-block{padding-left:8px;border-left:2px solid var(--gold);margin-top:0;min-width:0;overflow:hidden}
-  .logo-company-name{font-size:11px;letter-spacing:0.05em;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .logo-company-name .company-prefix{font-size:8.5px;opacity:0.85}
-  .logo-sub-text{font-size:7.5px;letter-spacing:0.05em;margin-top:2px;color:var(--gold-light);white-space:nowrap;line-height:1.4;overflow:hidden;text-overflow:ellipsis}
+  .logo-company-name{font-size:12px;letter-spacing:0.05em;color:var(--white);white-space:nowrap}
+  .logo-company-name .company-prefix{font-size:9px;opacity:0.85}
+  .logo-sub-text{font-size:8px;letter-spacing:0.05em;margin-top:2px;color:var(--gold-light);white-space:normal;line-height:1.4}
   .header-right-icons{display:flex;flex-direction:column;align-items:center;gap:8px;margin-left:auto;padding-right:0}
   .lang-switch{margin:0}
   .globe-btn{padding:2px 4px;gap:1px}
@@ -448,8 +447,9 @@ h3[style*="font-size:20px"]{font-size:17px !important}
 <!-- ═══ HEADER ═══ -->
 <header class="header">
   <div class="header-inner">
+    <!-- Row 1: Logo + Language + Hamburger -->
     <div class="logo-mark" onclick="showPage('home')">
-      <img src="logo.png" alt="STEP・UP" style="height: 54px; width: auto;">
+      <img src="logo.png" alt="STEP・UP" style="height: 48px; width: auto;">
       <div class="logo-text-block">
         <span class="logo-company-name">
           <span class="lang active" data-lang="ja"><span class="company-prefix">有限会社</span> ステップ・アップ</span>
@@ -458,23 +458,11 @@ h3[style*="font-size:20px"]{font-size:17px !important}
         </span>
         <div class="logo-sub-text">
           <span class="lang active" data-lang="ja">総合人材サービス<span class="sub-break"></span>通訳翻訳業務</span>
-          <span class="lang" data-lang="pt">Serviços de RH<span class="sub-break"></span>・Interpretação e Tradução</span>
-          <span class="lang" data-lang="en">HR Services<span class="sub-break"></span>・Interpretation & Translation</span>
+          <span class="lang" data-lang="pt">Serviços de RH<span class="sub-break"></span>Interpretação e Tradução</span>
+          <span class="lang" data-lang="en">HR Services<span class="sub-break"></span>Interpretation & Translation</span>
         </div>
       </div>
     </div>
-    <nav class="nav" id="main-nav" onclick="if(event.target===this){toggleMenu()}">
-      <div class="nav-inner-popup">
-        <a class="nav-link active" data-page="home" onclick="showPage('home')"><span class="lang active" data-lang="ja">ホーム</span><span class="lang" data-lang="pt">Início</span><span class="lang" data-lang="en">Home</span></a>
-        <a class="nav-link" data-page="about" onclick="showPage('about')"><span class="lang active" data-lang="ja">会社概要</span><span class="lang" data-lang="pt">Empresa</span><span class="lang" data-lang="en">About</span></a>
-        <a class="nav-link" data-page="services" onclick="showPage('services')"><span class="lang active" data-lang="ja">事業案内</span><span class="lang" data-lang="pt">Serviços</span><span class="lang" data-lang="en">Services</span></a>
-        <a class="nav-link" data-page="recruit" onclick="showPage('recruit')"><span class="lang active" data-lang="ja">採用情報</span><span class="lang" data-lang="pt">Vagas</span><span class="lang" data-lang="en">Careers</span></a>
-        <a class="nav-link" data-page="dispatch-system" onclick="showPage('dispatch-system')"><span class="lang active" data-lang="ja">派遣事業制度</span><span class="lang" data-lang="pt">Sistema de Despacho</span><span class="lang" data-lang="en">Dispatch System</span></a>
-        <a class="nav-link" data-page="placement-system" onclick="showPage('placement-system')"><span class="lang active" data-lang="ja">職業紹介制度</span><span class="lang" data-lang="pt">Sistema de Colocação</span><span class="lang" data-lang="en">Placement System</span></a>
-        <a class="nav-link" data-page="access" onclick="showPage('access')"><span class="lang active" data-lang="ja">アクセス</span><span class="lang" data-lang="pt">Acesso</span><span class="lang" data-lang="en">Access</span></a>
-        <a class="nav-link" data-page="contact" onclick="showPage('contact')"><span class="lang active" data-lang="ja">お問い合わせ</span><span class="lang" data-lang="pt">Contato</span><span class="lang" data-lang="en">Contact</span></a>
-      </div>
-    </nav>
     <div class="header-right-icons">
       <div class="lang-switch">
         <button class="globe-btn" onclick="toggleLangPanel()" aria-label="Language"><span class="globe-icon">&#x1F310;</span><span class="globe-label">Language</span></button>
@@ -500,7 +488,33 @@ h3[style*="font-size:20px"]{font-size:17px !important}
       </div>
       <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
+    <!-- Row 2: Desktop Nav (hidden on mobile) -->
+    <div class="header-row-nav">
+      <nav class="nav-desktop">
+        <a class="nav-link active" data-page="home" onclick="showPage('home')"><span class="lang active" data-lang="ja">ホーム</span><span class="lang" data-lang="pt">Início</span><span class="lang" data-lang="en">Home</span></a>
+        <a class="nav-link" data-page="about" onclick="showPage('about')"><span class="lang active" data-lang="ja">会社概要</span><span class="lang" data-lang="pt">Empresa</span><span class="lang" data-lang="en">About</span></a>
+        <a class="nav-link" data-page="services" onclick="showPage('services')"><span class="lang active" data-lang="ja">事業案内</span><span class="lang" data-lang="pt">Serviços</span><span class="lang" data-lang="en">Services</span></a>
+        <a class="nav-link" data-page="recruit" onclick="showPage('recruit')"><span class="lang active" data-lang="ja">採用情報</span><span class="lang" data-lang="pt">Vagas</span><span class="lang" data-lang="en">Careers</span></a>
+        <a class="nav-link" data-page="dispatch-system" onclick="showPage('dispatch-system')"><span class="lang active" data-lang="ja">派遣事業制度</span><span class="lang" data-lang="pt">Sistema de Despacho</span><span class="lang" data-lang="en">Dispatch System</span></a>
+        <a class="nav-link" data-page="placement-system" onclick="showPage('placement-system')"><span class="lang active" data-lang="ja">職業紹介制度</span><span class="lang" data-lang="pt">Sistema de Colocação</span><span class="lang" data-lang="en">Placement System</span></a>
+        <a class="nav-link" data-page="access" onclick="showPage('access')"><span class="lang active" data-lang="ja">アクセス</span><span class="lang" data-lang="pt">Acesso</span><span class="lang" data-lang="en">Access</span></a>
+        <a class="nav-link" data-page="contact" onclick="showPage('contact')"><span class="lang active" data-lang="ja">お問い合わせ</span><span class="lang" data-lang="pt">Contato</span><span class="lang" data-lang="en">Contact</span></a>
+      </nav>
+    </div>
   </div>
+  <!-- Mobile Popup Nav -->
+  <nav class="nav" id="main-nav" onclick="if(event.target===this){toggleMenu()}">
+    <div class="nav-inner-popup">
+      <a class="nav-link" data-page="home" onclick="showPage('home')"><span class="lang active" data-lang="ja">ホーム</span><span class="lang" data-lang="pt">Início</span><span class="lang" data-lang="en">Home</span></a>
+      <a class="nav-link" data-page="about" onclick="showPage('about')"><span class="lang active" data-lang="ja">会社概要</span><span class="lang" data-lang="pt">Empresa</span><span class="lang" data-lang="en">About</span></a>
+      <a class="nav-link" data-page="services" onclick="showPage('services')"><span class="lang active" data-lang="ja">事業案内</span><span class="lang" data-lang="pt">Serviços</span><span class="lang" data-lang="en">Services</span></a>
+      <a class="nav-link" data-page="recruit" onclick="showPage('recruit')"><span class="lang active" data-lang="ja">採用情報</span><span class="lang" data-lang="pt">Vagas</span><span class="lang" data-lang="en">Careers</span></a>
+      <a class="nav-link" data-page="dispatch-system" onclick="showPage('dispatch-system')"><span class="lang active" data-lang="ja">派遣事業制度</span><span class="lang" data-lang="pt">Sistema de Despacho</span><span class="lang" data-lang="en">Dispatch System</span></a>
+      <a class="nav-link" data-page="placement-system" onclick="showPage('placement-system')"><span class="lang active" data-lang="ja">職業紹介制度</span><span class="lang" data-lang="pt">Sistema de Colocação</span><span class="lang" data-lang="en">Placement System</span></a>
+      <a class="nav-link" data-page="access" onclick="showPage('access')"><span class="lang active" data-lang="ja">アクセス</span><span class="lang" data-lang="pt">Acesso</span><span class="lang" data-lang="en">Access</span></a>
+      <a class="nav-link" data-page="contact" onclick="showPage('contact')"><span class="lang active" data-lang="ja">お問い合わせ</span><span class="lang" data-lang="pt">Contato</span><span class="lang" data-lang="en">Contact</span></a>
+    </div>
+  </nav>
 </header>
 
 <!-- ══════════════════════════════
