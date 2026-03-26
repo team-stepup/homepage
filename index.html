@@ -186,14 +186,15 @@ ul{list-style:none}
   .logo-company-name{font-size:15px;letter-spacing:0.02em;color:var(--white);white-space:nowrap}
   .logo-company-name .company-prefix{font-size:10px;opacity:0.85}
   .logo-sub-text{font-size:11px;letter-spacing:0.02em;margin-top:3px;color:var(--gold-light);white-space:normal;line-height:1.4}
-  .header-right-icons{display:flex;flex-direction:row;align-items:center;gap:8px;margin-left:auto;flex-shrink:0}
+  .header-right-icons{display:flex;flex-direction:row;align-items:flex-start;gap:4px;margin-left:auto;flex-shrink:0}
   .lang-switch{margin:0}
-  .globe-btn{padding:2px 4px;gap:1px}
-  .globe-icon{font-size:16px}
+  .globe-btn{padding:0;gap:1px;display:flex;flex-direction:column;align-items:center}
+  .globe-icon{font-size:18px;line-height:1}
   .globe-label{font-size:7px}
   .lang-panel{right:-10px;min-width:180px;padding:16px 20px}
-  .menu-toggle{width:28px;height:28px;gap:5px;margin:0}
-  .menu-toggle span{width:20px;height:1.5px;border-radius:1px}
+  .menu-toggle{display:flex;width:auto;height:auto;gap:3px;margin:0;padding:0}
+  .menu-toggle span{width:18px;height:1.5px;border-radius:1px}
+  .menu-label{font-size:7px;margin-top:0}
 }
 @media(min-width:1025px){
   .header-right-icons{display:none !important}
