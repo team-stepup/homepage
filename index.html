@@ -159,29 +159,29 @@ ul{list-style:none}
 .lang-panel-item .check{opacity:0;color:var(--gold);font-size:14px}
 .lang-panel-item.active .check{opacity:1}
 
-.header-right-icons{display:flex;align-items:center;gap:8px}
+.header-right-icons{display:flex;align-items:center;gap:8px;position:relative;z-index:1001}
 .menu-toggle{display:none;background:none;border:none;cursor:pointer;width:40px;height:40px;flex-direction:column;align-items:center;justify-content:center;gap:6px}
 .menu-toggle span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:var(--transition)}
 
 @media(max-width:1100px){
   .menu-toggle{display:flex}
-  .nav{display:none;position:absolute;top:88px;left:0;right:0;background:var(--navy-mid);flex-direction:column;padding:20px;border-bottom:1px solid rgba(255,255,255,0.1);box-shadow:0 10px 30px rgba(0,0,0,0.3);flex:unset;margin-right:0;max-height:calc(100vh - 88px);overflow-y:auto}
+  .nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:linear-gradient(160deg,#0B1D30 0%,#1A365D 50%,#0B1D30 100%);flex-direction:column;padding:16px 32px 24px;border-bottom:none;box-shadow:none;flex:unset;margin-right:0;overflow-y:auto;z-index:999;align-items:center;justify-content:flex-start;gap:0}
   .nav.open{display:flex}
-  .nav-link{padding:16px;width:100%;font-size:15px; text-align: center;}
+  .nav-link{padding:10px 20px;width:100%;font-size:13.5px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.06);letter-spacing:0.1em}
   .nav-link::after { display: none; }
   .lang-switch{margin-left:auto}
 }
 @media(max-width:768px){
   .header{background:linear-gradient(135deg,#0B1D30 0%,#1A365D 100%)}
   .header-inner{height:auto;padding:10px 10px 10px 14px;display:flex;flex-wrap:wrap;gap:0;overflow:visible;align-items:center}
-  .nav{top:auto;width:100%}
-  .logo-mark{flex:1;gap:10px;align-items:center;flex-direction:row;margin-right:12px;overflow:hidden}
-  .logo-top-row{gap:10px;align-items:center}
-  .logo-mark img{height:26px !important;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));flex-shrink:0}
+  .nav{top:0;left:0;right:0;bottom:0;width:100%;padding-top:56px}
+  .logo-mark{flex:1;gap:8px;align-items:center;flex-direction:row;margin-right:48px;overflow:hidden}
+  .logo-top-row{gap:8px;align-items:center}
+  .logo-mark img{height:28px !important;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));flex-shrink:0}
   .logo-text-block{padding-left:10px;border-left:2px solid var(--gold);margin-top:0;min-width:0}
-  .logo-company-name{font-size:10.5px;letter-spacing:0.06em;color:var(--white);white-space:nowrap}
-  .logo-company-name .company-prefix{font-size:8px}
-  .logo-sub-text{font-size:7px;letter-spacing:0.08em;margin-top:1px;color:var(--gold-light);white-space:normal;line-height:1.6}
+  .logo-company-name{font-size:12px;letter-spacing:0.08em;color:var(--white);white-space:nowrap}
+  .logo-company-name .company-prefix{font-size:9px;opacity:0.85}
+  .logo-sub-text{font-size:8.5px;letter-spacing:0.1em;margin-top:3px;color:var(--gold-light);white-space:normal;line-height:1.5}
   .logo-sub-text .sub-break{display:block}
   .header-right-icons{display:flex;flex-direction:column;align-items:center;gap:8px;margin-left:auto;padding-right:0}
   .lang-switch{margin:0}
@@ -290,15 +290,15 @@ h3[style*="font-size:20px"]{font-size:17px !important}
 }
 
 /* ═══ TABS ═══ */
-.tab-nav{display:flex;gap:4px;margin-bottom:32px;border-bottom:2px solid var(--border);padding-bottom:0}
-.tab-btn{padding:14px 24px;font-size:14px;font-weight:600;color:var(--text-light);background:none;border:none;cursor:pointer;position:relative;transition:var(--transition);white-space:nowrap}
-.tab-btn::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:3px;background:transparent;transition:var(--transition);border-radius:3px 3px 0 0}
-.tab-btn:hover{color:var(--navy)}
-.tab-btn.active{color:var(--navy)}
-.tab-btn.active::after{background:var(--gold)}
+.tab-nav{display:flex;gap:8px;margin-bottom:32px;padding:6px;background:var(--cream);border-radius:12px;border:1px solid var(--border)}
+.tab-btn{padding:12px 24px;font-size:14px;font-weight:600;color:var(--text-light);background:none;border:none;cursor:pointer;position:relative;transition:all 0.3s ease;white-space:nowrap;border-radius:8px}
+.tab-btn::after{display:none}
+.tab-btn:hover{color:var(--navy);background:rgba(11,29,48,0.05)}
+.tab-btn.active{color:var(--white);background:var(--navy);box-shadow:0 2px 8px rgba(11,29,48,0.25)}
+.tab-btn.active::after{display:none}
 .tab-content{display:none;animation:fadeIn 0.3s ease}
 .tab-content.active{display:block}
-@media(max-width:768px){.tab-nav{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;mask-image:linear-gradient(to right,black 85%,transparent 100%);-webkit-mask-image:linear-gradient(to right,black 85%,transparent 100%);padding-bottom:4px}.tab-nav::-webkit-scrollbar{display:none}.tab-btn{padding:10px 16px;font-size:12px;flex-shrink:0}
+@media(max-width:768px){.tab-nav{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;mask-image:linear-gradient(to right,black 85%,transparent 100%);-webkit-mask-image:linear-gradient(to right,black 85%,transparent 100%);padding:4px;gap:4px;border-radius:10px}.tab-nav::-webkit-scrollbar{display:none}.tab-btn{padding:8px 14px;font-size:11px;flex-shrink:0;border-radius:6px}
 .license-item{flex-wrap:wrap}.license-label{width:auto;min-width:unset;text-align:left;text-align-last:left}
 }
 
@@ -457,7 +457,7 @@ h3[style*="font-size:20px"]{font-size:17px !important}
           <span class="lang" data-lang="en">Step Up Co., Ltd.</span>
         </span>
         <div class="logo-sub-text">
-          <span class="lang active" data-lang="ja">総合人材サービス<span class="sub-break"></span>・通訳翻訳業務</span>
+          <span class="lang active" data-lang="ja">総合人材サービス<span class="sub-break"></span>通訳翻訳業務</span>
           <span class="lang" data-lang="pt">Serviços de RH<span class="sub-break"></span>・Interpretação e Tradução</span>
           <span class="lang" data-lang="en">HR Services<span class="sub-break"></span>・Interpretation & Translation</span>
         </div>
