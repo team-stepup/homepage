@@ -175,6 +175,8 @@ ul{list-style:none}
   .nav-link::after{display:none}
   .nav-link:hover{color:var(--gold);background:var(--cream);border-radius:8px}
   .nav-link.active{color:var(--navy);font-weight:700}
+  .form-desktop{display:none !important}
+  .form-mobile{display:block !important}
 }
 @media(max-width:768px){
   .header{background:linear-gradient(135deg,#0B1D30 0%,#1A365D 100%)}
@@ -1351,7 +1353,20 @@ h3[style*="font-size:20px"]{font-size:17px !important}
             <span class="lang" data-lang="pt">Aberto 24 horas. Preencha o formulário.</span>
             <span class="lang" data-lang="en">Open 24 hours. Please fill out the form.</span>
           </p>
-          <iframe src="https://forms.office.com/Pages/ResponsePage.aspx?id=LNiSjCwvekGerXYCFoi8nRpRkQ2WGP9EqDv3b82_9DVUQktLNk42OFZJOU9QODZBMVdOV1VYVUdYVy4u&embed=true" style="width:100%;height:1600px;border:none;margin-top:12px;background:#fff;" scrolling="yes" allow="fullscreen" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"></iframe>
+          <iframe class="form-desktop" src="https://forms.office.com/Pages/ResponsePage.aspx?id=LNiSjCwvekGerXYCFoi8nRpRkQ2WGP9EqDv3b82_9DVUQktLNk42OFZJOU9QODZBMVdOV1VYVUdYVy4u&embed=true" style="width:100%;height:1600px;border:none;margin-top:12px;background:#fff;" allow="fullscreen"></iframe>
+          <div class="form-mobile" style="display:none;text-align:center;padding:40px 20px;">
+            <div style="font-size:48px;margin-bottom:16px;">📝</div>
+            <p style="font-size:16px;color:var(--navy);margin-bottom:24px;line-height:1.6;">
+              <span class="lang active" data-lang="ja">下のボタンからお問い合わせフォームを開いてください</span>
+              <span class="lang" data-lang="pt">Abra o formulário de contato pelo botão abaixo</span>
+              <span class="lang" data-lang="en">Please open the contact form using the button below</span>
+            </p>
+            <a href="https://forms.office.com/r/XquctHgTMq" target="_blank" style="display:inline-block;background:var(--gold);color:var(--white);padding:16px 40px;border-radius:99px;font-size:16px;font-weight:600;text-decoration:none;box-shadow:0 4px 16px rgba(195,163,97,0.4);letter-spacing:0.05em;">
+              <span class="lang active" data-lang="ja">📩 お問い合わせフォームを開く</span>
+              <span class="lang" data-lang="pt">📩 Abrir formulário</span>
+              <span class="lang" data-lang="en">📩 Open contact form</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
