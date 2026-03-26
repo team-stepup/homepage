@@ -540,6 +540,25 @@ h3[style*="font-size:20px"]{font-size:17px !important}
       <div class="header-right-icons-desktop">
         <div class="lang-switch">
           <button class="globe-btn" onclick="toggleLangPanel()" aria-label="Language"><span class="globe-icon">&#x1F310;</span><span class="globe-label">Language</span></button>
+          <div class="lang-panel" id="lang-panel-desktop">
+            <button class="lang-panel-close" onclick="toggleLangPanel()">&times;</button>
+            <h4>Language</h4>
+            <div class="lang-panel-item active" onclick="switchLang('ja');toggleLangPanel()">
+              <span class="flag">&#127471;&#127477;</span>
+              <span class="lang-label">日本語</span>
+              <span class="check">&#10003;</span>
+            </div>
+            <div class="lang-panel-item" onclick="switchLang('pt');toggleLangPanel()">
+              <span class="flag">&#127463;&#127479;</span>
+              <span class="lang-label">Português</span>
+              <span class="check">&#10003;</span>
+            </div>
+            <div class="lang-panel-item" onclick="switchLang('en');toggleLangPanel()">
+              <span class="flag">&#127468;&#127463;</span>
+              <span class="lang-label">English</span>
+              <span class="check">&#10003;</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -1541,17 +1560,18 @@ function switchLang(lang){
   document.querySelectorAll('.ja-only').forEach(function(el){el.style.display=lang==='ja'?'inline-flex':'none';});
 }
 function toggleLangPanel(){
-  var panel=document.getElementById('lang-panel');
-  var btn=document.querySelector('.globe-btn');
-  panel.classList.toggle('show');
-  btn.classList.toggle('open');
+  var panels=document.querySelectorAll('.lang-panel');
+  var btns=document.querySelectorAll('.globe-btn');
+  panels.forEach(function(p){p.classList.toggle('show')});
+  btns.forEach(function(b){b.classList.toggle('open')});
 }
 document.addEventListener('click',function(e){
-  var panel=document.getElementById('lang-panel');
-  var sw=document.querySelector('.lang-switch');
-  if(panel.classList.contains('show')&&!sw.contains(e.target)){
-    panel.classList.remove('show');
-    document.querySelector('.globe-btn').classList.remove('open');
+  var panels=document.querySelectorAll('.lang-panel');
+  var isInside=false;
+  document.querySelectorAll('.lang-switch').forEach(function(sw){if(sw.contains(e.target))isInside=true});
+  if(!isInside){
+    panels.forEach(function(p){p.classList.remove('show')});
+    document.querySelectorAll('.globe-btn').forEach(function(b){b.classList.remove('open')});
   }
 });
 
