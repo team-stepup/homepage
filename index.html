@@ -106,6 +106,14 @@ ul{list-style:none}
 .logo-text-block{display:flex;flex-direction:column;padding-left:14px;border-left:2px solid var(--gold)}
 .logo-company-name{font-size:18px;color:var(--white);font-weight:600;letter-spacing:0.15em;white-space:nowrap;font-family:'Shippori Mincho',serif;line-height:1.2}
 .logo-sub-text{font-size:11.5px;color:var(--gold-light);font-weight:500;letter-spacing:0.2em;margin-top:4px;white-space:nowrap;font-family:'Shippori Mincho',serif}
+.sub-break{display:none}
+.company-prefix{font-size:inherit}
+.ja-only{display:inline-flex}
+.training-features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px}
+@media(max-width:768px){.training-features{grid-template-columns:1fr;gap:12px}
+.privacy-modal-overlay{padding:8px !important}
+.privacy-modal-content{padding:20px 16px !important;max-height:90vh !important;border-radius:12px !important}
+}
 
 .nav{display:flex;align-items:center;gap:6px;flex:1;justify-content:flex-end;margin-right:12px}
 .nav-link{
@@ -157,7 +165,7 @@ ul{list-style:none}
 
 @media(max-width:1100px){
   .menu-toggle{display:flex}
-  .nav{display:none;position:absolute;top:88px;left:0;right:0;background:var(--navy-mid);flex-direction:column;padding:20px;border-bottom:1px solid rgba(255,255,255,0.1);box-shadow:0 10px 30px rgba(0,0,0,0.3);flex:unset;margin-right:0}
+  .nav{display:none;position:absolute;top:88px;left:0;right:0;background:var(--navy-mid);flex-direction:column;padding:20px;border-bottom:1px solid rgba(255,255,255,0.1);box-shadow:0 10px 30px rgba(0,0,0,0.3);flex:unset;margin-right:0;max-height:calc(100vh - 88px);overflow-y:auto}
   .nav.open{display:flex}
   .nav-link{padding:16px;width:100%;font-size:15px; text-align: center;}
   .nav-link::after { display: none; }
@@ -172,7 +180,9 @@ ul{list-style:none}
   .logo-mark img{height:26px !important;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.3));flex-shrink:0}
   .logo-text-block{padding-left:10px;border-left:2px solid var(--gold);margin-top:0;min-width:0}
   .logo-company-name{font-size:10.5px;letter-spacing:0.06em;color:var(--white);white-space:nowrap}
-  .logo-sub-text{font-size:7px;letter-spacing:0.08em;margin-top:1px;color:var(--gold-light);white-space:nowrap}
+  .logo-company-name .company-prefix{font-size:8px}
+  .logo-sub-text{font-size:7px;letter-spacing:0.08em;margin-top:1px;color:var(--gold-light);white-space:normal;line-height:1.6}
+  .logo-sub-text .sub-break{display:block}
   .header-right-icons{display:flex;flex-direction:column;align-items:center;gap:8px;margin-left:auto;padding-right:0}
   .lang-switch{margin:0}
   .globe-btn{padding:2px 4px;gap:1px}
@@ -227,7 +237,7 @@ ul{list-style:none}
   .hero-slide::after { background:linear-gradient(180deg, rgba(11,29,48,0.15) 0%, rgba(11,29,48,0.5) 100%); }
   .hero-content{ padding: 60px 20px 100px; align-items: flex-end;}
   .hero-text{ padding: 32px 24px; width: 100%; border-left: none; border-top: 4px solid var(--gold); }
-  .hero h1 { font-size: 32px; }
+  .hero h1 { font-size: 26px; }
 }
 
 /* ═══ SECTION BASE ═══ */
@@ -288,7 +298,7 @@ h3[style*="font-size:20px"]{font-size:17px !important}
 .tab-btn.active::after{background:var(--gold)}
 .tab-content{display:none;animation:fadeIn 0.3s ease}
 .tab-content.active{display:block}
-@media(max-width:768px){.tab-nav{overflow-x:auto;-webkit-overflow-scrolling:touch}.tab-btn{padding:10px 12px;font-size:12px}
+@media(max-width:768px){.tab-nav{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;mask-image:linear-gradient(to right,black 85%,transparent 100%);-webkit-mask-image:linear-gradient(to right,black 85%,transparent 100%);padding-bottom:4px}.tab-nav::-webkit-scrollbar{display:none}.tab-btn{padding:10px 16px;font-size:12px;flex-shrink:0}
 .license-item{flex-wrap:wrap}.license-label{width:auto;min-width:unset;text-align:left;text-align-last:left}
 }
 
@@ -442,14 +452,14 @@ h3[style*="font-size:20px"]{font-size:17px !important}
       <img src="logo.png" alt="STEP・UP" style="height: 54px; width: auto;">
       <div class="logo-text-block">
         <span class="logo-company-name">
-          <span class="lang active" data-lang="ja">有限会社 ステップ・アップ</span>
+          <span class="lang active" data-lang="ja"><span class="company-prefix">有限会社</span> ステップ・アップ</span>
           <span class="lang" data-lang="pt">Step Up Ltda.</span>
           <span class="lang" data-lang="en">Step Up Co., Ltd.</span>
         </span>
         <div class="logo-sub-text">
-          <span class="lang active" data-lang="ja">総合人材サービス・通訳翻訳業務</span>
-          <span class="lang" data-lang="pt">Serviços de RH・Interpretação e Tradução</span>
-          <span class="lang" data-lang="en">HR Services・Interpretation & Translation</span>
+          <span class="lang active" data-lang="ja">総合人材サービス<span class="sub-break"></span>・通訳翻訳業務</span>
+          <span class="lang" data-lang="pt">Serviços de RH<span class="sub-break"></span>・Interpretação e Tradução</span>
+          <span class="lang" data-lang="en">HR Services<span class="sub-break"></span>・Interpretation & Translation</span>
         </div>
       </div>
     </div>
@@ -870,8 +880,8 @@ h3[style*="font-size:20px"]{font-size:17px !important}
         <!-- タブナビ -->
         <div class="tab-nav">
           <button class="tab-btn active" onclick="switchTab(this,'dispatch')"><span class="lang active" data-lang="ja">制度の概要</span><span class="lang" data-lang="pt">Visão Geral do Sistema</span><span class="lang" data-lang="en">System Overview</span></button>
-          <button class="tab-btn" onclick="switchTab(this,'dispatch')"><span class="lang active" data-lang="ja">マージン率等情報</span><span class="lang" data-lang="pt">Informações de Margem</span><span class="lang" data-lang="en">Margin Rate Information</span></button>
           <button class="tab-btn" onclick="switchTab(this,'dispatch')"><span class="lang active" data-lang="ja">教育訓練について</span><span class="lang" data-lang="pt">Sobre Treinamento</span><span class="lang" data-lang="en">About Training</span></button>
+          <button class="tab-btn ja-only" onclick="switchTab(this,'dispatch')">マージン率等情報</button>
         </div>
 
         <!-- TAB1: 制度の概要 -->
@@ -937,10 +947,10 @@ h3[style*="font-size:20px"]{font-size:17px !important}
         </div>
 
         <!-- TAB2: マージン率等情報 -->
-        <div class="tab-content" id="dispatch-tab-1">
+        <div class="tab-content" id="dispatch-tab-2">
           <div style="background:var(--cream);border-radius:var(--radius-sm);padding:16px 20px;margin-bottom:32px;font-size:13px;color:var(--text-light);"><span class="lang active" data-lang="ja">情報対象期間：2025年提出 派遣事業報告書より</span><span class="lang" data-lang="pt">Período de referência: Relatório de negócios de despacho apresentado em 2025</span><span class="lang" data-lang="en">Reference period: From the dispatch business report submitted in 2025</span></div>
 
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;">
+          <div class="training-features">
             <div style="background:var(--cream);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px 16px;text-align:center;">
               <div style="font-size:11px;color:var(--text-light);margin-bottom:6px;"><span class="lang active" data-lang="ja">派遣労働者数</span><span class="lang" data-lang="pt">Nº de trabalhadores despachados</span><span class="lang" data-lang="en">No. of dispatched workers</span></div>
               <div style="font-size:24px;font-weight:700;color:var(--navy);">251<span style="font-size:13px;font-weight:400;"><span class="lang active" data-lang="ja">人</span><span class="lang" data-lang="pt"> pessoas</span><span class="lang" data-lang="en"> persons</span></span></div>
@@ -997,7 +1007,7 @@ h3[style*="font-size:20px"]{font-size:17px !important}
         </div>
 
         <!-- TAB3: 教育訓練について -->
-        <div class="tab-content" id="dispatch-tab-2">
+        <div class="tab-content" id="dispatch-tab-1">
           <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:20px;border-left:4px solid var(--gold);padding-left:16px;"><span class="lang active" data-lang="ja">キャリア形成支援制度</span><span class="lang" data-lang="pt">Sistema de apoio ao desenvolvimento de carreira</span><span class="lang" data-lang="en">Career development support system</span></h3>
           <p style="font-size:15px;line-height:2;color:var(--text);margin-bottom:24px;">
             <span class="lang active" data-lang="ja">当社では、派遣労働者のキャリアアップを支援するため、e-ラーニングシステム「クロスラーニング」による教育訓練を実施しています。<br>
@@ -1006,7 +1016,7 @@ h3[style*="font-size:20px"]{font-size:17px !important}
             Available on smartphones, PCs, and tablets, we provide <strong>8 hours of annual training, paid and free of charge</strong>.</span>
           </p>
 
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px;">
+          <div class="training-features">
             <div style="background:var(--cream);border-radius:var(--radius-sm);padding:24px;text-align:center;">
               <div style="font-size:28px;margin-bottom:8px;">📱</div>
               <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:4px;"><span class="lang active" data-lang="ja">スマホ・PC対応</span><span class="lang" data-lang="pt">Smartphone e PC</span><span class="lang" data-lang="en">Smartphone & PC</span></div>
@@ -1241,10 +1251,10 @@ h3[style*="font-size:20px"]{font-size:17px !important}
               </p>
               <p style="margin-top:12px;font-size:15px;color:var(--text);"><span class="lang active" data-lang="ja">TEL：0538-36-6968<br>FAX：0538-36-6978</span><span class="lang" data-lang="pt">Tel: 0538-36-6968<br>Fax: 0538-36-6978</span><span class="lang" data-lang="en">Tel: 0538-36-6968<br>Fax: 0538-36-6978</span></p>
             </div>
-            <div style="flex:1;min-width:250px;">
+            <div style="flex:1;min-width:0;">
               <div style="display:flex;flex-direction:column;gap:12px;">
                 <div style="display:flex;align-items:flex-start;gap:12px;padding:16px;background:var(--cream);border-radius:var(--radius-sm);">
-                  <span style="font-size:20px;">🅿</span>
+                  <span style="font-size:20px;flex-shrink:0;">🅿</span>
                   <div>
                     <div style="font-weight:700;font-size:14px;color:var(--navy);margin-bottom:4px;"><span class="lang active" data-lang="ja">駐車場</span><span class="lang" data-lang="pt">Estacionamento</span><span class="lang" data-lang="en">Parking</span></div>
                     <div style="font-size:13px;color:var(--text-light);"><span class="lang active" data-lang="ja">敷地内に駐車場がございます。お車でお越しの方はご利用ください。</span><span class="lang" data-lang="pt">Estacionamento disponível no local.</span><span class="lang" data-lang="en">On-site parking available.</span></div>
@@ -1308,7 +1318,7 @@ h3[style*="font-size:20px"]{font-size:17px !important}
             <span class="lang" data-lang="pt">Aberto 24 horas. Preencha o formulário.</span>
             <span class="lang" data-lang="en">Open 24 hours. Please fill out the form.</span>
           </p>
-          <iframe src="https://forms.office.com/r/XquctHgTMq" style="width:100%;min-height:800px;border:none;margin-top:12px;" loading="lazy"></iframe>
+          <iframe src="https://forms.office.com/r/XquctHgTMq?embed=true" style="width:100%;min-height:1200px;border:none;margin-top:12px;" loading="lazy"></iframe>
         </div>
       </div>
     </div>
@@ -1360,8 +1370,8 @@ h3[style*="font-size:20px"]{font-size:17px !important}
   </div>
 </div>
 
-<div id="privacy-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:24px;" onclick="if(event.target===this)this.style.display='none'">
-  <div style="background:var(--white);border-radius:var(--radius);max-width:720px;width:100%;max-height:85vh;overflow-y:auto;padding:48px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+<div id="privacy-modal" class="privacy-modal-overlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:24px;" onclick="if(event.target===this)this.style.display='none'">
+  <div class="privacy-modal-content" style="background:var(--white);border-radius:var(--radius);max-width:720px;width:100%;max-height:85vh;overflow-y:auto;padding:48px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
     <button onclick="document.getElementById('privacy-modal').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--text-light);width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:var(--transition);" onmouseover="this.style.background='var(--cream)'" onmouseout="this.style.background='none'">&times;</button>
     <h2 style="font-size:24px;font-weight:800;color:var(--navy);margin-bottom:8px;"><span class="lang active" data-lang="ja">プライバシーポリシー</span><span class="lang" data-lang="pt">Política de Privacidade</span><span class="lang" data-lang="en">Privacy Policy</span></h2>
     <p style="font-size:13px;color:var(--text-light);margin-bottom:32px;"><span class="lang active" data-lang="ja">Privacy Policy</span><span class="lang" data-lang="pt">Privacy Policy</span><span class="lang" data-lang="en">Privacy Policy</span></p>
@@ -1441,6 +1451,7 @@ function switchLang(lang){
     item.classList.toggle('active', isActive);
   });
   document.documentElement.lang = lang==='ja'?'ja':lang==='pt'?'pt-BR':'en';
+  document.querySelectorAll('.ja-only').forEach(function(el){el.style.display=lang==='ja'?'inline-flex':'none';});
 }
 function toggleLangPanel(){
   var panel=document.getElementById('lang-panel');
