@@ -1559,6 +1559,7 @@ function switchLang(lang){
   });
   document.documentElement.lang = lang==='ja'?'ja':lang==='pt'?'pt-BR':'en';
   document.querySelectorAll('.ja-only').forEach(function(el){el.style.display=lang==='ja'?'inline-flex':'none';});
+  loadJobs(lang);
 }
 function toggleLangPanel(){
   var panels=document.querySelectorAll('.lang-panel');
@@ -1588,9 +1589,23 @@ function switchTab(btn, prefix){
   document.getElementById(prefix+'-tab-'+idx).classList.add('active');
 }
 
-/* ── 求人スプレッドシート連携 ── */
-function loadJobs(){
-  var url='https://docs.google.com/spreadsheets/d/e/2PACX-1vRliCS98GsgbaPizhaUP4l1HuvNX0KvTjUlffO-nOh5nbgfUm5540LqexrLxP8KeRTYv77LmiH6uyi7/pub?gid=0&single=true&output=csv';
+/* ── 求人スプレッドシート連携（3言語対応） ── */
+var jobSheetUrls={
+  ja:'https://docs.google.com/spreadsheets/d/e/2PACX-1vRliCS98GsgbaPizhaUP4l1HuvNX0KvTjUlffO-nOh5nbgfUm5540LqexrLxP8KeRTYv77LmiH6uyi7/pub?gid=0&single=true&output=csv',
+  pt:'https://docs.google.com/spreadsheets/d/e/2PACX-1vRliCS98GsgbaPizhaUP4l1HuvNX0KvTjUlffO-nOh5nbgfUm5540LqexrLxP8KeRTYv77LmiH6uyi7/pub?gid=536863905&single=true&output=csv',
+  en:'https://docs.google.com/spreadsheets/d/e/2PACX-1vRliCS98GsgbaPizhaUP4l1HuvNX0KvTjUlffO-nOh5nbgfUm5540LqexrLxP8KeRTYv77LmiH6uyi7/pub?gid=839432334&single=true&output=csv'
+};
+var jobLabels={
+  ja:{wage:'時給',hours:'勤務時間',off:'休日',updated:'更新日：',apply:'応募する',none:'現在募集中の求人はありません',error:'求人情報を取得できませんでした。'},
+  pt:{wage:'Salário',hours:'Horário',off:'Folgas',updated:'Atualizado：',apply:'Candidatar-se',none:'Não há vagas disponíveis no momento',error:'Não foi possível carregar as vagas.'},
+  en:{wage:'Wage',hours:'Hours',off:'Days Off',updated:'Updated：',apply:'Apply',none:'No positions available at this time',error:'Failed to load job listings.'}
+};
+function loadJobs(lang){
+  lang=lang||'ja';
+  var url=jobSheetUrls[lang]||jobSheetUrls.ja;
+  var lb=jobLabels[lang]||jobLabels.ja;
+  var container=document.getElementById('job-list');
+  container.innerHTML='<p style="color:var(--text-light);text-align:center;padding:40px 0;">...</p>';
   fetch(url).then(function(r){return r.text()}).then(function(csv){
     var rows=csv.split('\n').map(function(r){
       var cols=[];var inQuote=false;var val='';
@@ -1601,12 +1616,10 @@ function loadJobs(){
       }
       cols.push(val.trim());return cols;
     });
-    var header=rows[0];
     /* A=No, B=職種, C=勤務地, D=時給, E=勤務時間, F=休日, G=仕事内容, H=備考, I=掲載状態, J=更新日, K=会社使用欄(非表示) */
-    var jobs=rows.slice(1).filter(function(r){return r.length>=9&&r[8]==='公開'});
-    var container=document.getElementById('job-list');
+    var jobs=rows.slice(1).filter(function(r){return r.length>=9&&(r[8]==='公開'||r[8]==='Público'||r[8]==='Public')});
     if(jobs.length===0){
-      container.innerHTML='<p style="color:var(--text-light);text-align:center;padding:40px 0;"><span class="lang active" data-lang="ja">現在募集中の求人はありません</span><span class="lang" data-lang="pt">Não há vagas disponíveis no momento</span><span class="lang" data-lang="en">No positions available at this time</span></p>';
+      container.innerHTML='<p style="color:var(--text-light);text-align:center;padding:40px 0;">'+lb.none+'</p>';
       return;
     }
     var html='';
@@ -1618,25 +1631,24 @@ function loadJobs(){
         +'<span class="job-location">📍 '+j[2]+'</span>'
         +'</div>'
         +'<div class="job-details">'
-        +'<div class="job-detail-item"><span class="job-label"><span class="lang active" data-lang="ja">時給</span><span class="lang" data-lang="pt">Salário</span><span class="lang" data-lang="en">Wage</span></span><span class="job-value job-wage">'+j[3]+'</span></div>'
-        +'<div class="job-detail-item"><span class="job-label"><span class="lang active" data-lang="ja">勤務時間</span><span class="lang" data-lang="pt">Horário</span><span class="lang" data-lang="en">Hours</span></span><span class="job-value">'+j[4]+'</span></div>'
-        +'<div class="job-detail-item"><span class="job-label"><span class="lang active" data-lang="ja">休日</span><span class="lang" data-lang="pt">Folgas</span><span class="lang" data-lang="en">Days Off</span></span><span class="job-value">'+j[5]+'</span></div>'
+        +'<div class="job-detail-item"><span class="job-label">'+lb.wage+'</span><span class="job-value job-wage">'+j[3]+'</span></div>'
+        +'<div class="job-detail-item"><span class="job-label">'+lb.hours+'</span><span class="job-value">'+j[4]+'</span></div>'
+        +'<div class="job-detail-item"><span class="job-label">'+lb.off+'</span><span class="job-value">'+j[5]+'</span></div>'
         +'</div>'
         +'<div class="job-description">'+j[6]+'</div>'
         +remarks
         +'<div class="job-footer">'
-        +'<span class="job-date"><span class="lang active" data-lang="ja">更新日：</span><span class="lang" data-lang="pt">Atualizado：</span><span class="lang" data-lang="en">Updated：</span>'+j[9]+'</span>'
-        +'<a class="btn btn-gold btn-sm" onclick="showPage(\'contact\')"><span class="lang active" data-lang="ja">応募する</span><span class="lang" data-lang="pt">Candidatar-se</span><span class="lang" data-lang="en">Apply</span></a>'
+        +'<span class="job-date">'+lb.updated+j[9]+'</span>'
+        +'<a class="btn btn-gold btn-sm" onclick="showPage(\'contact\')">'+lb.apply+'</a>'
         +'</div>'
         +'</div>';
     });
     container.innerHTML=html;
-    switchLang(document.querySelector('.lang.active').dataset.lang);
   }).catch(function(){
-    document.getElementById('job-list').innerHTML='<p style="color:var(--text-light);text-align:center;padding:40px 0;">求人情報を取得できませんでした。</p>';
+    container.innerHTML='<p style="color:var(--text-light);text-align:center;padding:40px 0;">'+lb.error+'</p>';
   });
 }
-loadJobs();
+loadJobs('ja');
 
 function showPage(page){
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
