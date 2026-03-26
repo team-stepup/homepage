@@ -398,6 +398,7 @@ h3[style*="font-size:20px"]{font-size:17px !important}
 .job-value{font-size:15px;color:var(--navy);font-weight:700}
 .job-wage{color:#D69E2E;font-size:17px}
 .job-description{padding:16px 24px;font-size:14px;color:var(--text);line-height:1.7;border-bottom:1px solid var(--border)}
+.job-remarks{padding:12px 24px;font-size:13px;color:var(--gold-dark);background:#FFF9E6;border-bottom:1px solid var(--border)}
 .job-footer{padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
 .job-date{font-size:12px;color:var(--text-light)}
 .btn-sm{padding:10px 24px;font-size:13px}
@@ -1601,7 +1602,8 @@ function loadJobs(){
       cols.push(val.trim());return cols;
     });
     var header=rows[0];
-    var jobs=rows.slice(1).filter(function(r){return r.length>=7&&r[6]==='公開'});
+    /* A=No, B=職種, C=勤務地, D=時給, E=勤務時間, F=休日, G=仕事内容, H=備考, I=掲載状態, J=更新日, K=会社使用欄(非表示) */
+    var jobs=rows.slice(1).filter(function(r){return r.length>=9&&r[8]==='公開'});
     var container=document.getElementById('job-list');
     if(jobs.length===0){
       container.innerHTML='<p style="color:var(--text-light);text-align:center;padding:40px 0;"><span class="lang active" data-lang="ja">現在募集中の求人はありません</span><span class="lang" data-lang="pt">Não há vagas disponíveis no momento</span><span class="lang" data-lang="en">No positions available at this time</span></p>';
@@ -1609,19 +1611,21 @@ function loadJobs(){
     }
     var html='';
     jobs.forEach(function(j){
+      var remarks=j[7]?'<div class="job-remarks">'+j[7]+'</div>':'';
       html+='<div class="job-card">'
         +'<div class="job-card-header">'
-        +'<h4 class="job-title">'+j[0]+'</h4>'
-        +'<span class="job-location">📍 '+j[1]+'</span>'
+        +'<h4 class="job-title">'+j[1]+'</h4>'
+        +'<span class="job-location">📍 '+j[2]+'</span>'
         +'</div>'
         +'<div class="job-details">'
-        +'<div class="job-detail-item"><span class="job-label"><span class="lang active" data-lang="ja">時給</span><span class="lang" data-lang="pt">Salário</span><span class="lang" data-lang="en">Wage</span></span><span class="job-value job-wage">'+j[2]+'</span></div>'
-        +'<div class="job-detail-item"><span class="job-label"><span class="lang active" data-lang="ja">勤務時間</span><span class="lang" data-lang="pt">Horário</span><span class="lang" data-lang="en">Hours</span></span><span class="job-value">'+j[3]+'</span></div>'
-        +'<div class="job-detail-item"><span class="job-label"><span class="lang active" data-lang="ja">休日</span><span class="lang" data-lang="pt">Folgas</span><span class="lang" data-lang="en">Days Off</span></span><span class="job-value">'+j[4]+'</span></div>'
+        +'<div class="job-detail-item"><span class="job-label"><span class="lang active" data-lang="ja">時給</span><span class="lang" data-lang="pt">Salário</span><span class="lang" data-lang="en">Wage</span></span><span class="job-value job-wage">'+j[3]+'</span></div>'
+        +'<div class="job-detail-item"><span class="job-label"><span class="lang active" data-lang="ja">勤務時間</span><span class="lang" data-lang="pt">Horário</span><span class="lang" data-lang="en">Hours</span></span><span class="job-value">'+j[4]+'</span></div>'
+        +'<div class="job-detail-item"><span class="job-label"><span class="lang active" data-lang="ja">休日</span><span class="lang" data-lang="pt">Folgas</span><span class="lang" data-lang="en">Days Off</span></span><span class="job-value">'+j[5]+'</span></div>'
         +'</div>'
-        +'<div class="job-description">'+j[5]+'</div>'
+        +'<div class="job-description">'+j[6]+'</div>'
+        +remarks
         +'<div class="job-footer">'
-        +'<span class="job-date"><span class="lang active" data-lang="ja">更新日：</span><span class="lang" data-lang="pt">Atualizado：</span><span class="lang" data-lang="en">Updated：</span>'+j[7]+'</span>'
+        +'<span class="job-date"><span class="lang active" data-lang="ja">更新日：</span><span class="lang" data-lang="pt">Atualizado：</span><span class="lang" data-lang="en">Updated：</span>'+j[9]+'</span>'
         +'<a class="btn btn-gold btn-sm" onclick="showPage(\'contact\')"><span class="lang active" data-lang="ja">応募する</span><span class="lang" data-lang="pt">Candidatar-se</span><span class="lang" data-lang="en">Apply</span></a>'
         +'</div>'
         +'</div>';
