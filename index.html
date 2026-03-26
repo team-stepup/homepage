@@ -385,6 +385,29 @@ h3[style*="font-size:20px"]{font-size:17px !important}
 }
 
 /* ═══ AREA TAGS ═══ */
+/* 求人カード */
+.job-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-md);overflow:hidden;text-align:left;transition:var(--transition);border:1px solid var(--border)}
+.job-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.job-card-header{background:linear-gradient(135deg,#1A365D,#2A4A7F);padding:20px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.job-title{color:var(--white);font-size:18px;font-weight:700;margin:0}
+.job-location{color:rgba(255,255,255,0.85);font-size:13px;background:rgba(255,255,255,0.15);padding:4px 12px;border-radius:99px}
+.job-details{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-bottom:1px solid var(--border)}
+.job-detail-item{padding:16px 20px;border-right:1px solid var(--border);display:flex;flex-direction:column;gap:4px}
+.job-detail-item:last-child{border-right:none}
+.job-label{font-size:11px;color:var(--text-light);font-weight:600;text-transform:uppercase;letter-spacing:0.05em}
+.job-value{font-size:15px;color:var(--navy);font-weight:700}
+.job-wage{color:#D69E2E;font-size:17px}
+.job-description{padding:16px 24px;font-size:14px;color:var(--text);line-height:1.7;border-bottom:1px solid var(--border)}
+.job-footer{padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+.job-date{font-size:12px;color:var(--text-light)}
+.btn-sm{padding:10px 24px;font-size:13px}
+@media(max-width:768px){
+  .job-details{grid-template-columns:1fr}
+  .job-detail-item{border-right:none;border-bottom:1px solid var(--border);padding:12px 20px}
+  .job-detail-item:last-child{border-bottom:none}
+  .job-card-header{padding:16px 20px}
+  .job-title{font-size:16px}
+}
 .area-tags{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
 .area-tag{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:99px;background:var(--white);border:1px solid var(--border);font-size:14px;font-weight:600;color:var(--navy);transition:var(--transition); box-shadow: var(--shadow-sm);}
 .area-tag:hover{border-color:var(--blue);color:var(--blue);transform: translateY(-2px); box-shadow: var(--shadow-md);}
@@ -874,8 +897,25 @@ h3[style*="font-size:20px"]{font-size:17px !important}
     <div class="section-inner center">
       <div class="section-label">RECRUIT</div>
       <h2 class="section-title"><span class="lang active" data-lang="ja">採用情報</span><span class="lang" data-lang="pt">Vagas de Emprego</span><span class="lang" data-lang="en">Career Opportunities</span></h2>
-      <div class="section-desc center"><span class="lang active" data-lang="ja">あなたに合った働き方が見つかる。現在募集中の最新求人情報は、専用の求人サイトからご確認いただけます。</span><span class="lang" data-lang="pt">Encontre a melhor forma de trabalhar. Confira as vagas no site abaixo.</span><span class="lang" data-lang="en">Find the best way to work. Check available positions on our job site.</span></div>
-      
+      <div class="section-desc center"><span class="lang active" data-lang="ja">あなたに合った働き方を見つけませんか？現在募集中のお仕事をご紹介します。</span><span class="lang" data-lang="pt">Encontre a melhor forma de trabalhar. Confira as vagas disponíveis.</span><span class="lang" data-lang="en">Find the best way to work for you. Check our available positions.</span></div>
+
+      <!-- 求人一覧（スプレッドシート連携） -->
+      <div style="width:100%;max-width:900px;margin:0 auto 40px;">
+        <h3 style="font-size:20px;font-weight:700;color:var(--navy);margin-bottom:24px;text-align:left;">
+          <span class="lang active" data-lang="ja">📋 現在の募集一覧</span>
+          <span class="lang" data-lang="pt">📋 Vagas Disponíveis</span>
+          <span class="lang" data-lang="en">📋 Current Openings</span>
+        </h3>
+        <div id="job-list" style="display:flex;flex-direction:column;gap:16px;">
+          <p style="color:var(--text-light);text-align:center;padding:40px 0;">
+            <span class="lang active" data-lang="ja">求人情報を読み込んでいます...</span>
+            <span class="lang" data-lang="pt">Carregando vagas...</span>
+            <span class="lang" data-lang="en">Loading jobs...</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- 募集エリア＋リンク -->
       <div style="background:var(--white); padding:40px; border-radius:var(--radius); box-shadow:var(--shadow-md); width:100%; max-width:600px; margin: 0 auto;">
         <div style="margin-bottom:32px">
           <h3 style="font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 16px; text-align: center;"><span class="lang active" data-lang="ja">主な募集エリア</span><span class="lang" data-lang="pt">Áreas de recrutamento</span><span class="lang" data-lang="en">Recruitment Areas</span></h3>
@@ -883,16 +923,15 @@ h3[style*="font-size:20px"]{font-size:17px !important}
             <span class="area-tag">磐田市</span><span class="area-tag">浜松市</span><span class="area-tag">袋井市</span><span class="area-tag">掛川市</span><span class="area-tag">湖西市</span><span class="area-tag">菊川市</span>
           </div>
         </div>
-        
+
         <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
           <a class="btn btn-gold" href="https://www.stepup-group.jp/job/" target="_blank" style="width:100%; font-size: 16px; padding: 20px;">
-            <span class="lang active" data-lang="ja">最新の求人一覧を見る ↗</span><span class="lang" data-lang="pt">Ver todas as vagas ↗</span><span class="lang" data-lang="en">View All Jobs ↗</span>
+            <span class="lang active" data-lang="ja">求人専門サイトを見る ↗</span><span class="lang" data-lang="pt">Ver site de vagas ↗</span><span class="lang" data-lang="en">View Job Site ↗</span>
           </a>
-          <p style="font-size: 13px; color: var(--text-light);"><span class="lang active" data-lang="ja">※外部の求人専門サイトへ移動します</span><span class="lang" data-lang="pt">* Redireciona para site externo</span><span class="lang" data-lang="en">* Redirects to external site</span></p>
-          
+
           <div style="width: 100%; height: 1px; background: var(--border); margin: 16px 0;"></div>
-          
-          <p style="font-size: 14px; color: var(--text); margin-bottom: 8px;"><span class="lang active" data-lang="ja">求人に関する直接のお問い合わせはこちら</span><span class="lang" data-lang="pt">Para contato direto sobre vagas</span><span class="lang" data-lang="en">For direct inquiries about jobs</span></p>
+
+          <p style="font-size: 14px; color: var(--text); margin-bottom: 8px;"><span class="lang active" data-lang="ja">求人に関するお問い合わせ</span><span class="lang" data-lang="pt">Contato sobre vagas</span><span class="lang" data-lang="en">Inquiries about jobs</span></p>
           <a class="btn btn-outline" style="width:100%; color: var(--navy); border-color: var(--navy);" onclick="showPage('contact')"><span class="lang active" data-lang="ja">お問い合わせフォーム</span><span class="lang" data-lang="pt">Formulário de Contato</span><span class="lang" data-lang="en">Contact Form</span></a>
         </div>
       </div>
@@ -1527,6 +1566,53 @@ function switchTab(btn, prefix){
   container.querySelectorAll('.tab-content').forEach(function(t){t.classList.remove('active')});
   document.getElementById(prefix+'-tab-'+idx).classList.add('active');
 }
+
+/* ── 求人スプレッドシート連携 ── */
+function loadJobs(){
+  var url='https://docs.google.com/spreadsheets/d/e/2PACX-1vRliCS98GsgbaPizhaUP4l1HuvNX0KvTjUlffO-nOh5nbgfUm5540LqexrLxP8KeRTYv77LmiH6uyi7/pub?gid=0&single=true&output=csv';
+  fetch(url).then(function(r){return r.text()}).then(function(csv){
+    var rows=csv.split('\n').map(function(r){
+      var cols=[];var inQuote=false;var val='';
+      for(var i=0;i<r.length;i++){
+        if(r[i]==='"'){inQuote=!inQuote}
+        else if(r[i]===','&&!inQuote){cols.push(val.trim());val=''}
+        else{val+=r[i]}
+      }
+      cols.push(val.trim());return cols;
+    });
+    var header=rows[0];
+    var jobs=rows.slice(1).filter(function(r){return r.length>=7&&r[6]==='公開'});
+    var container=document.getElementById('job-list');
+    if(jobs.length===0){
+      container.innerHTML='<p style="color:var(--text-light);text-align:center;padding:40px 0;"><span class="lang active" data-lang="ja">現在募集中の求人はありません</span><span class="lang" data-lang="pt">Não há vagas disponíveis no momento</span><span class="lang" data-lang="en">No positions available at this time</span></p>';
+      return;
+    }
+    var html='';
+    jobs.forEach(function(j){
+      html+='<div class="job-card">'
+        +'<div class="job-card-header">'
+        +'<h4 class="job-title">'+j[0]+'</h4>'
+        +'<span class="job-location">📍 '+j[1]+'</span>'
+        +'</div>'
+        +'<div class="job-details">'
+        +'<div class="job-detail-item"><span class="job-label"><span class="lang active" data-lang="ja">時給</span><span class="lang" data-lang="pt">Salário</span><span class="lang" data-lang="en">Wage</span></span><span class="job-value job-wage">'+j[2]+'</span></div>'
+        +'<div class="job-detail-item"><span class="job-label"><span class="lang active" data-lang="ja">勤務時間</span><span class="lang" data-lang="pt">Horário</span><span class="lang" data-lang="en">Hours</span></span><span class="job-value">'+j[3]+'</span></div>'
+        +'<div class="job-detail-item"><span class="job-label"><span class="lang active" data-lang="ja">休日</span><span class="lang" data-lang="pt">Folgas</span><span class="lang" data-lang="en">Days Off</span></span><span class="job-value">'+j[4]+'</span></div>'
+        +'</div>'
+        +'<div class="job-description">'+j[5]+'</div>'
+        +'<div class="job-footer">'
+        +'<span class="job-date"><span class="lang active" data-lang="ja">更新日：</span><span class="lang" data-lang="pt">Atualizado：</span><span class="lang" data-lang="en">Updated：</span>'+j[7]+'</span>'
+        +'<a class="btn btn-gold btn-sm" onclick="showPage(\'contact\')"><span class="lang active" data-lang="ja">応募する</span><span class="lang" data-lang="pt">Candidatar-se</span><span class="lang" data-lang="en">Apply</span></a>'
+        +'</div>'
+        +'</div>';
+    });
+    container.innerHTML=html;
+    switchLang(document.querySelector('.lang.active').dataset.lang);
+  }).catch(function(){
+    document.getElementById('job-list').innerHTML='<p style="color:var(--text-light);text-align:center;padding:40px 0;">求人情報を取得できませんでした。</p>';
+  });
+}
+loadJobs();
 
 function showPage(page){
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
