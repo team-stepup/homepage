@@ -388,6 +388,9 @@ h3[style*="font-size:20px"]{font-size:17px !important}
 /* 求人カード */
 .job-card{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-md);overflow:hidden;text-align:left;transition:var(--transition);border:1px solid var(--border)}
 .job-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+.job-image{width:100%;height:200px;overflow:hidden}
+.job-image img{width:100%;height:100%;object-fit:cover;transition:transform 0.3s ease}
+.job-card:hover .job-image img{transform:scale(1.05)}
 .job-card-header{background:linear-gradient(135deg,#1A365D,#2A4A7F);padding:20px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
 .job-title{color:var(--white);font-size:18px;font-weight:700;margin:0}
 .job-location{color:rgba(255,255,255,0.85);font-size:13px;background:rgba(255,255,255,0.15);padding:4px 12px;border-radius:99px}
@@ -1620,7 +1623,10 @@ function loadJobs(lang){
     var html='';
     jobs.forEach(function(j){
       var remarks=j[7]?'<div class="job-remarks">'+j[7]+'</div>':'';
+      var imgUrl=j[12]?j[12].trim():'';
+      var imgHtml=imgUrl?'<div class="job-image"><img src="'+imgUrl+'" alt="'+j[1]+'" loading="lazy"></div>':'';
       html+='<div class="job-card">'
+        +imgHtml
         +'<div class="job-card-header">'
         +'<h4 class="job-title">'+j[1]+'</h4>'
         +'<span class="job-location">📍 '+j[2]+'</span>'
