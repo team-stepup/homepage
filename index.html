@@ -261,10 +261,11 @@ ul{list-style:none}
 .section-desc{font-size:16px;color:var(--text-light);max-width:680px;line-height:1.8;margin-bottom:56px}
 .center{text-align:center;margin-left:auto;margin-right:auto; display: flex; flex-direction: column; align-items: center;}
 
-@media(max-width:768px){ .section{padding: 60px 12px} .section-desc{margin-bottom: 40px;}
-.page [style*="padding:48px"]{padding:16px !important}
-.page [style*="max-width:var(--max-w)"]{padding:0 8px !important}
-.page [style*="border-radius:var(--radius);padding:48px"]{padding:16px !important;border-radius:12px !important}
+@media(max-width:768px){ .section{padding: 60px 8px} .section-desc{margin-bottom: 40px;}
+.section-inner{padding:0 4px}
+.page [style*="padding:48px"]{padding:12px !important}
+.page [style*="max-width:var(--max-w)"]{padding:0 4px !important;max-width:100% !important}
+.page [style*="border-radius:var(--radius);padding:48px"]{padding:12px !important;border-radius:12px !important}
 h3[style*="font-size:20px"]{font-size:17px !important}
 }
 
@@ -295,10 +296,12 @@ h3[style*="font-size:20px"]{font-size:17px !important}
 .compliance-card-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px}
 .compliance-card-text{font-size:13px;color:var(--text-light);line-height:1.7}
 @media(max-width:768px){
-  .philosophy{padding:60px 20px}
-  .philosophy-quote{padding:32px 24px 32px 32px}
+  .philosophy{padding:60px 8px}
+  .philosophy-inner{padding:0 4px}
+  .philosophy-quote{padding:24px 16px 24px 20px}
   .dept-grid{grid-template-columns:1fr}
-  .compliance-section{padding:60px 20px}
+  .compliance-section{padding:60px 8px}
+  .compliance-inner{padding:0 4px}
   .compliance-grid{grid-template-columns:1fr}
 }
 
@@ -1633,7 +1636,7 @@ function loadJobs(lang){
         +'<div class="job-description">'+j[6]+'</div>'
         +remarks
         +'<div class="job-footer">'
-        +'<span class="job-date">'+j[9]+'</span>'
+        +'<span class="job-date">'+lb.updated+j[9]+'</span>'
         +'<a class="btn btn-gold btn-sm" href="https://forms.office.com/Pages/ResponsePage.aspx?id=LNiSjCwvekGerXYCFoi8nZdqtgaTbghKjEIVhaBdIN5UNUszNVU3SDQ5QzI0VE9RQVpKRVVBOUU1Ry4u" target="_blank">'+lb.apply+'</a>'
         +'</div>'
         +'</div>';
