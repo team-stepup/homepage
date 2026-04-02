@@ -296,12 +296,12 @@ h3[style*="font-size:20px"]{font-size:17px !important}
 .compliance-card-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:8px}
 .compliance-card-text{font-size:13px;color:var(--text-light);line-height:1.7}
 @media(max-width:768px){
-  .philosophy{padding:60px 8px}
-  .philosophy-inner{padding:0 4px}
-  .philosophy-quote{padding:24px 16px 24px 20px}
+  .philosophy{padding:60px 12px}
+  .philosophy-inner{max-width:100%;padding:0}
+  .philosophy-quote{padding:32px 24px 32px 32px}
   .dept-grid{grid-template-columns:1fr}
-  .compliance-section{padding:60px 8px}
-  .compliance-inner{padding:0 4px}
+  .compliance-section{padding:60px 12px}
+  .compliance-inner{max-width:100%;padding:0}
   .compliance-grid{grid-template-columns:1fr}
 }
 
@@ -1614,8 +1614,8 @@ function loadJobs(lang){
       }
       cols.push(val.trim());return cols;
     });
-    /* A=No, B=職種, C=勤務地, D=時給, E=勤務時間, F=休日, G=仕事内容, H=備考, I=掲載状態, J=言語, K=更新日, L=FB投稿済, M=画像URL, N=会社使用欄 */
-    var jobs=rows.slice(1).filter(function(r){return r.length>=9&&(r[8]==='公開'||r[8]==='Público'||r[8]==='Public')});
+    /* A=No, B=職種, C=勤務地, D=時給, E=勤務時間, F=休日, G=仕事内容, H=備考, I=掲載状態, J=更新日, K=会社使用欄 */
+    var jobs=rows.slice(1).filter(function(r){return r.length>=9&&r[1]&&(r[8]==='公開'||r[8]==='Público'||r[8]==='Public')});
     if(jobs.length===0){
       container.innerHTML='<p style="color:var(--text-light);text-align:center;padding:40px 0;">'+lb.none+'</p>';
       return;
@@ -1636,7 +1636,7 @@ function loadJobs(lang){
         +'<div class="job-description">'+j[6]+'</div>'
         +remarks
         +'<div class="job-footer">'
-        +'<span class="job-date">'+lb.updated+j[10]+'</span>'
+        +'<span class="job-date">'+lb.updated+j[9]+'</span>'
         +'<a class="btn btn-gold btn-sm" href="https://forms.office.com/Pages/ResponsePage.aspx?id=LNiSjCwvekGerXYCFoi8nZdqtgaTbghKjEIVhaBdIN5UNUszNVU3SDQ5QzI0VE9RQVpKRVVBOUU1Ry4u" target="_blank">'+lb.apply+'</a>'
         +'</div>'
         +'</div>';
