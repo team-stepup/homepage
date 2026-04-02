@@ -86,6 +86,8 @@ body{overflow-x:hidden;
   font-size:15px;
   line-height:1.8;
   -webkit-font-smoothing: antialiased;
+  overflow-x:hidden;
+  width:100%;
 }
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
@@ -1614,7 +1616,7 @@ function loadJobs(lang){
       }
       cols.push(val.trim());return cols;
     });
-    /* A=No, B=職種, C=勤務地, D=時給, E=勤務時間, F=休日, G=仕事内容, H=備考, I=掲載状態, J=更新日, K=会社使用欄 */
+    /* A=No(0), B=職種(1), C=勤務地(2), D=時給(3), E=勤務時間(4), F=休日(5), G=仕事内容(6), H=備考(7), I=掲載状態(8), J=言語(9), K=更新日(10), L=FB投稿(11), M=画像URL(12), N=会社使用欄(13) */
     var jobs=rows.slice(1).filter(function(r){return r.length>=9&&r[1]&&(r[8]==='公開'||r[8]==='Público'||r[8]==='Public')});
     if(jobs.length===0){
       container.innerHTML='<p style="color:var(--text-light);text-align:center;padding:40px 0;">'+lb.none+'</p>';
@@ -1636,7 +1638,7 @@ function loadJobs(lang){
         +'<div class="job-description">'+j[6]+'</div>'
         +remarks
         +'<div class="job-footer">'
-        +'<span class="job-date">'+lb.updated+j[9]+'</span>'
+        +'<span class="job-date">'+lb.updated+(j[10]||'').split(' ')[0]+'</span>'
         +'<a class="btn btn-gold btn-sm" href="https://forms.office.com/Pages/ResponsePage.aspx?id=LNiSjCwvekGerXYCFoi8nZdqtgaTbghKjEIVhaBdIN5UNUszNVU3SDQ5QzI0VE9RQVpKRVVBOUU1Ry4u" target="_blank">'+lb.apply+'</a>'
         +'</div>'
         +'</div>';
