@@ -1,0 +1,4 @@
+Contact: mailto:h.yamashita@team-stepup.company
+Preferred-Languages: ja, en
+Canonical: https://www.team-stepup.com/.well-known/security.txt
+Expires: 2027-12-31T23:59:59+09:00
