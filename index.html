@@ -1661,55 +1661,47 @@ function switchTab(btn, prefix){
 }
 
 /* ── 求人スプレッドシート連携（3言語対応） ── */
-var jobSheetUrls={
-  ja:'https://docs.google.com/spreadsheets/d/e/2PACX-1vRliCS98GsgbaPizhaUP4l1HuvNX0KvTjUlffO-nOh5nbgfUm5540LqexrLxP8KeRTYv77LmiH6uyi7/pub?gid=0&single=true&output=csv',
-  pt:'https://docs.google.com/spreadsheets/d/e/2PACX-1vRliCS98GsgbaPizhaUP4l1HuvNX0KvTjUlffO-nOh5nbgfUm5540LqexrLxP8KeRTYv77LmiH6uyi7/pub?gid=536863905&single=true&output=csv',
-  en:'https://docs.google.com/spreadsheets/d/e/2PACX-1vRliCS98GsgbaPizhaUP4l1HuvNX0KvTjUlffO-nOh5nbgfUm5540LqexrLxP8KeRTYv77LmiH6uyi7/pub?gid=839432334&single=true&output=csv'
-};
+/* 求人データは yukyu-app(役員)から SharePoint「求人」List に登録され、
+   func-employee-portal の公開API GET /jobs?lang= 経由で配信される。
+   対象「日本人向け」は ja のみ、「外国人もOK」は全言語に表示される(API側で制御)。 */
+var JOBS_API='https://func-employee-portal-7833.azurewebsites.net/api/jobs';
 var jobLabels={
-  ja:{wage:'時給',hours:'勤務時間',off:'休日',updated:'更新日：',apply:'応募する',none:'現在募集中の求人はありません',error:'求人情報を取得できませんでした。'},
-  pt:{wage:'Salário',hours:'Horário',off:'Folgas',updated:'Atualizado：',apply:'Candidatar-se',none:'Não há vagas disponíveis no momento',error:'Não foi possível carregar as vagas.'},
-  en:{wage:'Wage',hours:'Hours',off:'Days Off',updated:'Updated：',apply:'Apply',none:'No positions available at this time',error:'Failed to load job listings.'}
+  ja:{wage:'時給',hours:'勤務時間',off:'休日',updated:'更新日：',apply:'応募する',none:'現在募集中の求人はありません',error:'求人情報を取得できませんでした。',forJp:'日本人向け',forGlobal:'🌏 外国人歓迎'},
+  pt:{wage:'Salário',hours:'Horário',off:'Folgas',updated:'Atualizado：',apply:'Candidatar-se',none:'Não há vagas disponíveis no momento',error:'Não foi possível carregar as vagas.',forJp:'Para japoneses',forGlobal:'🌏 Estrangeiros bem-vindos'},
+  en:{wage:'Wage',hours:'Hours',off:'Days Off',updated:'Updated：',apply:'Apply',none:'No positions available at this time',error:'Failed to load job listings.',forJp:'For Japanese speakers',forGlobal:'🌏 Foreigners welcome'}
 };
+function jobEsc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function jobEscBr(s){return jobEsc(s).replace(/\n/g,'<br>');}
 function loadJobs(lang){
   lang=lang||'ja';
-  var url=jobSheetUrls[lang]||jobSheetUrls.ja;
   var lb=jobLabels[lang]||jobLabels.ja;
   var container=document.getElementById('job-list');
   container.innerHTML='<p style="color:var(--text-light);text-align:center;padding:40px 0;">...</p>';
-  fetch(url).then(function(r){return r.text()}).then(function(csv){
-    var rows=csv.split('\n').map(function(r){
-      var cols=[];var inQuote=false;var val='';
-      for(var i=0;i<r.length;i++){
-        if(r[i]==='"'){inQuote=!inQuote}
-        else if(r[i]===','&&!inQuote){cols.push(val.trim());val=''}
-        else{val+=r[i]}
-      }
-      cols.push(val.trim());return cols;
-    });
-    /* A=No(0), B=職種(1), C=勤務地(2), D=時給(3), E=勤務時間(4), F=休日(5), G=仕事内容(6), H=備考(7), I=掲載状態(8), J=言語(9), K=更新日(10), L=FB投稿(11), M=画像URL(12), N=会社使用欄(13) */
-    var jobs=rows.slice(1).filter(function(r){return r.length>=9&&r[1]&&(r[8]==='公開'||r[8]==='Público'||r[8]==='Public')});
+  fetch(JOBS_API+'?lang='+encodeURIComponent(lang)).then(function(r){return r.json();}).then(function(data){
+    var jobs=(data&&data.jobs)||[];
     if(jobs.length===0){
       container.innerHTML='<p style="color:var(--text-light);text-align:center;padding:40px 0;">'+lb.none+'</p>';
       return;
     }
     var html='';
     jobs.forEach(function(j){
-      var remarks=j[7]?'<div class="job-remarks">'+j[7]+'</div>':'';
+      var isJp=j.target==='日本人向け';
+      var tBadge='<span class="job-location" style="background:'+(isJp?'rgba(21,101,192,0.92)':'rgba(46,158,91,0.95)')+';">'+(isJp?lb.forJp:lb.forGlobal)+'</span>';
+      var remarks=j.remarks?'<div class="job-remarks">'+jobEscBr(j.remarks)+'</div>':'';
       html+='<div class="job-card">'
         +'<div class="job-card-header">'
-        +'<h4 class="job-title">'+j[1]+'</h4>'
-        +'<span class="job-location">📍 '+j[2]+'</span>'
+        +'<h4 class="job-title">'+jobEsc(j.title)+'</h4>'
+        +'<span style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">'+tBadge+'<span class="job-location">📍 '+jobEsc(j.location)+'</span></span>'
         +'</div>'
         +'<div class="job-details">'
-        +'<div class="job-detail-item"><span class="job-label">'+lb.wage+'</span><span class="job-value job-wage">'+j[3]+'</span></div>'
-        +'<div class="job-detail-item"><span class="job-label">'+lb.hours+'</span><span class="job-value">'+j[4]+'</span></div>'
-        +'<div class="job-detail-item"><span class="job-label">'+lb.off+'</span><span class="job-value">'+j[5]+'</span></div>'
+        +'<div class="job-detail-item"><span class="job-label">'+lb.wage+'</span><span class="job-value job-wage">'+jobEsc(j.wage)+'</span></div>'
+        +'<div class="job-detail-item"><span class="job-label">'+lb.hours+'</span><span class="job-value">'+jobEsc(j.hours)+'</span></div>'
+        +'<div class="job-detail-item"><span class="job-label">'+lb.off+'</span><span class="job-value">'+jobEsc(j.off)+'</span></div>'
         +'</div>'
-        +'<div class="job-description">'+j[6]+'</div>'
+        +'<div class="job-description">'+jobEscBr(j.description)+'</div>'
         +remarks
         +'<div class="job-footer">'
-        +'<span class="job-date">'+lb.updated+(j[10]||'').split(' ')[0]+'</span>'
+        +'<span class="job-date">'+lb.updated+jobEsc(j.updated||'')+'</span>'
         +'<a class="btn btn-gold btn-sm" href="https://forms.office.com/Pages/ResponsePage.aspx?id=LNiSjCwvekGerXYCFoi8nZdqtgaTbghKjEIVhaBdIN5UNUszNVU3SDQ5QzI0VE9RQVpKRVVBOUU1Ry4u" target="_blank">'+lb.apply+'</a>'
         +'</div>'
         +'</div>';
