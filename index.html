@@ -276,6 +276,9 @@ ul{list-style:none}
   .hero h1 { font-size: 26px; }
   .hero-desc{ font-size: 15px; }
   .hero-dots{ top: 308px; bottom: auto; }
+  /* スマホは拡大変形(scale)を無効化。iOSで変形のはみ出しが overflow:hidden で抑えられず、
+     ページが横に広がって縮小表示=「幅が狭く見にくい」になるのを防ぐ。クロスフェードは維持 */
+  .hero-slide, .hero-slide.active{ transform: none; }
   /* 写真バンド内で人物の顔が中央に来るよう横位置を調整 */
   .hero-slide{ background-position: 70% 30%; }
   .hero-slide:nth-child(1){ background-position: 82% 28%; } /* ①受付 */
