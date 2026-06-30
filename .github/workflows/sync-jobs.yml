@@ -9,6 +9,8 @@ on:
   schedule:
     - cron: '*/5 * * * *'   # 5分おき(GitHubの都合で多少前後あり)
   workflow_dispatch:          # 手動でも即実行できる(Actionsタブ→Run workflow)
+  push:                       # homepageへのpush時にも同期(スケジューラの起動待ち対策)
+    branches: [ main ]
 
 permissions:
   contents: write
