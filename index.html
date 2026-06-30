@@ -1718,7 +1718,8 @@ loadJobs('ja');
 function showPage(page){
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
   document.getElementById('page-'+page).classList.add('active');
-  
+  if(page==='recruit'){ try{ loadJobs(currentLang); }catch(e){} }  /* 採用情報を開くたびに最新を取得 */
+
   document.querySelectorAll('.nav-link').forEach(function(l){
     l.classList.toggle('active', l.dataset.page === page);
   });
