@@ -264,11 +264,22 @@ ul{list-style:none}
 .hero-dot.active{background:var(--white); transform: scale(1.2);}
 
 @media(max-width:768px){
-  .hero{ height: auto; min-height: 600px; }
-  .hero-slide::after { background:linear-gradient(180deg, rgba(11,29,48,0.15) 0%, rgba(11,29,48,0.5) 100%); }
-  .hero-content{ padding: 60px 20px 100px; align-items: flex-end;}
-  .hero-text{ padding: 32px 24px; width: 100%; border-left: none; border-top: 4px solid var(--gold); }
+  /* スマホは「上に写真・下に文字」の分割レイアウト（写真に文字を被せない） */
+  .hero{ height: auto; min-height: 0; background: var(--navy); display: block; }
+  .hero-slider{ position: relative; height: 340px; }
+  .hero-slide::after { background:linear-gradient(180deg, rgba(11,29,48,0) 60%, rgba(11,29,48,0.45) 100%); }
+  .hero-content{ position: relative; height: auto; display: block; align-items: stretch; padding: 26px 22px 46px; }
+  .hero-text{ max-width: 100%; width: 100%; padding: 0; background: none; backdrop-filter: none; -webkit-backdrop-filter: none; border: none; border-radius: 0; }
+  .hero-badge{ margin-bottom: 16px; }
   .hero h1 { font-size: 26px; }
+  .hero-desc{ font-size: 15px; }
+  .hero-dots{ top: 308px; bottom: auto; }
+  /* 写真バンド内で人物の顔が中央に来るよう横位置を調整 */
+  .hero-slide{ background-position: 70% 30%; }
+  .hero-slide:nth-child(1){ background-position: 82% 28%; } /* ①受付 */
+  .hero-slide:nth-child(2){ background-position: 70% 30%; } /* ②検査 */
+  .hero-slide:nth-child(3){ background-position: 60% 30%; } /* ③商談 */
+  .hero-slide:nth-child(4){ background-position: 58% 34%; } /* ④QC */
 }
 
 /* ═══ SECTION BASE ═══ */
@@ -508,7 +519,7 @@ h3[style*="font-size:20px"]{font-size:17px !important}
   <div class="header-inner">
     <!-- Row 1: Logo + Language + Hamburger -->
     <div class="logo-mark" onclick="showPage('home')">
-      <img src="logo.png" alt="STEP・UP" style="height: 52px; width: auto;">
+      <img src="logo-header.png" alt="STEP・UP" style="height: 56px; width: auto;">
       <div class="logo-text-block">
         <span class="logo-company-name">
           <span class="lang active" data-lang="ja"><span class="company-prefix">有限会社</span> ステップ・アップ</span>
