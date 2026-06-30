@@ -1679,7 +1679,7 @@ function loadJobs(lang){
   var lb=jobLabels[lang]||jobLabels.ja;
   var container=document.getElementById('job-list');
   container.innerHTML='<p style="color:var(--text-light);text-align:center;padding:40px 0;">...</p>';
-  fetch(JOBS_API+'?lang='+encodeURIComponent(lang)).then(function(r){return r.json();}).then(function(data){
+  fetch(JOBS_API+'?lang='+encodeURIComponent(lang)+'&_='+Date.now(),{cache:'no-store'}).then(function(r){return r.json();}).then(function(data){
     var jobs=(data&&data.jobs)||[];
     if(jobs.length===0){
       container.innerHTML='<p style="color:var(--text-light);text-align:center;padding:40px 0;">'+lb.none+'</p>';
