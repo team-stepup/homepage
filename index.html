@@ -1682,7 +1682,7 @@ function loadJobs(lang){
   var lb=jobLabels[lang]||jobLabels.ja;
   var container=document.getElementById('job-list');
   container.innerHTML='<p style="color:var(--text-light);text-align:center;padding:40px 0;">...</p>';
-  fetch(JOBS_API+'?lang='+encodeURIComponent(lang)+'&_='+Date.now(),{cache:'no-store'}).then(function(r){return r.json();}).then(function(data){
+  fetch('jobs-'+encodeURIComponent(lang)+'.json?_='+Date.now(),{cache:'no-store'}).then(function(r){return r.json();}).then(function(data){
     var jobs=(data&&data.jobs)||[];
     if(jobs.length===0){
       container.innerHTML='<p style="color:var(--text-light);text-align:center;padding:40px 0;">'+lb.none+'</p>';
@@ -1690,13 +1690,11 @@ function loadJobs(lang){
     }
     var html='';
     jobs.forEach(function(j){
-      var isJp=j.target==='日本人向け';
-      var tBadge='<span class="job-location" style="background:'+(isJp?'rgba(21,101,192,0.92)':'rgba(46,158,91,0.95)')+';">'+(isJp?lb.forJp:lb.forGlobal)+'</span>';
       var remarks=j.remarks?'<div class="job-remarks">'+jobEscBr(j.remarks)+'</div>':'';
       html+='<div class="job-card">'
         +'<div class="job-card-header">'
         +'<h4 class="job-title">'+jobEsc(j.title)+'</h4>'
-        +'<span style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">'+tBadge+'<span class="job-location">📍 '+jobEsc(j.location)+'</span></span>'
+        +'<span style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;"><span class="job-location">📍 '+jobEsc(j.location)+'</span></span>'
         +'</div>'
         +'<div class="job-details">'
         +'<div class="job-detail-item"><span class="job-label">'+lb.wage+'</span><span class="job-value job-wage">'+jobEsc(j.wage)+'</span></div>'
