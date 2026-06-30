@@ -1,16 +1,1 @@
-{
-  "jobs": [
-    {
-      "title": "Assembly of Small Automotive Parts",
-      "location": "Hamana Ward, Hamamatsu City, Shizuoka Prefecture",
-      "hours": "9:00–17:35 (7.75h)",
-      "off": "Days off on Saturdays and Sundays; Golden Week (ゴールデンウイーク), summer, and year-end/New Year holidays included",
-      "description": "Assembly and inspection of small automotive parts",
-      "remarks": "Air conditioning provided; commuting by car is welcome",
-      "wage": "1,200円",
-      "target": "外国人もOK",
-      "updated": "2026-06-30"
-    }
-  ],
-  "lang": "en"
-}
+{"jobs": [{"title": "Assembly of Small Automotive Parts", "location": "Hamana Ward, Hamamatsu City, Shizuoka Prefecture", "hours": "9:00–17:35 (7.75h)", "off": "Days off on Saturdays and Sundays; Golden Week (ゴールデンウイーク), summer, and year-end/New Year holidays included", "description": "Assembly and inspection of small automotive parts", "remarks": "Air conditioning provided; commuting by car is welcome", "wage": "1,200円", "target": "外国人もOK", "updated": "2026-06-30"}], "lang": "en"}
