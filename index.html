@@ -550,12 +550,6 @@ h3[style*="font-size:20px"]{font-size:17px !important}
       .sa-hb-t1{font-size:11px;font-weight:800;color:#8fcdf0;letter-spacing:0.05em;white-space:nowrap;}
       .sa-hb-t2{font-size:9.5px;color:rgba(255,255,255,0.72);letter-spacing:0.01em;white-space:nowrap;}
       @media(max-width:1024px){.sa-header-badge{display:none;}}
-      /* スマホ／タブレット用の小型ロゴ（右上アイコン群に表示） */
-      .sa-header-badge-mobile{display:none;align-items:center;cursor:pointer;flex-shrink:0;text-decoration:none;}
-      .sa-header-badge-mobile img{height:32px;width:32px;object-fit:contain;filter:drop-shadow(0 1px 3px rgba(0,0,0,0.35));transition:var(--transition);}
-      .sa-header-badge-mobile:active img{transform:scale(0.9);}
-      @media(max-width:1024px){.sa-header-badge-mobile{display:flex;}}
-      @media(max-width:400px){.sa-header-badge-mobile img{height:27px;width:27px;}}
     </style>
     <a class="sa-header-badge" role="button" tabindex="0" aria-label="SECURITY ACTION 二つ星の詳細を開く"
        onclick="document.getElementById('security-action-modal').style.display='flex'"
@@ -571,11 +565,6 @@ h3[style*="font-size:20px"]{font-size:17px !important}
       </span>
     </a>
     <div class="header-right-icons">
-      <a class="sa-header-badge-mobile" role="button" tabindex="0" aria-label="SECURITY ACTION 二つ星の詳細を開く"
-         onclick="document.getElementById('security-action-modal').style.display='flex'"
-         onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();document.getElementById('security-action-modal').style.display='flex';}">
-        <img src="security-action-futatsuboshi.png" alt="SECURITY ACTION 二つ星" width="32" height="32" decoding="async">
-      </a>
       <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span><span class="menu-label">Menu</span></button>
       <div class="lang-switch">
         <button class="globe-btn" onclick="toggleLangPanel()" aria-label="Language"><span class="globe-icon">&#x1F310;</span><span class="globe-label">Language</span></button>
