@@ -563,13 +563,12 @@ h3[style*="font-size:20px"]{font-size:17px !important}
       /* スマホ2段目: SECURITY ACTIONバッジ（左）＋Menu/Language（右） */
       .sa-badge-row2{display:none;align-items:center;gap:8px;cursor:pointer;text-decoration:none;margin-right:auto;padding:2px;border-radius:8px;flex-shrink:0;}
       .sa-badge-row2:active{background:rgba(255,255,255,0.06);}
-      .sa-badge-row2 img{width:28px;height:28px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 1px 3px rgba(0,0,0,0.35));}
-      .sa-r2-text{display:flex;flex-direction:column;line-height:1.25;}
-      .sa-r2-t1{font-size:12px;font-weight:800;color:#8fcdf0;letter-spacing:0.03em;white-space:nowrap;}
+      .sa-badge-row2 img{width:26px;height:26px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 1px 3px rgba(0,0,0,0.35));}
+      .sa-r2-text{display:flex;flex-direction:column;line-height:1.2;min-width:0;}
+      .sa-r2-t1{font-size:11px;font-weight:800;color:#8fcdf0;letter-spacing:0.01em;white-space:nowrap;}
       .sa-r2-stars{color:#ECC94B;letter-spacing:1px;}
-      .sa-r2-t2{font-size:10px;color:rgba(255,255,255,0.62);white-space:nowrap;}
+      .sa-r2-t2{font-size:9px;color:rgba(255,255,255,0.6);white-space:nowrap;}
       @media(max-width:1024px){ .sa-badge-row2{display:flex;} }
-      @media(max-width:360px){ .sa-r2-t2{display:none;} }
     </style>
     <a class="sa-header-badge" role="button" tabindex="0" aria-label="SECURITY ACTION 二つ星の詳細を開く"
        onclick="document.getElementById('security-action-modal').style.display='flex'"
