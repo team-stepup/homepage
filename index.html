@@ -213,8 +213,10 @@ ul{list-style:none}
   .sub-break{display:block}
   .sub-dot{display:none}
   .header-right-icons{display:flex;flex-direction:row;align-items:flex-end;justify-content:flex-end;gap:18px;width:100%;margin-left:0;margin-top:6px;padding-top:8px;padding-right:6px;border-top:1px solid rgba(236,201,75,0.32)}
-  .header-right-icons .menu-toggle,.header-right-icons .globe-btn{height:38px;justify-content:flex-end;align-items:center;padding:0;gap:4px}
-  .header-right-icons .menu-toggle span:not(.menu-label){width:22px}
+  .header-right-icons .menu-toggle,.header-right-icons .globe-btn{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:36px;padding:0;gap:4px}
+  .header-right-icons .globe-icon{font-size:15px;line-height:1;height:14px;display:flex;align-items:center}
+  .header-right-icons .globe-label,.header-right-icons .menu-label{font-size:9px;line-height:1}
+  .header-right-icons .menu-toggle span:not(.menu-label){width:22px;height:2px}
   .lang-switch{margin:0}
   .globe-btn{padding:0;gap:2px;display:flex;flex-direction:column;align-items:center;width:36px}
   .globe-icon{font-size:20px;line-height:1;display:block}
@@ -525,7 +527,8 @@ h3[style*="font-size:20px"]{font-size:17px !important}
 <!-- ═══ HEADER ═══ -->
 <header class="header">
   <div class="header-inner">
-    <!-- Row 1: Logo + Language + Hamburger -->
+    <!-- Row 1: Logo + SECURITY ACTION badge -->
+    <div class="header-top-row">
     <div class="logo-mark" onclick="showPage('home')">
       <img src="logo-header.png" alt="STEP・UP" style="height: 56px; width: auto;">
       <div class="logo-text-block">
@@ -543,8 +546,10 @@ h3[style*="font-size:20px"]{font-size:17px !important}
     </div>
     <!-- ═══ SECURITY ACTION 二つ星 ヘッダーバッジ（PC・右上／サプライチェーン情報セキュリティ） ═══ -->
     <style>
-      .header-inner{position:relative;}
-      .sa-header-badge{position:absolute;top:11px;right:24px;display:flex;align-items:center;gap:10px;cursor:pointer;z-index:60;text-decoration:none;transition:var(--transition);padding:4px 6px;border-radius:10px;}
+      html{overflow-x:hidden;}
+      .header-top-row{display:flex;align-items:center;gap:10px;width:100%;min-width:0;}
+      .header-top-row .logo-mark{flex:1 1 auto;min-width:0;}
+      .sa-header-badge{flex-shrink:0;display:flex;align-items:center;gap:10px;cursor:pointer;z-index:60;text-decoration:none;transition:var(--transition);padding:4px 6px;border-radius:10px;}
       .sa-header-badge:hover{transform:translateY(-1px);background:rgba(255,255,255,0.06);}
       .sa-header-badge:focus-visible{outline:2px solid #8fcdf0;outline-offset:2px;}
       .sa-header-badge img{height:46px;width:46px;object-fit:contain;filter:drop-shadow(0 2px 7px rgba(50,170,230,0.45));flex-shrink:0;transition:var(--transition);}
@@ -554,7 +559,7 @@ h3[style*="font-size:20px"]{font-size:17px !important}
       .sa-hb-t2{font-size:9.5px;color:rgba(255,255,255,0.72);letter-spacing:0.01em;white-space:nowrap;}
       /* モバイル/タブレット: 1段目の社名の右にロゴを表示（社名が幅広なのでロゴのみ・確実に収める） */
       @media(max-width:1024px){
-        .sa-header-badge{display:flex;top:11px;right:12px;gap:0;padding:2px;}
+        .sa-header-badge{gap:0;padding:2px;}
         .sa-header-badge img{height:38px;width:38px;}
         .sa-hb-text{display:none;}
       }
@@ -572,6 +577,7 @@ h3[style*="font-size:20px"]{font-size:17px !important}
         </span>
       </span>
     </a>
+    </div>
     <div class="header-right-icons">
       <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span><span class="menu-label">Menu</span></button>
       <div class="lang-switch">
