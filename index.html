@@ -190,7 +190,9 @@ ul{list-style:none}
   .header-row-nav{display:none}
   .nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);backdrop-filter:blur(6px);flex-direction:column;padding:0;z-index:1100;align-items:center;justify-content:center;overflow:hidden}
   .nav.open{display:flex}
-  .nav-inner-popup{display:flex;flex-direction:column;background:var(--white);border-radius:16px;padding:20px 20px;width:calc(100% - 64px);max-width:380px;box-shadow:0 20px 60px rgba(0,0,0,0.3);max-height:calc(100vh - 100px);overflow-y:auto}
+  .nav-inner-popup{position:relative;display:flex;flex-direction:column;background:var(--white);border-radius:16px;padding:52px 20px 20px;width:calc(100% - 64px);max-width:380px;box-shadow:0 20px 60px rgba(0,0,0,0.3);max-height:calc(100vh - 100px);overflow-y:auto}
+  .nav-close{position:absolute;top:10px;right:12px;width:38px;height:38px;border:none;background:var(--cream);color:var(--navy);border-radius:50%;font-size:26px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:3;padding:0}
+  .nav-close:active{background:#e2e8f0;transform:scale(0.94)}
   .nav-link{color:var(--navy);font-size:14px;padding:12px 16px;text-align:center;border-bottom:1px solid var(--border);width:100%}
   .nav-link:last-child{border-bottom:none}
   .nav-link::after{display:none}
@@ -659,6 +661,7 @@ h3[style*="font-size:20px"]{font-size:17px !important}
   <!-- Mobile Popup Nav -->
   <nav class="nav" id="main-nav" onclick="if(event.target===this){toggleMenu()}">
     <div class="nav-inner-popup">
+      <button class="nav-close" onclick="toggleMenu()" aria-label="メニューを閉じる">&times;</button>
       <a class="nav-link" data-page="home" onclick="showPage('home')"><span class="lang active" data-lang="ja">ホーム</span><span class="lang" data-lang="pt">Início</span><span class="lang" data-lang="en">Home</span></a>
       <a class="nav-link" data-page="about" onclick="showPage('about')"><span class="lang active" data-lang="ja">会社概要</span><span class="lang" data-lang="pt">Empresa</span><span class="lang" data-lang="en">About</span></a>
       <a class="nav-link" data-page="services" onclick="showPage('services')"><span class="lang active" data-lang="ja">事業案内</span><span class="lang" data-lang="pt">Serviços</span><span class="lang" data-lang="en">Services</span></a>
@@ -1602,7 +1605,7 @@ h3[style*="font-size:20px"]{font-size:17px !important}
 <!-- 労働者派遣事業許可証モーダル -->
 <div id="permit-dispatch-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:24px;" onclick="if(event.target===this)this.style.display='none'">
   <div style="background:var(--white);border-radius:var(--radius);max-width:640px;width:100%;max-height:90vh;overflow-y:auto;padding:24px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);text-align:center;">
-    <button onclick="document.getElementById('permit-dispatch-modal').style.display='none'" style="position:absolute;top:12px;right:12px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--text-light);width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:var(--transition);" onmouseover="this.style.background='var(--cream)'" onmouseout="this.style.background='none'">&times;</button>
+    <button onclick="document.getElementById('permit-dispatch-modal').style.display='none'" style="position:absolute;top:12px;right:12px;background:var(--cream);border:1px solid var(--border);font-size:26px;cursor:pointer;color:var(--navy);width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:var(--transition);" onmouseover="this.style.background='#dbe4ee'" onmouseout="this.style.background='var(--cream)'">&times;</button>
     <h3 style="margin-bottom:16px;color:var(--navy);font-size:18px;">労働者派遣事業許可証</h3>
     <img src="permit-dispatch.png" alt="労働者派遣事業許可証" style="width:100%;height:auto;border-radius:8px;border:1px solid #eee;">
   </div>
@@ -1611,7 +1614,7 @@ h3[style*="font-size:20px"]{font-size:17px !important}
 <!-- 有料職業紹介事業許可証モーダル -->
 <div id="permit-placement-modal" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:24px;" onclick="if(event.target===this)this.style.display='none'">
   <div style="background:var(--white);border-radius:var(--radius);max-width:640px;width:100%;max-height:90vh;overflow-y:auto;padding:24px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);text-align:center;">
-    <button onclick="document.getElementById('permit-placement-modal').style.display='none'" style="position:absolute;top:12px;right:12px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--text-light);width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:var(--transition);" onmouseover="this.style.background='var(--cream)'" onmouseout="this.style.background='none'">&times;</button>
+    <button onclick="document.getElementById('permit-placement-modal').style.display='none'" style="position:absolute;top:12px;right:12px;background:var(--cream);border:1px solid var(--border);font-size:26px;cursor:pointer;color:var(--navy);width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:var(--transition);" onmouseover="this.style.background='#dbe4ee'" onmouseout="this.style.background='var(--cream)'">&times;</button>
     <h3 style="margin-bottom:16px;color:var(--navy);font-size:18px;">有料職業紹介事業許可証</h3>
     <img src="permit-placement.png" alt="有料職業紹介事業許可証" style="width:100%;height:auto;border-radius:8px;border:1px solid #eee;">
   </div>
@@ -1619,7 +1622,7 @@ h3[style*="font-size:20px"]{font-size:17px !important}
 
 <div id="privacy-modal" class="privacy-modal-overlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:24px;" onclick="if(event.target===this)this.style.display='none'">
   <div class="privacy-modal-content" style="background:var(--white);border-radius:var(--radius);max-width:720px;width:100%;max-height:85vh;overflow-y:auto;padding:48px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
-    <button onclick="document.getElementById('privacy-modal').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--text-light);width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:var(--transition);" onmouseover="this.style.background='var(--cream)'" onmouseout="this.style.background='none'">&times;</button>
+    <button onclick="document.getElementById('privacy-modal').style.display='none'" style="position:absolute;top:16px;right:16px;background:var(--cream);border:1px solid var(--border);font-size:26px;cursor:pointer;color:var(--navy);width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:var(--transition);" onmouseover="this.style.background='#dbe4ee'" onmouseout="this.style.background='var(--cream)'">&times;</button>
     <h2 style="font-size:24px;font-weight:800;color:var(--navy);margin-bottom:8px;"><span class="lang active" data-lang="ja">プライバシーポリシー</span><span class="lang" data-lang="pt">Política de Privacidade</span><span class="lang" data-lang="en">Privacy Policy</span></h2>
     <p style="font-size:13px;color:var(--text-light);margin-bottom:32px;"><span class="lang active" data-lang="ja">Privacy Policy</span><span class="lang" data-lang="pt">Privacy Policy</span><span class="lang" data-lang="en">Privacy Policy</span></p>
     <div style="font-size:14px;line-height:2;color:var(--text);">
@@ -1666,7 +1669,7 @@ h3[style*="font-size:20px"]{font-size:17px !important}
 <!-- 情報セキュリティ基本方針 モーダル -->
 <div id="security-policy-modal" class="privacy-modal-overlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:24px;" onclick="if(event.target===this)this.style.display='none'">
   <div class="privacy-modal-content" style="background:var(--white);border-radius:var(--radius);max-width:720px;width:100%;max-height:85vh;overflow-y:auto;padding:48px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
-    <button onclick="document.getElementById('security-policy-modal').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--text-light);width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:var(--transition);" onmouseover="this.style.background='var(--cream)'" onmouseout="this.style.background='none'">&times;</button>
+    <button onclick="document.getElementById('security-policy-modal').style.display='none'" style="position:absolute;top:16px;right:16px;background:var(--cream);border:1px solid var(--border);font-size:26px;cursor:pointer;color:var(--navy);width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:var(--transition);" onmouseover="this.style.background='#dbe4ee'" onmouseout="this.style.background='var(--cream)'">&times;</button>
     <h2 style="font-size:24px;font-weight:800;color:var(--navy);margin-bottom:8px;"><span class="lang active" data-lang="ja">情報セキュリティ基本方針</span><span class="lang" data-lang="pt">Política de Segurança da Informação</span><span class="lang" data-lang="en">Information Security Policy</span></h2>
     <p style="font-size:13px;color:var(--text-light);margin-bottom:32px;">Information Security Policy</p>
     <div style="font-size:14px;line-height:2;color:var(--text);">
@@ -1707,7 +1710,7 @@ h3[style*="font-size:20px"]{font-size:17px !important}
 <!-- SECURITY ACTION 二つ星 モーダル -->
 <div id="security-action-modal" class="privacy-modal-overlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:24px;" onclick="if(event.target===this)this.style.display='none'">
   <div class="privacy-modal-content" style="background:var(--white);border-radius:var(--radius);max-width:640px;width:100%;max-height:88vh;overflow-y:auto;padding:44px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);text-align:center;">
-    <button onclick="document.getElementById('security-action-modal').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--text-light);width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:var(--transition);" onmouseover="this.style.background='var(--cream)'" onmouseout="this.style.background='none'">&times;</button>
+    <button onclick="document.getElementById('security-action-modal').style.display='none'" style="position:absolute;top:16px;right:16px;background:var(--cream);border:1px solid var(--border);font-size:26px;cursor:pointer;color:var(--navy);width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:var(--transition);" onmouseover="this.style.background='#dbe4ee'" onmouseout="this.style.background='var(--cream)'">&times;</button>
     <img src="security-action-futatsuboshi.png" alt="SECURITY ACTION 二つ星" style="width:130px;height:130px;object-fit:contain;margin:4px auto 18px;filter:drop-shadow(0 6px 16px rgba(50,170,230,0.25));">
     <h2 style="font-size:23px;font-weight:800;color:var(--navy);margin-bottom:6px;">SECURITY ACTION <span style="color:#32aae6;letter-spacing:2px;">★★</span></h2>
     <p style="font-size:13px;color:var(--text-light);margin-bottom:28px;">
