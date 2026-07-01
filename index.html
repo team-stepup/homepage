@@ -538,7 +538,44 @@ h3[style*="font-size:20px"]{font-size:17px !important}
         </div>
       </div>
     </div>
+    <!-- ═══ SECURITY ACTION 二つ星 ヘッダーバッジ（PC・右上／サプライチェーン情報セキュリティ） ═══ -->
+    <style>
+      .header-inner{position:relative;}
+      .sa-header-badge{position:absolute;top:11px;right:24px;display:flex;align-items:center;gap:10px;cursor:pointer;z-index:60;text-decoration:none;transition:var(--transition);padding:4px 6px;border-radius:10px;}
+      .sa-header-badge:hover{transform:translateY(-1px);background:rgba(255,255,255,0.06);}
+      .sa-header-badge:focus-visible{outline:2px solid #8fcdf0;outline-offset:2px;}
+      .sa-header-badge img{height:46px;width:46px;object-fit:contain;filter:drop-shadow(0 2px 7px rgba(50,170,230,0.45));flex-shrink:0;transition:var(--transition);}
+      .sa-header-badge:hover img{filter:drop-shadow(0 3px 11px rgba(80,190,240,0.75));}
+      .sa-hb-text{display:flex;flex-direction:column;line-height:1.32;}
+      .sa-hb-t1{font-size:11px;font-weight:800;color:#8fcdf0;letter-spacing:0.05em;white-space:nowrap;}
+      .sa-hb-t2{font-size:9.5px;color:rgba(255,255,255,0.72);letter-spacing:0.01em;white-space:nowrap;}
+      @media(max-width:1024px){.sa-header-badge{display:none;}}
+      /* スマホ／タブレット用の小型ロゴ（右上アイコン群に表示） */
+      .sa-header-badge-mobile{display:none;align-items:center;cursor:pointer;flex-shrink:0;text-decoration:none;}
+      .sa-header-badge-mobile img{height:32px;width:32px;object-fit:contain;filter:drop-shadow(0 1px 3px rgba(0,0,0,0.35));transition:var(--transition);}
+      .sa-header-badge-mobile:active img{transform:scale(0.9);}
+      @media(max-width:1024px){.sa-header-badge-mobile{display:flex;}}
+      @media(max-width:400px){.sa-header-badge-mobile img{height:27px;width:27px;}}
+    </style>
+    <a class="sa-header-badge" role="button" tabindex="0" aria-label="SECURITY ACTION 二つ星の詳細を開く"
+       onclick="document.getElementById('security-action-modal').style.display='flex'"
+       onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();document.getElementById('security-action-modal').style.display='flex';}">
+      <img src="security-action-futatsuboshi.png" alt="SECURITY ACTION 二つ星" width="46" height="46" decoding="async">
+      <span class="sa-hb-text">
+        <span class="sa-hb-t1">SECURITY ACTION&nbsp;<span style="color:#ffd24d;">★★</span></span>
+        <span class="sa-hb-t2">
+          <span class="lang active" data-lang="ja">サプライチェーン情報セキュリティ宣言</span>
+          <span class="lang" data-lang="pt">Segurança da cadeia de suprimentos</span>
+          <span class="lang" data-lang="en">Supply-Chain Information Security</span>
+        </span>
+      </span>
+    </a>
     <div class="header-right-icons">
+      <a class="sa-header-badge-mobile" role="button" tabindex="0" aria-label="SECURITY ACTION 二つ星の詳細を開く"
+         onclick="document.getElementById('security-action-modal').style.display='flex'"
+         onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();document.getElementById('security-action-modal').style.display='flex';}">
+        <img src="security-action-futatsuboshi.png" alt="SECURITY ACTION 二つ星" width="32" height="32" decoding="async">
+      </a>
       <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span><span class="menu-label">Menu</span></button>
       <div class="lang-switch">
         <button class="globe-btn" onclick="toggleLangPanel()" aria-label="Language"><span class="globe-icon">&#x1F310;</span><span class="globe-label">Language</span></button>
@@ -666,6 +703,55 @@ h3[style*="font-size:20px"]{font-size:17px !important}
       <button class="hero-dot" onclick="goSlide(1)"></button>
       <button class="hero-dot" onclick="goSlide(2)"></button>
       <button class="hero-dot" onclick="goSlide(3)"></button>
+    </div>
+  </section>
+
+  <!-- ═══ SECURITY ACTION 二つ星 トラストバッジ ═══ -->
+  <section class="sa-trust-band">
+    <style>
+      .sa-trust-band{background:linear-gradient(180deg,#ffffff 0%,var(--cream) 100%);padding:56px 24px;}
+      .sa-trust-inner{max-width:var(--max-w);margin:0 auto;}
+      .sa-trust-card{display:flex;align-items:center;gap:28px;background:var(--white);border:1px solid var(--border);border-left:5px solid #32aae6;border-radius:var(--radius);padding:26px 34px;box-shadow:var(--shadow-sm);cursor:pointer;transition:var(--transition);max-width:780px;margin:0 auto;text-align:left;}
+      .sa-trust-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(50,170,230,0.18);border-color:#32aae6;}
+      .sa-trust-card:focus-visible{outline:3px solid #32aae6;outline-offset:3px;}
+      .sa-trust-logo{width:92px;height:92px;flex-shrink:0;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(50,170,230,0.2));}
+      .sa-trust-body{flex:1;min-width:0;}
+      .sa-trust-eyebrow{display:inline-block;font-size:11px;font-weight:800;letter-spacing:0.16em;color:#1f8fd1;text-transform:uppercase;margin-bottom:6px;font-family:'DM Serif Display',serif;}
+      .sa-trust-title{font-size:clamp(16px,2.3vw,20px);font-weight:800;color:var(--navy);line-height:1.45;margin-bottom:6px;letter-spacing:-0.01em;}
+      .sa-trust-desc{font-size:13px;color:var(--text-light);line-height:1.7;}
+      .sa-trust-cta{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:13px;font-weight:700;color:#1f8fd1;transition:var(--transition);}
+      .sa-trust-card:hover .sa-trust-cta{gap:11px;color:var(--navy);}
+      .sa-trust-arrow{transition:transform .3s ease;}
+      .sa-trust-card:hover .sa-trust-arrow{transform:translateX(4px);}
+      @media(max-width:640px){
+        .sa-trust-band{padding:40px 14px;}
+        .sa-trust-card{flex-direction:column;text-align:center;gap:16px;padding:26px 20px;}
+        .sa-trust-logo{width:82px;height:82px;}
+        .sa-trust-cta{margin-top:8px;}
+      }
+    </style>
+    <div class="sa-trust-inner">
+      <div class="sa-trust-card" role="button" tabindex="0" aria-label="SECURITY ACTION 二つ星の詳細を開く"
+           onclick="document.getElementById('security-action-modal').style.display='flex'"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();document.getElementById('security-action-modal').style.display='flex';}">
+        <img class="sa-trust-logo" src="security-action-futatsuboshi.png" alt="SECURITY ACTION 二つ星" width="92" height="92" decoding="async">
+        <div class="sa-trust-body">
+          <span class="sa-trust-eyebrow">SECURITY ACTION</span>
+          <div class="sa-trust-title">
+            <span class="lang active" data-lang="ja">情報セキュリティに取り組む会社です</span>
+            <span class="lang" data-lang="pt">Uma empresa comprometida com a segurança da informação</span>
+            <span class="lang" data-lang="en">A company committed to information security</span>
+          </div>
+          <div class="sa-trust-desc">
+            <span class="lang active" data-lang="ja">IPA「SECURITY ACTION」二つ星（★★）を宣言。大切な情報をお預かりする会社として、対策に取り組んでいます。</span>
+            <span class="lang" data-lang="pt">Declaramos o "SECURITY ACTION" Duas Estrelas (★★) da IPA. Como empresa que cuida de informações importantes, trabalhamos ativamente na proteção.</span>
+            <span class="lang" data-lang="en">We have declared IPA's "SECURITY ACTION" Two Stars (★★). As a company entrusted with important information, we actively work on security.</span>
+          </div>
+          <span class="sa-trust-cta">
+            <span class="lang active" data-lang="ja">くわしく見る</span><span class="lang" data-lang="pt">Saiba mais</span><span class="lang" data-lang="en">Learn more</span><span class="sa-trust-arrow">→</span>
+          </span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1595,6 +1681,60 @@ h3[style*="font-size:20px"]{font-size:17px !important}
         <span class="lang active" data-lang="ja">制定日：2026年6月9日</span><span class="lang" data-lang="pt">Data de criação: 9 de junho de 2026</span><span class="lang" data-lang="en">Established: June 9, 2026</span><br>
         <span class="lang active" data-lang="ja">有限会社ステップ・アップ<br>代表取締役　山下 浩俊</span><span class="lang" data-lang="pt">Step Up Ltda.<br>Diretor Representante: Hirotoshi Yamashita</span><span class="lang" data-lang="en">Step Up Co., Ltd.<br>Representative Director: Hirotoshi Yamashita</span>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECURITY ACTION 二つ星 モーダル -->
+<div id="security-action-modal" class="privacy-modal-overlay" style="display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);align-items:center;justify-content:center;padding:24px;" onclick="if(event.target===this)this.style.display='none'">
+  <div class="privacy-modal-content" style="background:var(--white);border-radius:var(--radius);max-width:640px;width:100%;max-height:88vh;overflow-y:auto;padding:44px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,0.3);text-align:center;">
+    <button onclick="document.getElementById('security-action-modal').style.display='none'" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:24px;cursor:pointer;color:var(--text-light);width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:var(--transition);" onmouseover="this.style.background='var(--cream)'" onmouseout="this.style.background='none'">&times;</button>
+    <img src="security-action-futatsuboshi.png" alt="SECURITY ACTION 二つ星" style="width:130px;height:130px;object-fit:contain;margin:4px auto 18px;filter:drop-shadow(0 6px 16px rgba(50,170,230,0.25));">
+    <h2 style="font-size:23px;font-weight:800;color:var(--navy);margin-bottom:6px;">SECURITY ACTION <span style="color:#32aae6;letter-spacing:2px;">★★</span></h2>
+    <p style="font-size:13px;color:var(--text-light);margin-bottom:28px;">
+      <span class="lang active" data-lang="ja">情報セキュリティ対策 自己宣言（二つ星）</span>
+      <span class="lang" data-lang="pt">Autodeclaração de Segurança da Informação (Duas Estrelas)</span>
+      <span class="lang" data-lang="en">Information Security Self-Declaration (Two Stars)</span>
+    </p>
+    <div style="font-size:14px;line-height:2;color:var(--text);text-align:left;">
+      <p style="margin-bottom:20px;">
+        <span class="lang active" data-lang="ja">当社は、独立行政法人 情報処理推進機構（IPA）が実施する「SECURITY ACTION」制度において、情報セキュリティ対策に取り組むことを自らの意思で表明する<strong>「二つ星（★★）」を宣言しました。</strong></span>
+        <span class="lang" data-lang="pt">No programa "SECURITY ACTION" da IPA (Agência de Promoção de TI do Japão), nossa empresa <strong>declarou as "Duas Estrelas (★★)"</strong>, comprometendo-se voluntariamente com medidas de segurança da informação.</span>
+        <span class="lang" data-lang="en">Under the "SECURITY ACTION" program by Japan's Information-technology Promotion Agency (IPA), our company has <strong>declared the "Two Stars (★★)"</strong>, voluntarily committing to information security measures.</span>
+      </p>
+      <div style="background:var(--cream);border-radius:var(--radius-sm);border-left:4px solid #32aae6;padding:16px 20px;margin-bottom:22px;">
+        <div style="font-weight:700;color:var(--navy);margin-bottom:6px;font-size:14px;">
+          <span class="lang active" data-lang="ja">二つ星（★★）とは</span><span class="lang" data-lang="pt">O que são as Duas Estrelas</span><span class="lang" data-lang="en">What "Two Stars" means</span>
+        </div>
+        <span class="lang active" data-lang="ja">「情報セキュリティ基本方針」を策定して外部に公開し、情報セキュリティの自社診断にも取り組む——SECURITY ACTIONの<strong>上位の取組段階（★★）</strong>です。</span>
+        <span class="lang" data-lang="pt">Estabelecer e publicar uma "Política de Segurança da Informação" e realizar o autodiagnóstico de segurança — o <strong>nível superior</strong> do SECURITY ACTION.</span>
+        <span class="lang" data-lang="en">Establishing and publishing an "Information Security Policy" and completing the security self-assessment — the <strong>higher level</strong> of SECURITY ACTION.</span>
+      </div>
+      <p style="margin-bottom:8px;">
+        <span class="lang active" data-lang="ja">サプライチェーン全体でのセキュリティ強化が求められる今、お客様・従業員からお預かりする情報や、事業で扱うすべての情報資産を守ることは、私たちの社会的責任であり、取引先の皆様に安心してお取引いただくための基盤と考えています。</span>
+        <span class="lang" data-lang="pt">Num momento em que se exige o reforço da segurança em toda a cadeia de suprimentos, proteger as informações confiadas por clientes e funcionários e todos os ativos de informação do negócio é nossa responsabilidade social e a base para relações comerciais seguras.</span>
+        <span class="lang" data-lang="en">As information security across the entire supply chain becomes essential, protecting the information entrusted by clients and employees—and all business information assets—is our social responsibility and the foundation for trusted business relationships.</span>
+      </p>
+      <p style="margin-bottom:8px;">
+        <span class="lang active" data-lang="ja">さらに、2026年秋以降に国が本格運用を始める「セキュリティ対策評価制度（SCS）」において、まず<strong>★3の取得を目指し</strong>、将来的にはより上位の評価にも挑戦してまいります。</span>
+        <span class="lang" data-lang="pt">Além disso, no "Sistema de Avaliação de Medidas de Segurança (SCS)" nacional, cuja operação plena começa a partir do outono de 2026, buscaremos primeiro <strong>obter as ★3</strong> e, futuramente, desafiar avaliações de nível superior.</span>
+        <span class="lang" data-lang="en">Furthermore, in the national "Security Measures Evaluation System (SCS)," which begins full operation from autumn 2026, we will first <strong>aim to achieve ★3</strong> and, in the future, take on higher-level evaluations.</span>
+      </p>
+      <div style="text-align:center;margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+        <a onclick="document.getElementById('security-action-modal').style.display='none';document.getElementById('security-policy-modal').style.display='flex';" class="license-btn" style="cursor:pointer;">
+          <span class="lang active" data-lang="ja">情報セキュリティ基本方針</span><span class="lang" data-lang="pt">Política de Segurança</span><span class="lang" data-lang="en">Security Policy</span>
+          <span class="license-btn-icon">↗</span>
+        </a>
+        <a href="https://www.ipa.go.jp/security/security-action/" target="_blank" rel="noopener noreferrer" class="license-btn" style="background:linear-gradient(135deg,#32aae6,#1f8fd1);">
+          <span class="lang active" data-lang="ja">SECURITY ACTION 公式</span><span class="lang" data-lang="pt">SECURITY ACTION oficial</span><span class="lang" data-lang="en">Official site</span>
+          <span class="license-btn-icon">↗</span>
+        </a>
+      </div>
+      <p style="font-size:11px;color:var(--text-light);text-align:center;margin-top:20px;line-height:1.6;">
+        <span class="lang active" data-lang="ja">※ SECURITY ACTIONは、中小企業等が自ら情報セキュリティ対策に取り組むことを自己宣言する制度です（IPAによる認定・認証を受けるものではありません）。</span>
+        <span class="lang" data-lang="pt">※ O SECURITY ACTION é um sistema de autodeclaração; não é uma certificação concedida pela IPA.</span>
+        <span class="lang" data-lang="en">※ SECURITY ACTION is a self-declaration system; it is not a certification granted by IPA.</span>
+      </p>
     </div>
   </div>
 </div>
