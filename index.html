@@ -214,9 +214,11 @@ ul{list-style:none}
   .sub-dot{display:none}
   .header-right-icons{display:flex;flex-direction:row;align-items:flex-end;justify-content:flex-end;gap:18px;width:100%;margin-left:0;margin-top:6px;padding-top:8px;padding-right:6px;border-top:1px solid rgba(236,201,75,0.32)}
   .header-right-icons .menu-toggle,.header-right-icons .globe-btn{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:36px;padding:0;gap:4px}
-  .header-right-icons .globe-icon{font-size:15px;line-height:1;height:14px;display:flex;align-items:center}
-  .header-right-icons .globe-label,.header-right-icons .menu-label{font-size:9px;line-height:1}
-  .header-right-icons .menu-toggle span:not(.menu-label){width:22px;height:2px}
+  .header-right-icons .globe-icon{height:14px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.88)}
+  .header-right-icons .globe-icon svg{width:15px;height:14px;display:block}
+  .header-right-icons .globe-label,.header-right-icons .menu-label{font-size:9px;line-height:1;height:auto;width:auto;background:none;color:rgba(255,255,255,0.8)}
+  .header-right-icons .menu-toggle{gap:4px}
+  .header-right-icons .menu-toggle span:not(.menu-label){width:20px;height:2px}
   .lang-switch{margin:0}
   .globe-btn{padding:0;gap:2px;display:flex;flex-direction:column;align-items:center;width:36px}
   .globe-icon{font-size:20px;line-height:1;display:block}
@@ -558,11 +560,17 @@ h3[style*="font-size:20px"]{font-size:17px !important}
       .sa-hb-t1{font-size:11px;font-weight:800;color:#8fcdf0;letter-spacing:0.05em;white-space:nowrap;}
       .sa-hb-t2{font-size:9.5px;color:rgba(255,255,255,0.72);letter-spacing:0.01em;white-space:nowrap;}
       /* モバイル/タブレット: 1段目の社名の右にロゴを表示（社名が幅広なのでロゴのみ・確実に収める） */
-      @media(max-width:1024px){
-        .sa-header-badge{gap:0;padding:2px;}
-        .sa-header-badge img{height:38px;width:38px;}
-        .sa-hb-text{display:none;}
-      }
+      @media(max-width:1024px){ .sa-header-badge{display:none;} }
+      /* スマホ2段目: SECURITY ACTIONバッジ（左）＋Menu/Language（右） */
+      .sa-badge-row2{display:none;align-items:center;gap:8px;cursor:pointer;text-decoration:none;margin-right:auto;padding:2px;border-radius:8px;flex-shrink:0;}
+      .sa-badge-row2:active{background:rgba(255,255,255,0.06);}
+      .sa-badge-row2 img{width:28px;height:28px;object-fit:contain;flex-shrink:0;filter:drop-shadow(0 1px 3px rgba(0,0,0,0.35));}
+      .sa-r2-text{display:flex;flex-direction:column;line-height:1.25;}
+      .sa-r2-t1{font-size:12px;font-weight:800;color:#8fcdf0;letter-spacing:0.03em;white-space:nowrap;}
+      .sa-r2-stars{color:#ECC94B;letter-spacing:1px;}
+      .sa-r2-t2{font-size:10px;color:rgba(255,255,255,0.62);white-space:nowrap;}
+      @media(max-width:1024px){ .sa-badge-row2{display:flex;} }
+      @media(max-width:360px){ .sa-r2-t2{display:none;} }
     </style>
     <a class="sa-header-badge" role="button" tabindex="0" aria-label="SECURITY ACTION 二つ星の詳細を開く"
        onclick="document.getElementById('security-action-modal').style.display='flex'"
@@ -579,9 +587,18 @@ h3[style*="font-size:20px"]{font-size:17px !important}
     </a>
     </div>
     <div class="header-right-icons">
+      <a class="sa-badge-row2" role="button" tabindex="0" aria-label="SECURITY ACTION 二つ星の詳細を開く"
+         onclick="document.getElementById('security-action-modal').style.display='flex'"
+         onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();document.getElementById('security-action-modal').style.display='flex';}">
+        <img src="security-action-futatsuboshi.png" alt="SECURITY ACTION 二つ星" width="28" height="28" decoding="async">
+        <span class="sa-r2-text">
+          <span class="sa-r2-t1">SECURITY ACTION <span class="sa-r2-stars">★★</span></span>
+          <span class="sa-r2-t2">情報セキュリティ二つ星宣言</span>
+        </span>
+      </a>
       <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span><span class="menu-label">Menu</span></button>
       <div class="lang-switch">
-        <button class="globe-btn" onclick="toggleLangPanel()" aria-label="Language"><span class="globe-icon">&#x1F310;</span><span class="globe-label">Language</span></button>
+        <button class="globe-btn" onclick="toggleLangPanel()" aria-label="Language"><span class="globe-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><line x1="3" y1="12" x2="21" y2="12"></line><path d="M12 3a13 13 0 0 1 0 18 13 13 0 0 1 0-18z"></path></svg></span><span class="globe-label">Language</span></button>
         <div class="lang-panel" id="lang-panel">
           <button class="lang-panel-close" onclick="toggleLangPanel()">&times;</button>
           <h4>Language</h4>
