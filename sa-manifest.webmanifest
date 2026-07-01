@@ -1,0 +1,11 @@
+{
+  "name": "SECURITY ACTION 二つ星｜有限会社ステップ・アップ",
+  "short_name": "Step Up ★★",
+  "icons": [
+    { "src": "/sa-icon-navy.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ],
+  "start_url": "/security-action.html",
+  "display": "standalone",
+  "background_color": "#0B1D30",
+  "theme_color": "#0B1D30"
+}
