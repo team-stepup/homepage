@@ -9,7 +9,7 @@
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=(), payment=(), usb=(), magnetometer=(), gyroscope=(), accelerometer=()">
 <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://docs.google.com https://spreadsheets.google.com; frame-src https://forms.office.com https://www.google.com https://maps.google.com https://docs.google.com https://acrobat.adobe.com; object-src 'none'; base-uri 'self'; form-action 'self' https://forms.office.com; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: blob:; connect-src 'self' https://docs.google.com https://spreadsheets.google.com https://func-employee-portal-7833.azurewebsites.net; frame-src https://forms.office.com https://www.google.com https://maps.google.com https://docs.google.com https://acrobat.adobe.com; object-src 'none'; base-uri 'self'; form-action 'self' https://forms.office.com; upgrade-insecure-requests">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebSite","name":"有限会社ステップ・アップ","alternateName":["STEP・UP","ステップアップ","Step Up Co., Ltd."],"url":"https://www.team-stepup.com/"}
 </script>
@@ -1092,7 +1092,9 @@ h3[style*="font-size:20px"]{font-size:17px !important}
 
         <div style="display:flex;flex-direction:column;align-items:center;gap:16px;">
 
-          <p style="font-size: 14px; color: var(--text); margin-bottom: 8px;"><span class="lang active" data-lang="ja">求人に関するお問い合わせ</span><span class="lang" data-lang="pt">Contato sobre vagas</span><span class="lang" data-lang="en">Inquiries about jobs</span></p>
+          <button type="button" class="btn btn-gold" style="width:100%;" onclick="openApply('')"><span class="lang active" data-lang="ja">✍️ 応募する</span><span class="lang" data-lang="pt">✍️ Candidatar-se</span><span class="lang" data-lang="en">✍️ Apply Now</span></button>
+
+          <p style="font-size: 14px; color: var(--text); margin-bottom: 8px;margin-top:8px;"><span class="lang active" data-lang="ja">その他のお問い合わせ</span><span class="lang" data-lang="pt">Outras dúvidas</span><span class="lang" data-lang="en">Other inquiries</span></p>
           <a class="btn btn-outline" style="width:100%; color: var(--navy); border-color: var(--navy);" onclick="showPage('contact')"><span class="lang active" data-lang="ja">お問い合わせフォーム</span><span class="lang" data-lang="pt">Formulário de Contato</span><span class="lang" data-lang="en">Contact Form</span></a>
         </div>
       </div>
@@ -1761,6 +1763,41 @@ h3[style*="font-size:20px"]{font-size:17px !important}
   </div>
 </div>
 
+<!-- ══════════════════════════════
+     応募フォーム モーダル (HP内完結・/apply へ送信)
+     ══════════════════════════════ -->
+<style>
+.apply-overlay{position:fixed;inset:0;background:rgba(11,29,48,0.55);backdrop-filter:blur(3px);z-index:2000;display:none;align-items:center;justify-content:center;padding:16px;overflow-y:auto;}
+.apply-overlay.open{display:flex;}
+.apply-modal{position:relative;background:var(--white);border-radius:var(--radius);box-shadow:0 20px 60px rgba(0,0,0,0.3);width:100%;max-width:480px;max-height:92vh;overflow-y:auto;padding:32px 28px;margin:auto;}
+.apply-close{position:absolute;top:12px;right:14px;width:36px;height:36px;border:none;background:var(--cream);color:var(--navy);border-radius:50%;font-size:22px;line-height:1;cursor:pointer;}
+.apply-modal h3{font-size:20px;font-weight:800;color:var(--navy);margin-bottom:6px;padding-right:28px;}
+.apply-modal .apply-sub{font-size:13px;color:var(--text-light);margin-bottom:20px;line-height:1.6;}
+.apply-field{margin-bottom:16px;}
+.apply-field label{display:block;font-size:13px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.apply-field .req{color:#c0392b;font-size:12px;margin-left:4px;}
+.apply-field input,.apply-field select,.apply-field textarea{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);font-size:15px;font-family:inherit;color:var(--text);background:var(--white);box-sizing:border-box;}
+.apply-field input:focus,.apply-field select:focus,.apply-field textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(26,54,93,0.12);}
+.apply-field textarea{resize:vertical;min-height:80px;}
+.apply-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;}
+.apply-consent{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:var(--text-light);line-height:1.6;margin:4px 0 20px;}
+.apply-consent input{width:auto;margin-top:2px;flex-shrink:0;}
+.apply-submit{width:100%;padding:16px;border:none;border-radius:99px;background:linear-gradient(135deg,var(--navy) 0%,#1A365D 100%);color:var(--white);font-size:16px;font-weight:700;letter-spacing:0.05em;cursor:pointer;box-shadow:0 4px 16px rgba(11,29,48,0.3);}
+.apply-submit:disabled{opacity:0.6;cursor:default;}
+.apply-note{font-size:12px;color:var(--text-light);text-align:center;margin-top:14px;}
+.apply-note a{color:var(--navy);font-weight:700;}
+.apply-result{text-align:center;padding:20px 0;}
+.apply-result .ico{font-size:52px;margin-bottom:12px;}
+.apply-result h3{justify-content:center;}
+.apply-err{color:#c0392b;font-size:13px;margin-top:8px;min-height:18px;}
+</style>
+<div id="apply-overlay" class="apply-overlay" onclick="if(event.target===this)closeApply()">
+  <div class="apply-modal" role="dialog" aria-modal="true" aria-labelledby="apply-heading">
+    <button class="apply-close" type="button" onclick="closeApply()" aria-label="Close">×</button>
+    <div id="apply-body"></div>
+  </div>
+</div>
+
 <script>
 /* ── Slideshow ── */
 var slideIndex=0;
@@ -1867,7 +1904,7 @@ function loadJobs(lang){
         +remarks
         +'<div class="job-footer">'
         +'<span class="job-date">'+lb.updated+jobEsc(j.updated||'')+'</span>'
-        +'<a class="btn btn-gold btn-sm" href="https://forms.office.com/Pages/ResponsePage.aspx?id=LNiSjCwvekGerXYCFoi8nZdqtgaTbghKjEIVhaBdIN5UNUszNVU3SDQ5QzI0VE9RQVpKRVVBOUU1Ry4u" target="_blank">'+lb.apply+'</a>'
+        +'<button type="button" class="btn btn-gold btn-sm" data-job="'+jobEsc(j.title)+'" onclick="openApply(this.getAttribute(\'data-job\'))">'+lb.apply+'</button>'
         +'</div>'
         +'</div>';
     });
@@ -1890,6 +1927,113 @@ function showPage(page){
   window.scrollTo({top:0, behavior:'smooth'});
   document.getElementById('main-nav').classList.remove('open');
 }
+
+/* ── 応募フォーム (HP内完結・/apply へ送信) ── */
+var APPLY_API='https://func-employee-portal-7833.azurewebsites.net/api/apply';
+var APPLY_TEL='0538-36-6968';
+var applyLabels={
+  ja:{heading:'応募フォーム',sub:'下記をご入力ください。担当者より折り返しご連絡します（通常1〜2営業日以内）。',
+    name:'お名前',namePh:'例）山田 太郎',tel:'電話番号',telPh:'例）090-1234-5678',
+    mail:'メール（任意）',mailPh:'例）you@example.com',kyujin:'応募するお仕事',kyujinPh:'（任意）ご希望のお仕事',
+    area:'希望勤務地（任意）',areaPh:'例）浜松市・磐田市',time:'連絡可能な時間帯',
+    timeOpts:['いつでもOK','午前（9〜12時）','午後（12〜17時）','夕方以降（17時〜）','土日'],
+    message:'ご質問・ご希望など（任意）',messagePh:'ご不明点やご希望をお書きください',
+    consent:'個人情報を応募対応の目的で利用することに同意します。',submit:'この内容で応募する',sending:'送信中...',
+    successTitle:'応募を受け付けました',successMsg:'ご応募ありがとうございます。担当者より折り返しご連絡いたします。',
+    errTitle:'送信できませんでした',errMsg:'通信エラーが発生しました。お手数ですがお電話でもご連絡いただけます：',
+    reqName:'お名前を入力してください',reqTel:'電話番号を入力してください',reqConsent:'同意にチェックしてください',close:'閉じる'},
+  pt:{heading:'Formulário de Candidatura',sub:'Preencha abaixo. Entraremos em contato (normalmente em 1 a 2 dias úteis).',
+    name:'Nome',namePh:'Ex）Taro Yamada',tel:'Telefone',telPh:'Ex）090-1234-5678',
+    mail:'E-mail (opcional)',mailPh:'Ex）you@example.com',kyujin:'Vaga desejada',kyujinPh:'(opcional) Vaga de interesse',
+    area:'Local desejado (opcional)',areaPh:'Ex）Hamamatsu, Iwata',time:'Melhor horário para contato',
+    timeOpts:['Qualquer horário','Manhã (9-12h)','Tarde (12-17h)','Fim de tarde (17h-)','Fim de semana'],
+    message:'Perguntas / pedidos (opcional)',messagePh:'Escreva suas dúvidas ou pedidos',
+    consent:'Concordo com o uso dos meus dados pessoais para fins de candidatura.',submit:'Enviar candidatura',sending:'Enviando...',
+    successTitle:'Candidatura recebida',successMsg:'Obrigado pela sua candidatura. Entraremos em contato em breve.',
+    errTitle:'Não foi possível enviar',errMsg:'Ocorreu um erro. Você também pode nos ligar：',
+    reqName:'Digite seu nome',reqTel:'Digite seu telefone',reqConsent:'Marque a concordância',close:'Fechar'},
+  en:{heading:'Application Form',sub:'Please fill in below. We will contact you back (usually within 1-2 business days).',
+    name:'Name',namePh:'e.g. Taro Yamada',tel:'Phone',telPh:'e.g. 090-1234-5678',
+    mail:'Email (optional)',mailPh:'e.g. you@example.com',kyujin:'Position',kyujinPh:'(optional) Desired position',
+    area:'Preferred area (optional)',areaPh:'e.g. Hamamatsu, Iwata',time:'Best time to contact',
+    timeOpts:['Anytime','Morning (9-12)','Afternoon (12-17)','Evening (17-)','Weekend'],
+    message:'Questions / requests (optional)',messagePh:'Write any questions or requests',
+    consent:'I agree to the use of my personal data for application purposes.',submit:'Submit application',sending:'Sending...',
+    successTitle:'Application received',successMsg:'Thank you for applying. We will get back to you soon.',
+    errTitle:'Could not send',errMsg:'A network error occurred. You can also call us：',
+    reqName:'Please enter your name',reqTel:'Please enter your phone number',reqConsent:'Please check the consent box',close:'Close'}
+};
+function applyEscAttr(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function renderApplyForm(prefillJob){
+  var l=applyLabels[(typeof currentLang!=='undefined'&&currentLang)||'ja']||applyLabels.ja;
+  var opts=l.timeOpts.map(function(o){return '<option value="'+applyEscAttr(o)+'">'+applyEscAttr(o)+'</option>';}).join('');
+  document.getElementById('apply-body').innerHTML=
+    '<h3 id="apply-heading">'+l.heading+'</h3>'
+    +'<p class="apply-sub">'+l.sub+'</p>'
+    +'<form id="apply-form" autocomplete="on" onsubmit="submitApply(event)">'
+    +'<div class="apply-hp" aria-hidden="true"><label>Company<input type="text" id="apply-company" name="company" tabindex="-1" autocomplete="off"></label></div>'
+    +'<div class="apply-field"><label>'+l.name+'<span class="req">*</span></label><input type="text" id="apply-name" autocomplete="name" placeholder="'+applyEscAttr(l.namePh)+'" required></div>'
+    +'<div class="apply-field"><label>'+l.tel+'<span class="req">*</span></label><input type="tel" id="apply-tel" autocomplete="tel" inputmode="tel" placeholder="'+applyEscAttr(l.telPh)+'" required></div>'
+    +'<div class="apply-field"><label>'+l.mail+'</label><input type="email" id="apply-mail" autocomplete="email" placeholder="'+applyEscAttr(l.mailPh)+'"></div>'
+    +'<div class="apply-field"><label>'+l.kyujin+'</label><input type="text" id="apply-kyujin" placeholder="'+applyEscAttr(l.kyujinPh)+'" value="'+applyEscAttr(prefillJob||'')+'"></div>'
+    +'<div class="apply-field"><label>'+l.area+'</label><input type="text" id="apply-area" placeholder="'+applyEscAttr(l.areaPh)+'"></div>'
+    +'<div class="apply-field"><label>'+l.time+'</label><select id="apply-time">'+opts+'</select></div>'
+    +'<div class="apply-field"><label>'+l.message+'</label><textarea id="apply-message" placeholder="'+applyEscAttr(l.messagePh)+'"></textarea></div>'
+    +'<label class="apply-consent"><input type="checkbox" id="apply-consent-cb">'+l.consent+'</label>'
+    +'<button type="submit" class="apply-submit" id="apply-submit-btn">'+l.submit+'</button>'
+    +'<div class="apply-err" id="apply-err"></div>'
+    +'<p class="apply-note">TEL <a href="tel:'+APPLY_TEL.replace(/-/g,'')+'">'+APPLY_TEL+'</a></p>'
+    +'</form>';
+}
+function openApply(jobTitle){
+  renderApplyForm(jobTitle||'');
+  var ov=document.getElementById('apply-overlay');
+  ov.classList.add('open');
+  document.body.style.overflow='hidden';
+  setTimeout(function(){var n=document.getElementById('apply-name');if(n)n.focus();},50);
+}
+function closeApply(){
+  document.getElementById('apply-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+function submitApply(ev){
+  if(ev&&ev.preventDefault)ev.preventDefault();
+  var l=applyLabels[(typeof currentLang!=='undefined'&&currentLang)||'ja']||applyLabels.ja;
+  var err=document.getElementById('apply-err');
+  var name=(document.getElementById('apply-name').value||'').trim();
+  var tel=(document.getElementById('apply-tel').value||'').trim();
+  if(!name){err.textContent=l.reqName;return;}
+  if(!tel){err.textContent=l.reqTel;return;}
+  if(!document.getElementById('apply-consent-cb').checked){err.textContent=l.reqConsent;return;}
+  err.textContent='';
+  var btn=document.getElementById('apply-submit-btn');
+  btn.disabled=true;btn.textContent=l.sending;
+  var payload={
+    name:name,tel:tel,
+    mail:(document.getElementById('apply-mail').value||'').trim(),
+    kyujin:(document.getElementById('apply-kyujin').value||'').trim(),
+    area:(document.getElementById('apply-area').value||'').trim(),
+    time:(document.getElementById('apply-time').value||'').trim(),
+    message:(document.getElementById('apply-message').value||'').trim(),
+    lang:(typeof currentLang!=='undefined'&&currentLang)||'ja',
+    company:(document.getElementById('apply-company').value||'')
+  };
+  fetch(APPLY_API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+    .then(function(r){if(!r.ok)throw new Error('http '+r.status);return r.json();})
+    .then(function(d){
+      if(!d||!d.ok)throw new Error('bad');
+      document.getElementById('apply-body').innerHTML=
+        '<div class="apply-result"><div class="ico">✅</div>'
+        +'<h3>'+l.successTitle+'</h3>'
+        +'<p class="apply-sub">'+l.successMsg+'</p>'
+        +'<button type="button" class="apply-submit" onclick="closeApply()">'+l.close+'</button></div>';
+    })
+    .catch(function(){
+      btn.disabled=false;btn.textContent=l.submit;
+      err.innerHTML=l.errTitle+'<br>'+l.errMsg+' <a href="tel:'+APPLY_TEL.replace(/-/g,'')+'">'+APPLY_TEL+'</a>';
+    });
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeApply();});
 
 /* ── スマホメニュー切り替え ── */
 function toggleMenu(){
