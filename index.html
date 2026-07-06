@@ -1890,7 +1890,8 @@ function loadJobs(lang){
     var html='';
     jobs.forEach(function(j){
       var remarks=j.remarks?'<div class="job-remarks">'+jobEscBr(j.remarks)+'</div>':'';
-      html+='<div class="job-card">'
+      var jid=(j.id==null?'':String(j.id));
+      html+='<div class="job-card" id="job-'+jobEsc(jid)+'" data-id="'+jobEsc(jid)+'">'
         +'<div class="job-card-header">'
         +'<h4 class="job-title">'+jobEsc(j.title)+'</h4>'
         +'<span style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;"><span class="job-location">📍 '+jobEsc(j.location)+'</span></span>'
@@ -1909,11 +1910,29 @@ function loadJobs(lang){
         +'</div>';
     });
     container.innerHTML=html;
+    highlightPendingJob();
   }).catch(function(){
     container.innerHTML='<p style="color:var(--text-light);text-align:center;padding:40px 0;">'+lb.error+'</p>';
   });
 }
+/* ?job=<id> ディープリンク(Indeed等からの流入で該当求人を開く) */
+var pendingJob=null;
+try{ pendingJob=new URLSearchParams(window.location.search).get('job'); }catch(e){}
+function highlightPendingJob(){
+  if(!pendingJob) return;
+  var el=document.getElementById('job-'+pendingJob);
+  if(!el) return;
+  var target=pendingJob; pendingJob=null;  /* 一度だけ */
+  setTimeout(function(){
+    el.scrollIntoView({behavior:'smooth',block:'center'});
+    el.style.transition='box-shadow .3s, transform .3s';
+    el.style.boxShadow='0 0 0 3px var(--gold), var(--shadow-hover)';
+    el.style.transform='translateY(-2px)';
+    setTimeout(function(){ el.style.boxShadow=''; el.style.transform=''; },2600);
+  },200);
+}
 loadJobs('ja');
+if(pendingJob){ try{ showPage('recruit'); }catch(e){} }
 
 function showPage(page){
   document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
