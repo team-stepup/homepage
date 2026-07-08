@@ -1896,7 +1896,7 @@ function loadJobs(lang){
       html+='<div class="job-card" id="job-'+jobEsc(jid)+'" data-id="'+jobEsc(jid)+'">'
         +'<div class="job-card-header">'
         +'<h4 class="job-title">'+jobEsc(j.title)+'</h4>'
-        +'<span style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;"><span class="job-location">📍 '+jobEsc(j.location)+'</span></span>'
+        +'<span style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">'+(jid?'<span style="background:var(--gold);color:#fff;border-radius:6px;padding:2px 9px;font-size:11px;font-weight:800;letter-spacing:.5px;white-space:nowrap;">No.'+jobEsc(jid)+'</span>':'')+'<span class="job-location">📍 '+jobEsc(j.location)+'</span></span>'
         +'</div>'
         +'<div class="job-details">'
         +'<div class="job-detail-item"><span class="job-label">'+lb.wage+'</span><span class="job-value job-wage">'+jobEsc(j.wage)+'</span></div>'
@@ -1907,7 +1907,7 @@ function loadJobs(lang){
         +remarks
         +'<div class="job-footer">'
         +'<span class="job-date">'+lb.updated+jobEsc(j.updated||'')+'</span>'
-        +'<button type="button" class="btn btn-gold btn-sm" data-job="'+jobEsc(j.title)+'" onclick="openApply(this.getAttribute(\'data-job\'))">'+lb.apply+'</button>'
+        +'<button type="button" class="btn btn-gold btn-sm" data-job="'+jobEsc((jid?'【No.'+jid+'】':'')+j.title)+'" onclick="openApply(this.getAttribute(\'data-job\'))">'+lb.apply+'</button>'
         +'</div>'
         +'</div>';
     });

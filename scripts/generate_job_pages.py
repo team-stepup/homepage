@@ -126,7 +126,8 @@ def build_page(j):
     meta_desc = (j.get("description") or "").replace("\n", " ")[:120]
     ld_json = json.dumps(build_ld(j), ensure_ascii=False, indent=1)
 
-    rows = []
+    rows = [f'<div class="row"><span class="lb">募集番号</span>'
+            f'<span class="vl">No.{jid}</span></div>']
     for label, key in (("時給", "wage"), ("勤務時間", "hours"),
                        ("休日", "off")):
         if j.get(key):
