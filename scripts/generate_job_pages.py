@@ -17,7 +17,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 JOBS_DIR = ROOT / "jobs"
-SITE = "https://www.team-stepup.com"
+SITE = "https://team-stepup.com"  # CNAME=apex (wwwは301でこちらへ)
 COMPANY = "有限会社ステップ・アップ"
 PERMIT = "労働者派遣事業許可番号：派22-300880"
 ADDRESS = "静岡県磐田市上本郷1006番地7"
