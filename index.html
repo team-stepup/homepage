@@ -29,6 +29,9 @@
 <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
 <link rel="canonical" href="https://team-stepup.com/">
+<link rel="alternate" hreflang="ja" href="https://team-stepup.com/">
+<link rel="alternate" hreflang="pt" href="https://team-stepup.com/pt/">
+<link rel="alternate" hreflang="x-default" href="https://team-stepup.com/">
 <!-- OGP (SNS共有用) -->
 <meta property="og:title" content="有限会社ステップ・アップ｜磐田市の派遣会社・総合人材サービス・通訳翻訳">
 <meta property="og:description" content="静岡県西部の総合人材サービス。人材派遣・職業紹介・ポルトガル語通訳翻訳。磐田市・浜松市・袋井市・掛川市・湖西市・菊川市対応。">
@@ -46,7 +49,7 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "EmploymentAgency",
   "name": "有限会社ステップ・アップ",
   "alternateName": "Step Up Co., Ltd.",
   "url": "https://team-stepup.com/",
@@ -1920,6 +1923,9 @@ function loadJobs(lang){
 /* ?job=<id> ディープリンク(Indeed等からの流入で該当求人を開く) */
 var pendingJob=null;
 try{ pendingJob=new URLSearchParams(window.location.search).get('job'); }catch(e){}
+/* ?lang=<pt|en> 言語ディープリンク(/pt/ ランディングページ等からの流入) */
+var initLang='ja';
+try{ var _urlLang=new URLSearchParams(window.location.search).get('lang'); if(_urlLang==='pt'||_urlLang==='en') initLang=_urlLang; }catch(e){}
 function highlightPendingJob(){
   if(!pendingJob) return;
   var el=document.getElementById('job-'+pendingJob);
@@ -1933,7 +1939,7 @@ function highlightPendingJob(){
     setTimeout(function(){ el.style.boxShadow=''; el.style.transform=''; },2600);
   },200);
 }
-loadJobs('ja');
+if(initLang!=='ja'){ switchLang(initLang); } else { loadJobs('ja'); }
 if(pendingJob){ try{ showPage('recruit'); }catch(e){} }
 
 function showPage(page){
