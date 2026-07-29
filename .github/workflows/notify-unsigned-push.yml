@@ -1,13 +1,16 @@
-name: 改ざん検知 (署名なしpushの通知)
+name: 改ざん検知 (署名なしpushの検出)
 
-# main に push されたコミットの電子署名を検証し、
-# 「署名なし / 検証できない」コミットが含まれる場合だけ Teams へ通知する。
+# main に push されたコミットの電子署名を検証する。
 #
-# ・依頼して行った変更は署名付き  -> 通知されない
-# ・身に覚えのない push          -> 通知される (＝改ざんの疑い)
+# ・依頼して行った変更は署名付き  -> 成功（何も起きない）
+# ・身に覚えのない push          -> ジョブを失敗させる
+#                                   -> GitHub から所有者へ「実行が失敗しました」メールが自動送信される
+#
+# Teams への通知は、このPCの定期タスク homepage_guard が GitHub の外から
+# 同じ検査を行って送る（GitHub 側の監視ごと消されても気づけるようにするため）。
 #
 # 5分おきの求人データ自動同期は GITHUB_TOKEN による push のため、
-# GitHub の仕様でこのワークフローは起動しない (＝通知は鳴らない)。
+# GitHub の仕様でこのワークフローは起動しない。
 
 on:
   push:
@@ -21,77 +24,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 署名を検証
-        id: check
         env:
           GH_TOKEN: ${{ github.token }}
           REPO: ${{ github.repository }}
           COMMITS: ${{ toJSON(github.event.commits) }}
         run: |
           set -euo pipefail
-          bad=""
+          bad=0
           for sha in $(echo "$COMMITS" | jq -r '.[].id'); do
             ok=$(gh api "repos/$REPO/commits/$sha" --jq '.commit.verification.verified')
             msg=$(gh api "repos/$REPO/commits/$sha" --jq '.commit.message' | head -1)
             if [ "$ok" != "true" ]; then
-              echo "NG  $sha  $msg"
-              bad="${bad}- \`${sha:0:7}\` ${msg}\n"
+              echo "::error::署名なしのコミットです: $sha $msg"
+              bad=1
             else
               echo "OK  $sha  $msg"
             fi
           done
-          if [ -z "$bad" ]; then
-            echo "すべて署名済み。通知しません。"
-            echo "alert=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "alert=true" >> "$GITHUB_OUTPUT"
-            printf '%b' "$bad" > unsigned.txt
-          fi
-
-      - name: Teams へ通知
-        if: steps.check.outputs.alert == 'true'
-        env:
-          WEBHOOK: ${{ secrets.TEAMS_WEBHOOK_URL }}
-          ACTOR: ${{ github.actor }}
-          REPO: ${{ github.repository }}
-          COMPARE: ${{ github.event.compare }}
-        run: |
-          set -euo pipefail
-          if [ -z "${WEBHOOK:-}" ]; then
-            echo "::error::TEAMS_WEBHOOK_URL が未設定のため通知できません"
+          if [ "$bad" = "1" ]; then
+            echo "::error::依頼していない変更の可能性があります。内容を確認してください。"
             exit 1
           fi
-          LIST=$(cat unsigned.txt)
-          jq -n --arg actor "$ACTOR" --arg repo "$REPO" \
-                --arg compare "$COMPARE" --arg list "$LIST" \
-                --arg when "$(TZ=Asia/Tokyo date '+%Y/%m/%d %H:%M')" '
-          {
-            type: "message",
-            attachments: [{
-              contentType: "application/vnd.microsoft.card.adaptive",
-              content: {
-                type: "AdaptiveCard",
-                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-                version: "1.4",
-                body: [
-                  { type: "TextBlock", text: "🔴 ホームページに署名なしの変更を検知",
-                    weight: "Bolder", size: "Large", color: "Attention", wrap: true },
-                  { type: "TextBlock",
-                    text: "依頼した覚えのない変更であれば、改ざんの疑いがあります。",
-                    wrap: true },
-                  { type: "FactSet", facts: [
-                    { title: "リポジトリ", value: $repo },
-                    { title: "実行者",   value: $actor },
-                    { title: "検知時刻", value: $when }
-                  ]},
-                  { type: "TextBlock", text: "**未署名のコミット**", wrap: true },
-                  { type: "TextBlock", text: $list, wrap: true, fontType: "Monospace" }
-                ],
-                actions: [
-                  { type: "Action.OpenUrl", title: "変更内容を確認する", url: $compare }
-                ]
-              }
-            }]
-          }' > card.json
-          curl -sS -f -X POST -H "Content-Type: application/json" \
-               --data @card.json "$WEBHOOK"
-          echo "通知しました。"
+          echo "すべて署名済み。問題ありません。"
