@@ -30,7 +30,8 @@ jobs:
           set -e
           BASE="https://func-employee-portal-7833.azurewebsites.net/api/jobs"
           for L in ja pt en; do
-            curl -fsS --max-time 30 "$BASE?lang=$L" -o "jobs-$L.tmp"
+            # Functions のコールドスタートで20〜30秒かかることがあるため長めに待ち、失敗しても再試行する
+            curl -fsS --connect-timeout 20 --max-time 90 --retry 3 --retry-delay 10 --retry-all-errors "$BASE?lang=$L" -o "jobs-$L.tmp"
             python3 -c "import json; json.load(open('jobs-$L.tmp', encoding='utf-8'))"   # JSON妥当性チェック(壊れたデータで上書きしない)
             mv "jobs-$L.tmp" "jobs-$L.json"
           done
