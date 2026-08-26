@@ -137,7 +137,7 @@ def build_page(j):
     title = j.get("title", "")
     # 応募先=面接シート(portal)。どの求人からの応募かをjobパラメータで引き継ぐ
     apply_url = ("https://portal.team-stepup.com/mensetsu.html?job="
-                 + urllib.parse.quote(f"【No.{jid}】{title}"))
+                 + urllib.parse.quote(f"【No.{jid}】{title}") + "&lang=ja")
     page_title = f"{title}（{j.get('location','')}）| {COMPANY} 採用情報"
     meta_desc = (j.get("description") or "").replace("\n", " ")[:120]
     ld_json = json.dumps(build_ld(j), ensure_ascii=False, indent=1)
