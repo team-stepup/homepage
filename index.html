@@ -2013,6 +2013,11 @@ function renderApplyForm(prefillJob){
     +'</form>';
 }
 function openApply(jobTitle){
+  /* 応募は面接シート(portal)へ。どの求人か+表示言語を引き継ぐ */
+  var l=(typeof currentLang!=='undefined'&&currentLang)||'ja';
+  location.href='https://portal.team-stepup.com/mensetsu.html?job='+encodeURIComponent(jobTitle||'')+'&lang='+l;
+}
+function openApplyModalLegacy(jobTitle){
   renderApplyForm(jobTitle||'');
   var ov=document.getElementById('apply-overlay');
   ov.classList.add('open');

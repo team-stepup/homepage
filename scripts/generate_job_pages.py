@@ -14,6 +14,7 @@ import datetime
 import json
 import re
 import sys
+import urllib.parse
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -133,8 +134,10 @@ def build_ld(j):
 def build_page(j):
     jid = j["id"]
     url = f"{SITE}/jobs/{jid}.html"
-    apply_url = f"/?job={jid}"
     title = j.get("title", "")
+    # 応募先=面接シート(portal)。どの求人からの応募かをjobパラメータで引き継ぐ
+    apply_url = ("https://portal.team-stepup.com/mensetsu.html?job="
+                 + urllib.parse.quote(f"【No.{jid}】{title}"))
     page_title = f"{title}（{j.get('location','')}）| {COMPANY} 採用情報"
     meta_desc = (j.get("description") or "").replace("\n", " ")[:120]
     ld_json = json.dumps(build_ld(j), ensure_ascii=False, indent=1)
