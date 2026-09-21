@@ -27,6 +27,8 @@ DEFAULT_REGION = "静岡県"
 
 PREF_RE = re.compile(r"^(.+?[都道府県])(.*)$")
 NUM_RE = re.compile(r"([0-9][0-9,]*)")
+# かな・カナ・漢字 (U+3040-30FF, U+4E00-9FFF)
+JA_CHAR_RE = re.compile("[%s-%s%s-%s]" % tuple(map(chr, (0x3040, 0x30FF, 0x4E00, 0x9FFF))))
 
 
 def esc(s):
@@ -246,7 +248,26 @@ def build_sitemap(jobs):
             + "\n".join(urls) + "\n</urlset>\n")
 
 
+def drop_untranslated_en():
+    """英語ページには「英訳がある求人」だけを出す。
+    公開APIは英訳(yakuJSON.en)が無いと日本語にフォールバックして返すため、
+    タイトルに日本語が残っている求人 = 英訳なし とみなして jobs-en.json から外す。
+    (求人ごとに「日本語+ポルトガル語のみ掲載」を選べるようにするため)"""
+    path = ROOT / "jobs-en.json"
+    if not path.exists():
+        return
+    data = json.loads(path.read_text(encoding="utf-8"))
+    jobs = data.get("jobs") or []
+    kept = [j for j in jobs if not JA_CHAR_RE.search(j.get("title") or "")]
+    if len(kept) != len(jobs):
+        data["jobs"] = kept
+        path.write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8",
+                        newline="\n")
+        print(f"jobs-en.json: drop {len(jobs) - len(kept)} untranslated job(s)")
+
+
 def main():
+    drop_untranslated_en()
     data = json.loads((ROOT / "jobs-ja.json").read_text(encoding="utf-8"))
     jobs = [j for j in (data.get("jobs") or []) if j.get("id") is not None]
 
