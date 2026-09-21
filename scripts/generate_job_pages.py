@@ -228,6 +228,11 @@ def build_sitemap(jobs):
     <lastmod>{home_mod}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>""", f"""  <url>
+    <loc>{SITE}/pt/</loc>
+    <lastmod>{home_mod}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>"""]
     for j in jobs:
         urls.append(f"""  <url>
